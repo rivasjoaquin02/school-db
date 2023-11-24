@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>presentation</title>
+
+		<link rel="stylesheet" href="dist/reset.css" />
+		<link rel="stylesheet" href="dist/reveal.css" />
+		<link rel="stylesheet" href="dist/theme/night.css" />
+
+		<!-- map -->
+		<link
+			href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css"
+			rel="stylesheet"
+		/>
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" />
+
+		<style>
+			.gradient-background {
+				background: linear-gradient(to right, red, yellow);
+			}
+			.gradient-text {
+				background: -webkit-linear-gradient(left, red, yellow);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				font-weight: 600;
+			}
+			img {
+				border-radius: 15px;
+				box-shadow: 1rem;
+			}
+			.sub {
+				font-size: 1.6rem;
+				color: rgba(255, 255, 255, 0.6);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- INTRODUCTION -->
+				<section>
+					<section>
+						<img src="./dist/img/bnjm-2.jpg" />
+						<h2>
+							<span class="gradient-text">SBD1:</span>
+							Entrevista a la
+							<span>📖 Biblioteca Nacional Jose Marti</span>
+						</h2>
+						<p style="color: rgba(255, 255, 255, 0.6)">
+							por Joaquin Rivas Sanchez 😎
+						</p>
+					</section>
+
+					<section>
+						<img src="./dist/img/bnjm-1.jpg" alt="" />
+						<img src="./dist/img/bnjm-3.jpg" alt="" />
+						<img src="./dist/img/bnjm-4.jpg" alt="" />
+					</section>
+					<section>
+						<img src="./dist/img/library.jpg" />
+					</section>
+
+					<!-- <section
+						data-mapbox='{"duration":4000, "zoom":13, "bearing":0, "center":[16.2957322, 50.1173050]}'
+					>
+						<span
+							class="fragment current-visible"
+							data-mapbox-transform-to='{"duration":4000, "zoom":10, "bearing":0, "center":[36.8227, -1.2847]}'
+						></span>
+					</section> -->
+				</section>
+
+				<!-- PROBLEMATIC -->
+				<section>
+					<h3>Problematica</h3>
+					<section data-auto-animate>
+						<p>
+							Para <span class="gradient-text">mejorar</span> la
+							gestión de la información interna y
+							<span class="gradient-text">facilitar</span> el
+							acceso de los usuarios a los documentos, se propone
+							<span class="gradient-text"
+								>informatizar el sistema de préstamos</span
+							>
+							mediante una aplicación web que permita
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<ul>
+							<li>📚 consultar el catálogo</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<ul>
+							<li>📚 consultar el catálogo</li>
+							<li>🤝 reservar y renovar los préstamos</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<ul>
+							<li>📚 consultar el catálogo</li>
+							<li>🤝 reservar y renovar los préstamos</li>
+							<li>
+								🔔 recibir notificaciones sobre el estado de los
+								mismos
+							</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<p>
+							Así se agilizaría el proceso de atención al público
+							y se optimizaría el uso de los recursos disponibles.
+						</p>
+					</section>
+				</section>
+
+				<!-- INTERVIEW -->
+				<section>
+					<section>
+						<h3>Preguntas Realizadas</h3>
+
+						<ul>
+							<li>Existen salas en la biblioteca?</li>
+							<li>Que existe dentro de cada Sala?</li>
+							<li>Que documentos existen la biblioteca?</li>
+							<li>Que informacion se les pide a los usuarios</li>
+							<li>Que problematica presenta la biblioteca</li>
+							<li>Como funciona el proceso de prestamos</li>
+							<li>
+								Quienes son los clientes validos para prestar
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Entrevista</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing
+							elit. In porro explicabo maiores repudiandae
+							provident omnis voluptate sint nesciunt odit. Rerum
+							illo tempora minus possimus corrupti reprehenderit
+							soluta dolor, sequi magnam.
+						</p>
+					</section>
+				</section>
+
+				<!-- ENTITIES -->
+				<section>
+					<section>
+						<h3>Entidades y Relaciones Identificadas 🔍</h3>
+					</section>
+					<!-- Colección -->
+					<section data-auto-animate>
+						<h3 class="gradient-text">Colección</h3>
+						<p>De cada una se conoce:</p>
+						<ul>
+							<li>codigo que la identifica</li>
+							<li>sala a la que pertenece</li>
+							<li>nombre</li>
+							<li>correos de contacto</li>
+							<li>descripcion</li>
+							<li>tipo de coleccion</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3 class="gradient-text">Colección</h3>
+						<ul style="font-size: 1.6rem">
+							<li>codigo que la identifica</li>
+							<p class="sub">(ej: MED)</p>
+							<li>sala a la que pertenece</li>
+							<p class="sub">(ej: Sala 1)</p>
+							<li>nombre</li>
+							<p class="sub">(ej: Colección Cubana)</p>
+							<li>correos de contacto</li>
+							<p class="sub">
+								(ej:
+								<a href="emailto:coleccioncubana@bnjm.cu"
+									>coleccioncubana@bnjm.cu</a
+								>
+								)
+							</p>
+							<li>descripcion</li>
+							<li>tipo de coleccion</li>
+							<p class="sub">(ej: Especial)</p>
+						</ul>
+					</section>
+
+					<!-- Sala -->
+					<section data-auto-animate>
+						<h3 class="gradient-text">Sala</h3>
+						<p>De cada una se conoce:</p>
+						<ul>
+							<li>codigo que la identifica</li>
+							<li>nombre</li>
+							<li>localizacion</li>
+							<li>correos de contacto</li>
+							<li>telefonos de contacto</li>
+							<li>descripcion</li>
+							<li>metodo de acceso</li>
+							<li>servicios</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3 class="gradient-text">Sala</h3>
+						<ul style="font-size: 1.6rem">
+							<li>codigo que la identifica</li>
+							<p class="sub">(ej: S01)</p>
+							<li>nombre</li>
+							<p class="sub">(ej: Sala Circundante)</p>
+							<li>localizacion</li>
+							<p class="sub">(ej: CAR 2018-0070 C)</p>
+							<li>correos de contacto</li>
+							<li>telefonos de contacto</li>
+							<li>descripcion</li>
+							<li>metodo de acceso ⬇️</li>
+							<p class="sub">(ej: carné de usuario)</p>
+							<li>servicios</li>
+							<p class="sub">(ej: prestamos)</p>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<img src="./dist/img/rooms.jpg" width="700" />
+					</section>
+
+					<!-- Access -->
+					<section>
+						<h3>Acceso 🃏</h3>
+					</section>
+					<section>
+						<img src="./dist/img/access.jpg" width="600" />
+					</section>
+					<section>
+						<img src="./dist/img/access2.jpg" width="600" />
+					</section>
+
+					<!-- Loan -->
+					<section>
+						<h3>Prestamo</h3>
+						<p>
+							En la Biblioteca, los miembros
+							<span class="gradient-text"
+								>Investigador, Profesional</span
+							>
+							pueden llevar a casa hasta tres documentos por 15
+							días, con posibilidad de extensión, siempre que no
+							sean de colecciones reservadas o especializadas
+							📚🏠.
+						</p>
+						<p>
+							También ofrecen un servicio de
+							<span class="gradient-text">
+								préstamo interbibliotecario
+							</span>
+							para obtener documentos de otras bibliotecas 🌐🔁.
+						</p>
+					</section>
+					<section>
+						<img src="./dist/img/loan.jpg" width="400" />
+					</section>
+					<section>
+						<img src="./dist/img/loan2.jpg" width="600" />
+					</section>
+
+					<!-- Services -->
+					<section>
+						<h3>📚 Servicios</h3>
+						<p>
+							La <u>Biblioteca Nacional</u> 📚 ofrece una variedad
+							de servicios tanto al público en general 👥 como a
+							otras instituciones 🏢.
+						</p>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							```sql [1: 2|3|4|5|6|7|]
+							CREATE TYPE servicio AS ENUM (
+								'Consulta en sala 📖',  
+								'Biblioteca digital 💻',  
+								'Programación cultural 🎭', 
+								'Referencias Bibliograficas 📝',  
+								'Préstamo interbibliotecario 🔄',  
+								'Preservación del patrimonio bibliográfico nacional 🏛️'  
+								);
+							```
+						</textarea
+						>
+					</section>
+
+					<!-- Member -->
+					<section data-auto-animate>
+						<h3>
+							<span class="gradient-text"> Miembro </span>
+							🤡
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="gradient-text"> Miembro </span>
+							🧑‍🦱
+						</h3>
+						<ul style="font-size: 1.6rem">
+							<li>identificador</li>
+							<li>nombre</li>
+							<li>edad</li>
+							<li>categoria</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="gradient-text"> Miembro </span>
+							🧑‍🦱
+						</h3>
+						<ul style="font-size: 1.6rem">
+							<li>identificador</li>
+							<li>nombre</li>
+							<p class="sub">(ej: Jorge)</p>
+							<li>edad</li>
+							<p class="sub">(ej: 21)</p>
+							<li>categoria</li>
+							<p class="sub">(ej: Investigador)</p>
+						</ul>
+					</section>
+
+					<!-- Document -->
+					<section data-auto-animate>
+						<h3>
+							<span class="gradient-text">Documentos</span> 📖
+						</h3>
+					</section>
+
+					<section data-auto-animate>
+						<h3>
+							<span class="gradient-text">Documentos</span> 📖
+						</h3>
+						<ul style="font-size: 1.6rem">
+							<li>titulo</li>
+							<li>autores</li>
+							<li>fecha</li>
+							<li>editorial</li>
+							<li>lugar de publicacion</li>
+							<li>idioma</li>
+							<li>formato</li>
+							<li>materia</li>
+							<li>resumen</li>
+							<li>nota</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="gradient-text">Documentos</span> 📖
+						</h3>
+						<ul style="font-size: 1.6rem">
+							<li>titulo</li>
+							<li>autores</li>
+							<li>fecha</li>
+							<li>editorial</li>
+							<li>lugar de publicacion</li>
+							<p class="sub">(ej: La Habana)</p>
+							<li>idioma</li>
+							<p class="sub">(ej: Español)</p>
+							<li>formato</li>
+							<p class="sub">(ej: Digital)</p>
+							<li>materia</li>
+							<p class="sub">(ej: "Historia")</p>
+							<li>resumen</li>
+							<li>nota</li>
+						</ul>
+					</section>
+
+					<section>
+						<table style="font-size: 1.6rem">
+							<tr>
+								<th>
+									Tipo de
+									<span class="gradient-text">Documento</span>
+								</th>
+								<th></th>
+							</tr>
+							<tr>
+								<td>Música</td>
+								<td>🎵</td>
+							</tr>
+							<tr>
+								<td>Libros</td>
+								<td>📚</td>
+							</tr>
+							<tr>
+								<td>Arte</td>
+								<td>🎨</td>
+							</tr>
+							<tr>
+								<td>Carteles</td>
+								<td>🖼️</td>
+							</tr>
+							<tr>
+								<td>Etnología</td>
+								<td>🌍</td>
+							</tr>
+							<tr>
+								<td>Manuscritos</td>
+								<td>📜</td>
+							</tr>
+							<tr>
+								<td>Mapas</td>
+								<td>🗺️</td>
+							</tr>
+							<tr>
+								<td>Mediateca (físico o digital)</td>
+								<td>💿</td>
+							</tr>
+							<tr>
+								<td>Referencia</td>
+								<td>🔍</td>
+							</tr>
+							<tr>
+								<td>Fotos</td>
+								<td>📷</td>
+							</tr>
+							<tr>
+								<td>Fichas</td>
+								<td>🗂️</td>
+							</tr>
+						</table>
+					</section>
+
+					<section>
+						<h3>
+							<span class="gradient-text">Modelo Relacional</span>
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<ul>
+							<li>
+								library (<u>lib_id</u>, lib_name, lib_location,
+								postal_code, country)
+							</li>
+
+							<li>
+								room (<u>room_id</u>, lib_id, room_name,
+								room_location, room_desc, access_method,
+								phone_extension)
+							</li>
+
+							<li>
+								collection (<u>col_id</u>, room_id, col_name,
+								col_desc)
+							</li>
+
+							<li>
+								document_collection (<u>doc_id</u>,
+								<u>col_id</u>)
+							</li>
+
+							<li>
+								document (<u>doc_id</u>, title, date_created,
+								editorial, publication_place, language, format,
+								subject, summary, is_patrimony, doc_type)
+							</li>
+
+							<li>art (<u>doc_id</u>)</li>
+							<li>manuscript (<u>doc_id</u>)</li>
+							<li>ethnology (<u>doc_id</u>)</li>
+							<li>file (<u>doc_id</u>)</li>
+
+							<li>
+								map (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								picture (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								poster (<u>doc_id</u>, technique,
+								dimension_height, dimension_width)
+							</li>
+
+							<li>
+								media (<u>doc_id</u>, genre, director,
+								productor, duration)
+							</li>
+							<li>
+								music (<u>doc_id</u>, genre, interpreter,
+								composer, duration)
+							</li>
+
+							<li>reference (<u>doc_id</u>, serial)</li>
+							<li>magazine (<u>doc_id</u>, editor)</li>
+							<li>book (<u>doc_id</u>, genre, issn)</li>
+
+							<li>phone (<u>phone</u>, phone_desc)</li>
+							<li>phone_library (<u>phone</u>, lib_id)</li>
+							<li>phone_room (<u>phone</u>, lib_id)</li>
+							<li>phone_phone (<u>phone</u>, lib_id)</li>
+
+							<li>email (<u>email</u>, email_desc)</li>
+							<li>email_library (<u>email</u>, lib_id)</li>
+							<li>email_room (<u>email</u>, room_id)</li>
+							<li>email_collection (<u>email</u>, col_id)</li>
+
+							<li>author (<u>author_id</u>, ci, name, age)</li>
+
+							<li>
+								document_author (<u>doc_id</u>,
+								<u>author_id</u>)
+							</li>
+
+							<li>
+								service (<u>service_id</u>, service_desc,
+								service_type)
+							</li>
+							<li>
+								room_service (<u>room_id</u>, <u>service_id</u>)
+							</li>
+							<li>
+								loan (<u>service_id</u>, term, start_date,
+								end_date, state, loan_type)
+							</li>
+							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>
+								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+							</li>
+							<li>
+								loan_library (<u>service_id</u>, <u>doc_id</u>,
+								<u>lib_id</u>, <u>lib_id2</u>)
+							</li>
+							<li>
+								loan_member (<u>service_id</u>, <u>doc_id</u>,
+								<u>member_id</u>)
+							</li>
+							<li>
+								member (<u>member_id</u>, ci, name, age,
+								category)
+							</li>
+							<li>researcher (<u>member_id</u>)</li>
+							<li>professional (<u>member_id</u>)</li>
+							<li>student (<u>member_id</u>)</li>
+							<li>foreign (<u>member_id</u>)</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<ul style="font-size: 2rem">
+							<li>
+								library (<u>lib_id</u>, lib_name, lib_location,
+								postal_code, country)
+							</li>
+
+							<li>
+								room (<u>room_id</u>, lib_id, room_name,
+								room_location, room_desc, access_method,
+								phone_extension)
+							</li>
+
+							<li>
+								collection (<u>col_id</u>, room_id, col_name,
+								col_desc)
+							</li>
+
+							<li>
+								document_collection (<u>doc_id</u>,
+								<u>col_id</u>)
+							</li>
+
+							<li>
+								document (<u>doc_id</u>, title, date_created,
+								editorial, publication_place, language, format,
+								subject, summary, is_patrimony, doc_type)
+							</li>
+
+							<li>art (<u>doc_id</u>)</li>
+							<li>manuscript (<u>doc_id</u>)</li>
+							<li>ethnology (<u>doc_id</u>)</li>
+							<li>file (<u>doc_id</u>)</li>
+
+							<li>
+								map (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								picture (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								poster (<u>doc_id</u>, technique,
+								dimension_height, dimension_width)
+							</li>
+
+							<li>
+								media (<u>doc_id</u>, genre, director,
+								productor, duration)
+							</li>
+							<li>
+								music (<u>doc_id</u>, genre, interpreter,
+								composer, duration)
+							</li>
+
+							<li>reference (<u>doc_id</u>, serial)</li>
+							<li>magazine (<u>doc_id</u>, editor)</li>
+							<li>book (<u>doc_id</u>, genre, issn)</li>
+
+							<li>phone (<u>phone</u>, phone_desc)</li>
+							<li>phone_library (<u>phone</u>, lib_id)</li>
+							<li>phone_room (<u>phone</u>, lib_id)</li>
+							<li>phone_phone (<u>phone</u>, lib_id)</li>
+
+							<li>email (<u>email</u>, email_desc)</li>
+							<li>email_library (<u>email</u>, lib_id)</li>
+							<li>email_room (<u>email</u>, room_id)</li>
+							<li>email_collection (<u>email</u>, col_id)</li>
+
+							<li>author (<u>author_id</u>, ci, name, age)</li>
+
+							<li>
+								document_author (<u>doc_id</u>,
+								<u>author_id</u>)
+							</li>
+
+							<li>
+								service (<u>service_id</u>, service_desc,
+								service_type)
+							</li>
+							<li>
+								room_service (<u>room_id</u>, <u>service_id</u>)
+							</li>
+							<li>
+								loan (<u>service_id</u>, term, start_date,
+								end_date, state, loan_type)
+							</li>
+							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>
+								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+							</li>
+							<li>
+								loan_library (<u>service_id</u>, <u>doc_id</u>,
+								<u>lib_id</u>, <u>lib_id2</u>)
+							</li>
+							<li>
+								loan_member (<u>service_id</u>, <u>doc_id</u>,
+								<u>member_id</u>)
+							</li>
+							<li>
+								member (<u>member_id</u>, ci, name, age,
+								category)
+							</li>
+							<li>researcher (<u>member_id</u>)</li>
+							<li>professional (<u>member_id</u>)</li>
+							<li>student (<u>member_id</u>)</li>
+							<li>foreign (<u>member_id</u>)</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<ul style="font-size: 1.5rem">
+							<li>
+								library (<u>lib_id</u>, lib_name, lib_location,
+								postal_code, country)
+							</li>
+
+							<li>
+								room (<u>room_id</u>, lib_id, room_name,
+								room_location, room_desc, access_method,
+								phone_extension)
+							</li>
+
+							<li>
+								collection (<u>col_id</u>, room_id, col_name,
+								col_desc)
+							</li>
+
+							<li>
+								document_collection (<u>doc_id</u>,
+								<u>col_id</u>)
+							</li>
+
+							<li>
+								document (<u>doc_id</u>, title, date_created,
+								editorial, publication_place, language, format,
+								subject, summary, is_patrimony, doc_type)
+							</li>
+
+							<li>art (<u>doc_id</u>)</li>
+							<li>manuscript (<u>doc_id</u>)</li>
+							<li>ethnology (<u>doc_id</u>)</li>
+							<li>file (<u>doc_id</u>)</li>
+
+							<li>
+								map (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								picture (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								poster (<u>doc_id</u>, technique,
+								dimension_height, dimension_width)
+							</li>
+
+							<li>
+								media (<u>doc_id</u>, genre, director,
+								productor, duration)
+							</li>
+							<li>
+								music (<u>doc_id</u>, genre, interpreter,
+								composer, duration)
+							</li>
+
+							<li>reference (<u>doc_id</u>, serial)</li>
+							<li>magazine (<u>doc_id</u>, editor)</li>
+							<li>book (<u>doc_id</u>, genre, issn)</li>
+
+							<li>phone (<u>phone</u>, phone_desc)</li>
+							<li>phone_library (<u>phone</u>, lib_id)</li>
+							<li>phone_room (<u>phone</u>, lib_id)</li>
+							<li>phone_phone (<u>phone</u>, lib_id)</li>
+
+							<li>email (<u>email</u>, email_desc)</li>
+							<li>email_library (<u>email</u>, lib_id)</li>
+							<li>email_room (<u>email</u>, room_id)</li>
+							<li>email_collection (<u>email</u>, col_id)</li>
+
+							<li>author (<u>author_id</u>, ci, name, age)</li>
+
+							<li>
+								document_author (<u>doc_id</u>,
+								<u>author_id</u>)
+							</li>
+
+							<li>
+								service (<u>service_id</u>, service_desc,
+								service_type)
+							</li>
+							<li>
+								room_service (<u>room_id</u>, <u>service_id</u>)
+							</li>
+							<li>
+								loan (<u>service_id</u>, term, start_date,
+								end_date, state, loan_type)
+							</li>
+							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>
+								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+							</li>
+							<li>
+								loan_library (<u>service_id</u>, <u>doc_id</u>,
+								<u>lib_id</u>, <u>lib_id2</u>)
+							</li>
+							<li>
+								loan_member (<u>service_id</u>, <u>doc_id</u>,
+								<u>member_id</u>)
+							</li>
+							<li>
+								member (<u>member_id</u>, ci, name, age,
+								category)
+							</li>
+							<li>researcher (<u>member_id</u>)</li>
+							<li>professional (<u>member_id</u>)</li>
+							<li>student (<u>member_id</u>)</li>
+							<li>foreign (<u>member_id</u>)</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<ol style="font-size: 0.8rem">
+							<li>
+								library (<u>lib_id</u>, lib_name, lib_location,
+								postal_code, country)
+							</li>
+
+							<li>
+								room (<u>room_id</u>, lib_id, room_name,
+								room_location, room_desc, access_method,
+								phone_extension)
+							</li>
+
+							<li>
+								collection (<u>col_id</u>, room_id, col_name,
+								col_desc)
+							</li>
+
+							<li>
+								document_collection (<u>doc_id</u>,
+								<u>col_id</u>)
+							</li>
+
+							<li>
+								document (<u>doc_id</u>, title, date_created,
+								editorial, publication_place, language, format,
+								subject, summary, is_patrimony, doc_type)
+							</li>
+
+							<li>art (<u>doc_id</u>)</li>
+							<li>manuscript (<u>doc_id</u>)</li>
+							<li>ethnology (<u>doc_id</u>)</li>
+							<li>file (<u>doc_id</u>)</li>
+
+							<li>
+								map (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								picture (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								poster (<u>doc_id</u>, technique,
+								dimension_height, dimension_width)
+							</li>
+
+							<li>
+								media (<u>doc_id</u>, genre, director,
+								productor, duration)
+							</li>
+							<li>
+								music (<u>doc_id</u>, genre, interpreter,
+								composer, duration)
+							</li>
+
+							<li>reference (<u>doc_id</u>, serial)</li>
+							<li>magazine (<u>doc_id</u>, editor)</li>
+							<li>book (<u>doc_id</u>, genre, issn)</li>
+
+							<li>phone (<u>phone</u>, phone_desc)</li>
+							<li>phone_library (<u>phone</u>, lib_id)</li>
+							<li>phone_room (<u>phone</u>, lib_id)</li>
+							<li>phone_phone (<u>phone</u>, lib_id)</li>
+
+							<li>email (<u>email</u>, email_desc)</li>
+							<li>email_library (<u>email</u>, lib_id)</li>
+							<li>email_room (<u>email</u>, room_id)</li>
+							<li>email_collection (<u>email</u>, col_id)</li>
+
+							<li>author (<u>author_id</u>, ci, name, age)</li>
+
+							<li>
+								document_author (<u>doc_id</u>,
+								<u>author_id</u>)
+							</li>
+
+							<li>
+								service (<u>service_id</u>, service_desc,
+								service_type)
+							</li>
+							<li>
+								room_service (<u>room_id</u>, <u>service_id</u>)
+							</li>
+							<li>
+								loan (<u>service_id</u>, term, start_date,
+								end_date, state, loan_type)
+							</li>
+							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>
+								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+							</li>
+							<li>
+								loan_library (<u>service_id</u>, <u>doc_id</u>,
+								<u>lib_id</u>, <u>lib_id2</u>)
+							</li>
+							<li>
+								loan_member (<u>service_id</u>, <u>doc_id</u>,
+								<u>member_id</u>)
+							</li>
+							<li>
+								member (<u>member_id</u>, ci, name, age,
+								category)
+							</li>
+							<li>researcher (<u>member_id</u>)</li>
+							<li>professional (<u>member_id</u>)</li>
+							<li>student (<u>member_id</u>)</li>
+							<li>foreign (<u>member_id</u>)</li>
+						</ol>
+					</section>
+
+					<!-- Normalization -->
+					<section>
+						<h3>
+							<span class="gradient-text">Normalizacion</span>👍
+						</h3>
+					</section>
+
+					<section data-auto-animate>
+						<ol style="font-size: 0.8rem">
+							<li>
+								library (<u>lib_id</u>, lib_name, lib_location,
+								postal_code, country)
+							</li>
+
+							<li>
+								room (<u>room_id</u>, lib_id, room_name,
+								room_location, room_desc, access_method,
+								phone_extension)
+							</li>
+
+							<li>
+								collection (<u>col_id</u>, room_id, col_name,
+								col_desc)
+							</li>
+
+							<li>
+								document_collection (<u>doc_id</u>,
+								<u>col_id</u>)
+							</li>
+
+							<li>
+								document (<u>doc_id</u>, title, date_created,
+								editorial, publication_place, language, format,
+								subject, summary, is_patrimony, doc_type)
+							</li>
+
+							<li>art (<u>doc_id</u>)</li>
+							<li>manuscript (<u>doc_id</u>)</li>
+							<li>ethnology (<u>doc_id</u>)</li>
+							<li>file (<u>doc_id</u>)</li>
+
+							<li>
+								map (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								picture (<u>doc_id</u>, dimension_height,
+								dimension_width)
+							</li>
+							<li>
+								poster (<u>doc_id</u>, technique,
+								dimension_height, dimension_width)
+							</li>
+
+							<li>
+								media (<u>doc_id</u>, genre, director,
+								productor, duration)
+							</li>
+							<li>
+								music (<u>doc_id</u>, genre, interpreter,
+								composer, duration)
+							</li>
+
+							<li>reference (<u>doc_id</u>, serial)</li>
+							<li>magazine (<u>doc_id</u>, editor)</li>
+							<li>book (<u>doc_id</u>, genre, issn)</li>
+
+							<li>phone (<u>phone</u>, phone_desc)</li>
+							<li>phone_library (<u>phone</u>, lib_id)</li>
+							<li>phone_room (<u>phone</u>, lib_id)</li>
+							<li>phone_phone (<u>phone</u>, lib_id)</li>
+
+							<li>email (<u>email</u>, email_desc)</li>
+							<li>email_library (<u>email</u>, lib_id)</li>
+							<li>email_room (<u>email</u>, room_id)</li>
+							<li>email_collection (<u>email</u>, col_id)</li>
+
+							<li>author (<u>author_id</u>, ci, name, age)</li>
+
+							<li>
+								document_author (<u>doc_id</u>,
+								<u>author_id</u>)
+							</li>
+
+							<li>
+								service (<u>service_id</u>, service_desc,
+								service_type)
+							</li>
+							<li>
+								room_service (<u>room_id</u>, <u>service_id</u>)
+							</li>
+							<li>
+								loan (<u>service_id</u>, term, start_date,
+								end_date, state, loan_type)
+							</li>
+							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>
+								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+							</li>
+							<li>
+								loan_library (<u>service_id</u>, <u>doc_id</u>,
+								<u>lib_id</u>, <u>lib_id2</u>)
+							</li>
+							<li>
+								loan_member (<u>service_id</u>, <u>doc_id</u>,
+								<u>member_id</u>)
+							</li>
+							<li>
+								member (<u>member_id</u>, ci, name, age,
+								category)
+							</li>
+							<li>researcher (<u>member_id</u>)</li>
+							<li>professional (<u>member_id</u>)</li>
+							<li>student (<u>member_id</u>)</li>
+							<li>foreign (<u>member_id</u>)</li>
+						</ol>
+					</section>
+
+					<section data-auto-animate>
+						<ul style="font-size: 1.5rem">
+							<li>
+								media (<u>doc_id</u>, genre, director,
+								productor, duration)
+							</li>
+							<p class="sub" style="font-size: 1rem">
+								// director, productor puede ser una referencia
+								a la tabla person
+							</p>
+
+							<li>
+								music (<u>doc_id</u>, genre, interpreter,
+								composer, duration)
+							</li>
+							<p class="sub" style="font-size: 1rem">
+								// interpreter, composer puede ser una
+								referencia a la tabla person
+							</p>
+
+							<li>magazine (<u>doc_id</u>, editor)</li>
+							<p class="sub" style="font-size: 1rem">
+								// editor puede ser una referencia a la tabla
+								person
+							</p>
+
+							<li>author (<u>author_id</u>, person_id)</li>
+
+							<li>
+								<span style="color: rgba(230, 129, 129, 0.8)"
+									>person</span
+								>
+								(<u>person_id</u>, name, age)
+							</li>
+
+							<li>
+								member (<u>member_id</u>, person_id, category)
+							</li>
+
+							<li>
+								<span style="color: rgba(230, 129, 129, 0.8)"
+									>person</span
+								>
+								(<u>person_id</u>, name, age)
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- DER -->
+				<section>
+					<section>
+						<h3>
+							<span class="gradient-text"
+								>Diagrama Entidad Relacion</span
+							>
+						</h3>
+					</section>
+					<section>
+						<img src="/dist/img/der.svg" width="800" />
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{
+						src: "plugin/mapbox-gl/mapbox-gl.js",
+					},
+					{
+						src: "https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js",
+					},
+				],
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+				mapbox: { accessToken: "YOUR ACCESS TOKEN" },
+			});
+		</script>
+	</body>
+</html>
