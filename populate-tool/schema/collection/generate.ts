@@ -1,9 +1,9 @@
 import { Faker } from "@faker-js/faker";
+import { Collection, collection_type } from ".";
 import { db } from "../../db";
-import { room } from "../room/room";
 import { pickRandom } from "../../utils/pick-random";
-import { collection_type } from "../enums";
-import { Collection } from "./types";
+import { room } from "../room";
+
 
 export const generateIdCollection = async (faker: Faker): Promise<string> => {
 	// random 3 uppercase letters -> ABC

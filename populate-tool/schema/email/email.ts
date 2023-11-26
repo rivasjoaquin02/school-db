@@ -1,7 +1,7 @@
-import { pgTable, integer, text, varchar } from "drizzle-orm/pg-core";
-import { library } from "../library/library.ts";
-import { room } from "../room/room.ts";
-import { collection } from "../collection/collection.ts";
+import { pgTable, integer, varchar, text } from "drizzle-orm/pg-core";
+import { collection } from "../collection";
+import { library } from "../library";
+import { room } from "../room";
 
 export const email = pgTable("email", {
 	email: varchar("email", { length: 100 }).notNull().primaryKey(),

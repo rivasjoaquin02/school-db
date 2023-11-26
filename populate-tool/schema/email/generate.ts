@@ -1,10 +1,10 @@
 import { Faker } from "@faker-js/faker";
-import { Email, EmailLibrary, EmailRoom } from "./types";
+import { Email, email, EmailLibrary, EmailRoom } from ".";
 import { db } from "../../db";
-import { email } from "./email";
 import { pickRandom } from "../../utils/pick-random";
-import { getIdLibrary } from "../room/room";
-import { getIdRoom } from "../collection/generate";
+import { getIdRoom } from "../collection";
+import { getIdLibrary } from "../room";
+
 
 export const generateEmail = async (faker: Faker): Promise<Email> => {
 	return {

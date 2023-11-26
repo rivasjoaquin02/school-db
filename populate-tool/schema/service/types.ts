@@ -1,13 +1,13 @@
 import {
-	fine,
-	loan,
-	loan_library,
-	loan_professional,
-	loan_researcher,
 	service,
-	service_member,
 	service_room,
-} from "./service";
+	service_member,
+	loan,
+	loan_researcher,
+	loan_professional,
+	loan_library,
+	fine,
+} from ".";
 
 export type Service = typeof service.$inferInsert;
 export type ServiceRoom = typeof service_room.$inferInsert;

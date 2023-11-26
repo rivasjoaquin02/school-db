@@ -1,3 +1,4 @@
-import { collection } from "./collection";
+import { collection } from ".";
+
 
 export type Collection = typeof collection.$inferInsert;

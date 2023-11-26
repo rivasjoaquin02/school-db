@@ -1,5 +1,6 @@
-import { Faker, Randomizer, SimpleFaker, en, es } from "@faker-js/faker";
+import { Randomizer, Faker, es, en } from "@faker-js/faker";
 import { RandomGenerator, xoroshiro128plus } from "pure-rand";
+
 
 export function generatePureRandRandomizer(
 	seed: number | number[] = Date.now() ^ (Math.random() * 0x100000000),

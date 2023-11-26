@@ -1,6 +1,5 @@
-import { pgEnum } from "drizzle-orm/pg-core";
-import { pgTable, integer, text, varchar } from "drizzle-orm/pg-core";
-import { library } from "../library/library.ts";
+import { pgEnum, pgTable, integer, varchar, text } from "drizzle-orm/pg-core";
+import { library } from "../library";
 
 export const access_method_type = pgEnum("access_method", [
 	"member card",

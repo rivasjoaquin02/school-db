@@ -1,9 +1,9 @@
 import { Faker } from "@faker-js/faker";
+import { Room, access_method_type } from ".";
 import { db } from "../../db";
-import { library } from "../library/library";
 import { pickRandom } from "../../utils/pick-random";
-import { Room } from "./types";
-import { access_method_type } from "../enums";
+import { library } from "../library";
+
 
 export const generateIdRoom = async (faker: Faker): Promise<string> => {
 	const randomId = faker.string.alpha({ length: 3, casing: "upper" });

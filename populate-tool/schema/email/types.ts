@@ -1,4 +1,5 @@
-import { email, email_collection, email_library, email_room } from "./email";
+import { email, email_library, email_room, email_collection } from ".";
+
 
 export type Email = typeof email.$inferInsert;
 export type EmailLibrary = typeof email_library.$inferInsert;

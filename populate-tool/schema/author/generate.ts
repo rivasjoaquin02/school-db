@@ -1,9 +1,9 @@
 import { Faker } from "@faker-js/faker";
-import { getIdDocument } from "../document/document.ts";
 import { db } from "../../db.ts";
 import { pickRandom } from "../../utils/pick-random.ts";
 import { author } from "./author.ts";
 import { Author, AuthorDocument } from "./types.ts";
+import { getIdDocument } from "../document/generate.ts";
 
 export const generateAuthor = async (faker: Faker): Promise<Author> => {
 	return {

@@ -1,9 +1,3 @@
-import {
-	document_type,
-	format_type,
-	map_type,
-	technique_type,
-} from "../enums.ts";
 import { Faker } from "@faker-js/faker";
 import { collection } from "../collection/collection.ts";
 import { db } from "../../db.ts";
@@ -21,7 +15,13 @@ import {
 	Picture,
 	Reference,
 } from "./types.ts";
-import { document } from "./document.ts";
+import {
+	document,
+	document_type,
+	format_type,
+	map_type,
+	technique_type,
+} from "./document.ts";
 
 export const generateDocument = async (faker: Faker): Promise<Document> => {
 	return {

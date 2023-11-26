@@ -1,16 +1,16 @@
 import {
+	pgEnum,
 	pgTable,
 	integer,
+	serial,
 	text,
 	varchar,
-	serial,
 	date,
-	pgEnum,
 } from "drizzle-orm/pg-core";
-import { room } from "../room/room.ts";
-import { member, professional, researcher } from "../member/member.ts";
-import { document } from "../document/document.ts";
-import { library } from "../library/library.ts";
+import { library } from "../library";
+import { member, researcher, professional } from "../member";
+import { room } from "../room";
+import { document } from "../document";
 
 export const service_type = pgEnum("type_service", [
 	"loan",

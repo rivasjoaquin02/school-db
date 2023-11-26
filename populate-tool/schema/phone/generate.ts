@@ -1,9 +1,8 @@
 import { Faker } from "@faker-js/faker";
-import { Phone, PhoneLibrary, PhoneRoom } from "./types";
-import { pickRandom } from "../../utils/pick-random";
-import { generateIdRoom } from "../room/room";
-import { phone } from "./phone";
+import { Phone, PhoneLibrary, PhoneRoom, phone } from ".";
 import { db } from "../../db";
+import { pickRandom } from "../../utils/pick-random";
+import { generateIdRoom } from "../room";
 
 const generatePhoneNumber = async (faker: Faker): Promise<string> => {
 	const phone_number = `(${faker.number.int(999)}) ${faker.number.int({

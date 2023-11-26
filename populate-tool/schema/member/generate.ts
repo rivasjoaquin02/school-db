@@ -1,9 +1,8 @@
 import { Faker } from "@faker-js/faker";
-import { Member, Professional, Researcher, Student } from "./types";
-import { pickRandom } from "../../utils/pick-random";
-import { category_type } from "../enums";
+import { Member, category_type, member, Researcher, Professional, Student } from ".";
 import { db } from "../../db";
-import { member } from "./member";
+import { pickRandom } from "../../utils/pick-random";
+
 
 export const generateMember = async (faker: Faker): Promise<Member> => {
 	return {

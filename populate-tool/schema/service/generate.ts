@@ -1,23 +1,26 @@
 import { Faker } from "@faker-js/faker";
 import {
-	Fine,
-	Loan,
-	LoanLibrary,
-	LoanProfessional,
-	LoanResearcher,
 	Service,
-	ServiceMember,
+	service_type,
+	service,
 	ServiceRoom,
-} from "./types";
-import { loan_type, penalty_type, service_type, status_type } from "../enums";
-import { pickRandom } from "../../utils/pick-random";
+	ServiceMember,
+	Loan,
+	status_type,
+	loan_type,
+	loan,
+	LoanResearcher,
+	LoanProfessional,
+	LoanLibrary,
+	Fine,
+	penalty_type,
+} from ".";
 import { db } from "../../db";
-import { loan, service } from "./service";
-import { getIdRoom } from "../collection/generate";
-import { getIdMember } from "../member/generate";
-import { getIdDocument } from "../document/generate";
-import { professional, researcher } from "../member/member";
-import { getIdLibrary } from "../room/generate";
+import { pickRandom } from "../../utils/pick-random";
+import { getIdRoom } from "../collection";
+import { getIdDocument } from "../document";
+import { getIdMember, researcher, professional } from "../member";
+import { getIdLibrary } from "../room";
 
 export const generateService = async (faker: Faker): Promise<Service> => {
 	return {

@@ -1,4 +1,5 @@
-import { member, professional, researcher, student } from "./member";
+import { member, researcher, professional, student } from ".";
+
 
 export type Member = typeof member.$inferInsert;
 export type Researcher = typeof researcher.$inferInsert;

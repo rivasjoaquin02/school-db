@@ -1,6 +1,7 @@
-import { pgTable, integer, text, varchar } from "drizzle-orm/pg-core";
-import { library } from "../library/library.ts";
-import { room } from "../room/room.ts";
+import { pgTable, integer, varchar, text } from "drizzle-orm/pg-core";
+import { library } from "../library";
+import { room } from "../room";
+
 
 export const phone = pgTable("phone", {
 	phone_number: varchar("phone_number", { length: 20 })

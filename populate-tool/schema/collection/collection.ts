@@ -1,5 +1,5 @@
 import { pgEnum, pgTable, text, varchar } from "drizzle-orm/pg-core";
-import { room } from "../room/room.ts";
+import { room } from "../room";
 
 export const collection_type = pgEnum("type_collection", [
 	"special",

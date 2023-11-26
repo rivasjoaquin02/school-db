@@ -1,5 +1,5 @@
-import { pgTable, integer, serial, text, varchar } from "drizzle-orm/pg-core";
-import { document } from "../document/document.ts";
+import { pgTable, integer, serial, varchar, text } from "drizzle-orm/pg-core";
+import { document } from "../document";
 
 export const author = pgTable("author", {
 	id_author: serial("id_author").notNull().primaryKey(),

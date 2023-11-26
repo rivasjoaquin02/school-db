@@ -1,5 +1,5 @@
 import { Faker } from "@faker-js/faker";
-import { Library } from "./library";
+import { Library } from ".";
 
 export const generateLibrary = async (faker: Faker): Promise<Library> => {
 	return {
