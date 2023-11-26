@@ -22,7 +22,7 @@ import { Faker, faker } from "@faker-js/faker";
 export const service = pgTable("service", {
 	id_service: serial("id_service").notNull().primaryKey(),
 	description_service: text("description_service"),
-	type_service: service_type("service_type").notNull(),
+	type_service: service_type("type_service").notNull(),
 });
 
 export type Service = typeof service.$inferInsert;
@@ -65,8 +65,8 @@ export const loan = pgTable("loan", {
 	term: integer("term"),
 	start_date: date("start_date").notNull(),
 	end_date: date("end_date").notNull(),
-	status: status_type("status_type").notNull(),
-	type_loan: loan_type("loan_type").notNull(),
+	status: status_type("status").notNull(),
+	type_loan: loan_type("type_loan").notNull(),
 });
 
 export type Loan = typeof loan.$inferInsert;
@@ -136,13 +136,13 @@ export const fine = pgTable("fine", {
 		.notNull()
 		.primaryKey()
 		.references(() => document.id_document),
-	penalty: penalty_type("penalty_type").notNull(),
+	penalty: penalty_type("penalty").notNull(),
 	fee: integer("fee"),
 });
 
 export type Fine = typeof fine.$inferInsert;
 
-export const generateService = (faker: Faker): Service => {
+export const generateService = async (faker: Faker): Promise<Service> => {
 	return {
 		id_service: faker.number.int(1000),
 		description_service: faker.lorem.paragraph(),
@@ -150,21 +150,25 @@ export const generateService = (faker: Faker): Service => {
 	};
 };
 
-export const generateServiceRoom = (faker: Faker): ServiceRoom => {
+export const generateServiceRoom = async (
+	faker: Faker
+): Promise<ServiceRoom> => {
 	return {
 		id_service: faker.number.int(1000),
-		id_room: generateIdRoom(faker),
+		id_room: await generateIdRoom(faker),
 	};
 };
 
-export const generateServiceMember = (faker: Faker): ServiceMember => {
+export const generateServiceMember = async (
+	faker: Faker
+): Promise<ServiceMember> => {
 	return {
 		id_service: faker.number.int(1000),
 		id_member: faker.number.int(1000),
 	};
 };
 
-export const generateLoan = (faker: Faker): Loan => {
+export const generateLoan = async (faker: Faker): Promise<Loan> => {
 	return {
 		id_service: faker.number.int(1000),
 		id_document: faker.number.int(1000),
@@ -176,7 +180,9 @@ export const generateLoan = (faker: Faker): Loan => {
 	};
 };
 
-export const generateLoanResearcher = (faker: Faker): LoanResearcher => {
+export const generateLoanResearcher = async (
+	faker: Faker
+): Promise<LoanResearcher> => {
 	return {
 		id_service: faker.number.int(1000),
 		id_document: faker.number.int(1000),
@@ -184,7 +190,9 @@ export const generateLoanResearcher = (faker: Faker): LoanResearcher => {
 	};
 };
 
-export const generateLoanProfessional = (faker: Faker): LoanProfessional => {
+export const generateLoanProfessional = async (
+	faker: Faker
+): Promise<LoanProfessional> => {
 	return {
 		id_service: faker.number.int(1000),
 		id_document: faker.number.int(1000),
@@ -192,7 +200,9 @@ export const generateLoanProfessional = (faker: Faker): LoanProfessional => {
 	};
 };
 
-export const generateLoanLibrary = (faker: Faker): LoanLibrary => {
+export const generateLoanLibrary = async (
+	faker: Faker
+): Promise<LoanLibrary> => {
 	return {
 		id_service: faker.number.int(1000),
 		id_document: faker.number.int(1000),
@@ -201,7 +211,7 @@ export const generateLoanLibrary = (faker: Faker): LoanLibrary => {
 	};
 };
 
-export const generateFine = (faker: Faker): Fine => {
+export const generateFine = async (faker: Faker): Promise<Fine> => {
 	return {
 		id_fine: faker.number.int(1000),
 		id_service: faker.number.int(1000),
@@ -210,5 +220,3 @@ export const generateFine = (faker: Faker): Fine => {
 		fee: faker.number.float(1000),
 	};
 };
-
-console.log(generateLoan(faker));

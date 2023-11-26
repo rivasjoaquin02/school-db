@@ -26,7 +26,7 @@ export const phone_room = pgTable("phone_room", {
 });
 export type PhoneRoom = typeof phone_room.$inferInsert;
 
-const generatePhoneNumber = (faker: Faker): string => {
+const generatePhoneNumber = async (faker: Faker): Promise<string> => {
 	const phone_number = `(${faker.number.int(999)}) ${faker.number.int({
 		min: 1111,
 		max: 9999,
@@ -34,24 +34,26 @@ const generatePhoneNumber = (faker: Faker): string => {
 	return phone_number;
 };
 
-export const generatePhone = (faker: Faker): Phone => {
+export const generatePhone = async (faker: Faker): Promise<Phone> => {
 	return {
 		id_phone: faker.number.int(10000),
-		phone_number: generatePhoneNumber(faker),
+		phone_number: await generatePhoneNumber(faker),
 		description_phone: faker.lorem.sentence(5),
 	};
 };
 
-export const generatePhoneLibrary = (faker: Faker): PhoneLibrary => {
+export const generatePhoneLibrary = async (
+	faker: Faker
+): Promise<PhoneLibrary> => {
 	return {
 		id_phone: faker.number.int(10000),
 		id_library: faker.number.int(10000),
 	};
 };
 
-export const generatePhoneRoom = (faker: Faker): PhoneRoom => {
+export const generatePhoneRoom = async (faker: Faker): Promise<PhoneRoom> => {
 	return {
 		id_phone: faker.number.int(10000),
-		id_room: generateIdRoom(faker),
+		id_room: await generateIdRoom(faker),
 	};
 };

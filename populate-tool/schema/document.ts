@@ -23,12 +23,12 @@ export const document = pgTable("document", {
 	editorial: varchar("editorial", { length: 255 }),
 	publication_place: varchar("publication_place", { length: 255 }),
 	language: varchar("language", { length: 50 }),
-	format: format_type("format_type"),
+	format: format_type("format"),
 	subject: varchar("subject", { length: 255 }),
 	summary: text("summary"),
 	is_patrimony: boolean("is_patrimony"),
 	note: text("note"),
-	type_document: document_type("document_type"),
+	type_document: document_type("type_document"),
 });
 
 export type Document = typeof document.$inferInsert;
@@ -64,7 +64,7 @@ export const map = pgTable("map", {
 	dimension_height: integer("dimension_height").notNull(),
 	dimension_width: integer("dimension_width").notNull(),
 	scale: varchar("scale", { length: 20 }),
-	type_map: map_type("map_type").notNull(),
+	type_map: map_type("type_map").notNull(),
 });
 
 export type Map = typeof map.$inferInsert;
@@ -85,7 +85,7 @@ export const paint = pgTable("paint", {
 		.notNull()
 		.primaryKey()
 		.references(() => document.id_document),
-	technique: technique_type("technique_type").notNull(),
+	technique: technique_type("technique").notNull(),
 	dimension_height: integer("dimension_height").notNull(),
 	dimension_width: integer("dimension_width").notNull(),
 });
@@ -152,7 +152,7 @@ export const book = pgTable("book", {
 
 export type Book = typeof book.$inferInsert;
 
-export const generateDocument = (faker: Faker): Document => {
+export const generateDocument = async (faker: Faker): Promise<Document> => {
 	return {
 		id_document: faker.number.int(),
 		title: faker.lorem.sentence(10),
@@ -169,22 +169,22 @@ export const generateDocument = (faker: Faker): Document => {
 	};
 };
 
-export const generateDocument_collection = (
+export const generateDocument_collection = async (
 	faker: Faker
-): DocumentCollection => {
+): Promise<DocumentCollection> => {
 	return {
 		id_document: faker.number.int(10000),
-		id_collection: generateIdCollection(faker),
+		id_collection: await generateIdCollection(faker),
 	};
 };
 
-export const generateManuscript = (faker: Faker): Manuscript => {
+export const generateManuscript = async (faker: Faker): Promise<Manuscript> => {
 	return {
 		id_document: faker.number.int(10000),
 		period: faker.lorem.sentence(10),
 	};
 };
-export const generateMap = (faker: Faker): Map => {
+export const generateMap = async (faker: Faker): Promise<Map> => {
 	return {
 		id_document: faker.number.int(10000),
 		dimension_height: faker.number.int(10000),
@@ -193,7 +193,7 @@ export const generateMap = (faker: Faker): Map => {
 		type_map: pickRandom(map_type.enumValues),
 	};
 };
-export const generatePicture = (faker: Faker): Picture => {
+export const generatePicture = async (faker: Faker): Promise<Picture> => {
 	return {
 		id_document: faker.number.int(10000),
 		dimension_height: faker.number.int(10000),
@@ -201,7 +201,7 @@ export const generatePicture = (faker: Faker): Picture => {
 	};
 };
 
-export const generatePaint = (faker: Faker): Paint => {
+export const generatePaint = async (faker: Faker): Promise<Paint> => {
 	return {
 		id_document: faker.number.int(10000),
 		technique: pickRandom(technique_type.enumValues),
@@ -209,7 +209,7 @@ export const generatePaint = (faker: Faker): Paint => {
 		dimension_width: faker.number.int(10000),
 	};
 };
-export const generateMedia = (faker: Faker): Media => {
+export const generateMedia = async (faker: Faker): Promise<Media> => {
 	return {
 		id_document: faker.number.int(10000),
 		genre: faker.lorem.sentence(10),
@@ -218,7 +218,7 @@ export const generateMedia = (faker: Faker): Media => {
 		duration: faker.number.int(10000),
 	};
 };
-export const generateMusic = (faker: Faker): Music => {
+export const generateMusic = async (faker: Faker): Promise<Music> => {
 	return {
 		id_document: faker.number.int(10000),
 		genre: faker.lorem.sentence(10),
@@ -227,13 +227,13 @@ export const generateMusic = (faker: Faker): Music => {
 		duration: faker.number.int(10000),
 	};
 };
-export const generateReference = (faker: Faker): Reference => {
+export const generateReference = async (faker: Faker): Promise<Reference> => {
 	return {
 		id_document: faker.number.int(10000),
 		serial: faker.number.int(10000),
 	};
 };
-export const generateMagazine = (faker: Faker): Magazine => {
+export const generateMagazine = async (faker: Faker): Promise<Magazine> => {
 	return {
 		id_document: faker.number.int(10000),
 		editor: faker.person.fullName(),
@@ -243,7 +243,7 @@ export const generateMagazine = (faker: Faker): Magazine => {
 	};
 };
 
-export const generateIsbn = (faker: Faker): string => {
+export const generateIsbn = async (faker: Faker): Promise<string> => {
 	const prefix = faker.number.int(1000);
 	const registrant = faker.number.int(1000);
 	const publication = faker.number.int(1000);
@@ -252,14 +252,14 @@ export const generateIsbn = (faker: Faker): string => {
 	return `${prefix}-${registrant}-${publication}-${control}`;
 };
 
-export const generateBook = (faker: Faker): Book => {
+export const generateBook = async (faker: Faker): Promise<Book> => {
 	return {
 		id_document: faker.number.int(10000),
 		genre: faker.lorem.sentence(10),
 		issn: `${faker.number.int({ min: 1000, max: 9999 })}-${faker.number.int(
 			{ min: 1000, max: 9999 }
 		)}`,
-		isbn: generateIsbn(faker),
+		isbn: await generateIsbn(faker),
 		dewey: faker.number.int(10000),
 	};
 };

@@ -39,7 +39,7 @@ export const email_collection = pgTable("email_collection", {
 
 export type EmailCollection = typeof email_collection.$inferInsert;
 
-export const generateEmail = (faker: Faker): Email => {
+export const generateEmail = async (faker: Faker): Promise<Email> => {
 	return {
 		email: faker.internet
 			.email({ allowSpecialCharacters: false })
@@ -48,7 +48,9 @@ export const generateEmail = (faker: Faker): Email => {
 	};
 };
 
-export const generateEmailLibrary = (faker: Faker): EmailLibrary => {
+export const generateEmailLibrary = async (
+	faker: Faker
+): Promise<EmailLibrary> => {
 	return {
 		email: faker.internet
 			.email({ allowSpecialCharacters: false })
@@ -58,11 +60,11 @@ export const generateEmailLibrary = (faker: Faker): EmailLibrary => {
 };
 
 // TODO: fix ids
-export const generateEmailRoom = (faker: Faker): EmailRoom => {
+export const generateEmailRoom = async (faker: Faker): Promise<EmailRoom> => {
 	return {
 		email: faker.internet
 			.email({ allowSpecialCharacters: false })
 			.toLocaleLowerCase(),
-		id_room: generateIdRoom(faker),
+		id_room: await generateIdRoom(faker),
 	};
 };

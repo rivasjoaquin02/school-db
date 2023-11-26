@@ -25,7 +25,7 @@ export const author_document = pgTable("author_document", {
 
 export type AuthorDocument = typeof author_document.$inferInsert;
 
-export const generateAuthor = (faker: Faker): Author => {
+export const generateAuthor = async (faker: Faker): Promise<Author> => {
 	return {
 		id_author: faker.number.int(1000),
 		name_author: faker.person.fullName(),
@@ -34,7 +34,9 @@ export const generateAuthor = (faker: Faker): Author => {
 	};
 };
 
-export const generateAuthorDocument = (faker: Faker): AuthorDocument => {
+export const generateAuthorDocument = async (
+	faker: Faker
+): Promise<AuthorDocument> => {
 	return {
 		id_author: faker.number.int(1000),
 		id_document: faker.number.int(1000),

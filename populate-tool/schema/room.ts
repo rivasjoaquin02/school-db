@@ -9,12 +9,12 @@ export const room = pgTable("room", {
 	name_room: varchar("name_room", { length: 255 }).unique().notNull(),
 	location_room: varchar("location_room", { length: 255 }).notNull(),
 	description_room: text("description_room"),
-	access_method: access_method_type("access_method_type"),
+	access_method: access_method_type("access_method"),
 	phone_extension: integer("phone_extension"),
 });
 export type Room = typeof room.$inferInsert;
 
-export const generateIdRoom = (faker: Faker): string => {
+export const generateIdRoom = async (faker: Faker): Promise<string> => {
 	// random 3 uppercase letters -> ABC
 	const randomId = faker.string.alpha({ length: 3, casing: "upper" });
 
@@ -32,9 +32,9 @@ export const generateIdRoom = (faker: Faker): string => {
 	return `${randomId} ${randomYear}-${randomDigits}-${randomLetter}`;
 };
 
-export const generateRoom = (faker: Faker): Room => {
+export const generateRoom = async (faker: Faker): Promise<Room> => {
 	return {
-		id_room: generateIdRoom(faker), //CAR 2018-0070-C
+		id_room: await generateIdRoom(faker), //CAR 2018-0070-C
 		id_library: faker.number.int({ min: 1, max: 1000000 }),
 		name_room: faker.helpers.fake(`Sala {{company.name()}}`),
 		location_room: faker.location.streetAddress(true),

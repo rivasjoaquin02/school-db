@@ -246,8 +246,35 @@ const tables: Table[] = [
 	{ table: loan, generateFn: () => generateLoan(faker), amount: 150_000 },
 ];
 
-Promise.all(tables.map(async (table) => await populate({ ...table })))
-	.then(() => {
-		console.log("👍 done");
-	})
-	.catch((e) => console.error(e));
+// Promise.all(tables.map(async (table) => await populate({ ...table })))
+// 	.then(() => {
+// 		console.log("👍 done");
+// 	})
+// 	.catch((e) => console.error(e));
+
+const test = async (tables: Table[], testAmount: number) => {
+	for (let i = 0; i < tables.length; i++) {
+		const startTime = performance.now();
+
+		const { table, generateFn } = tables[i];
+
+		for (let j = 0; j < testAmount; j++) {
+			await db
+				.insert(table)
+				.values(await generateFn())
+				.onConflictDoNothing();
+		}
+
+		const endTime = performance.now() - startTime;
+		console.log(`⏱️  : ${endTime}ms`);
+	}
+};
+
+// test(tables, 1000).then(() => console.log("👍 done"));
+
+await db
+	.insert(room)
+	.values(await generateRoom(faker))
+	.onConflictDoNothing();
+
+

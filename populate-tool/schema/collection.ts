@@ -10,14 +10,14 @@ export const collection = pgTable("collection", {
 		.unique()
 		.notNull(),
 	description_collection: text("description_collection"),
-	type_collection: collection_type("collection_type")
+	type_collection: collection_type("type_collection")
 		.notNull()
 		.default("general"),
 });
 
 export type Collection = typeof collection.$inferInsert;
 
-export const generateIdCollection = (faker: Faker): string => {
+export const generateIdCollection = async (faker: Faker): Promise<string> => {
 	// random 3 uppercase letters -> ABC
 	const randomId = faker.string.alpha({ length: 3, casing: "upper" });
 
@@ -29,13 +29,13 @@ export const generateIdCollection = (faker: Faker): string => {
 
 // TODO: we should'nt be generating the id_room
 // TODO: maxRoomIdx should be a global variable
-export const generateCollection = (
+export const generateCollection = async (
 	faker: Faker,
 	maxRoomIdx: number
-): Collection => {
+): Promise<Collection> => {
 	return {
-		id_collection: generateIdCollection(faker),
-		id_room: generateIdRoom(faker),
+		id_collection: await generateIdCollection(faker),
+		id_room: await generateIdRoom(faker),
 		name_collection: `Colección de ${faker.company.name()}`,
 		description_collection: faker.lorem.paragraph(),
 		type_collection: pickRandom(collection_type.enumValues),

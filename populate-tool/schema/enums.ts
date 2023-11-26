@@ -1,11 +1,11 @@
 import { pgEnum } from "drizzle-orm/pg-core";
 
-export const access_method_type = pgEnum("access_method_type", [
+export const access_method_type = pgEnum("access_method", [
 	"member card",
 	"provisional pass",
 ]);
-export const format_type = pgEnum("format_type", ["physical", "digital"]);
-export const document_type = pgEnum("document_type", [
+export const format_type = pgEnum("format", ["physical", "digital"]);
+export const document_type = pgEnum("type_document", [
 	"art",
 	"manuscript",
 	"ethnology",
@@ -19,14 +19,14 @@ export const document_type = pgEnum("document_type", [
 	"magazine",
 	"book",
 ]);
-export const service_type = pgEnum("service_type", [
+export const service_type = pgEnum("type_service", [
 	"loan",
 	"heritage preservation",
 	"cultural event",
 	"consultation in a room",
 	"bibliographic references",
 ]);
-export const status_type = pgEnum("status_type", [
+export const status_type = pgEnum("status", [
 	"requested",
 	"approved",
 	"in-loan",
@@ -35,25 +35,25 @@ export const status_type = pgEnum("status_type", [
 	"non-returned",
 	"lost",
 ]);
-export const loan_type = pgEnum("loan_type", ["loan_member", "loan_library"]);
-export const penalty_type = pgEnum("penalty_type", [
+export const loan_type = pgEnum("type_loan", ["loan_member", "loan_library"]);
+export const penalty_type = pgEnum("penalty", [
 	"late fees",
 	"suspension of borrowing privileges",
 	"replacement cost",
 	"processing fee",
 ]);
-export const category_type = pgEnum("category_type", [
+export const category_type = pgEnum("category", [
 	"researcher",
 	"professional",
 	"student",
 	"foreign",
 ]);
-export const collection_type = pgEnum("collection_type", [
+export const collection_type = pgEnum("type_collection", [
 	"special",
 	"general",
 ]);
 
-export const map_type = pgEnum("map_type", [
+export const map_type = pgEnum("type_map", [
 	"topographic",
 	"road",
 	"thematic",
@@ -62,7 +62,7 @@ export const map_type = pgEnum("map_type", [
 	"physical",
 ]);
 
-export const technique_type = pgEnum("technique_type", [
+export const technique_type = pgEnum("technique", [
 	"oil",
 	"acrylic",
 	"watercolor",

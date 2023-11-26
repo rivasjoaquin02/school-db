@@ -7,7 +7,7 @@ export const member = pgTable("member", {
 	name: varchar("name", { length: 100 }).notNull(),
 	age: integer("age"),
 	country: varchar("country", { length: 100 }).notNull(),
-	category: category_type("category_type"),
+	category: category_type("category"),
 });
 
 export type Member = typeof member.$inferInsert;
@@ -38,7 +38,7 @@ export const student = pgTable("student", {
 
 export type Student = typeof student.$inferInsert;
 
-export const generateMember = (faker: Faker): Member => {
+export const generateMember = async (faker: Faker): Promise<Member> => {
 	return {
 		id_member: faker.number.int(10000),
 		name: faker.person.fullName(),
@@ -48,20 +48,22 @@ export const generateMember = (faker: Faker): Member => {
 	};
 };
 
-export const generateResearcher = (faker: Faker): Researcher => {
+export const generateResearcher = async (faker: Faker): Promise<Researcher> => {
 	return {
 		id_member: faker.number.int(10000),
 	};
 };
 
-export const generateProfessional = (faker: Faker): Professional => {
+export const generateProfessional = async (
+	faker: Faker
+): Promise<Professional> => {
 	return {
 		id_member: faker.number.int(10000),
 		organization: faker.company.name(),
 	};
 };
 
-export const generateStudent = (faker: Faker): Student => {
+export const generateStudent = async (faker: Faker): Promise<Student> => {
 	return {
 		id_member: faker.number.int(10000),
 		school: faker.company.name(),
