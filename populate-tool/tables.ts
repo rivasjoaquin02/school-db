@@ -1,38 +1,16 @@
 import { faker } from "@faker-js/faker";
 import { PgTable } from "drizzle-orm/pg-core";
-import { generateLibrary, library } from "./schema/library/library.ts";
-import { generateRoom, room } from "./schema/room/room.ts";
-import { collection, generateCollection } from "./schema/collection/collection.ts";
-import {
-	book,
-	document,
-	document_collection,
-	generateBook,
-	generateDocument,
-	generateDocumentCollection,
-	generateMagazine,
-	generateManuscript,
-	generateMap,
-	generateMedia,
-	generateMusic,
-	generatePaint,
-	generatePicture,
-	generateReference,
-	magazine,
-	manuscript,
-	map,
-	media,
-	music,
-	paint,
-	picture,
-	reference,
-} from "./schema/document/document.ts";
+import { library } from "./schema/library/library.ts";
+import { room } from "./schema/room/room.ts";
+
 import {
 	author,
 	author_document,
 	generateAuthor,
 	generateAuthorDocument,
-} from "./schema/author/author.ts";
+} from "./schema/author/index.ts";
+import { collection, generateCollection } from "./schema/collection/index.ts";
+
 import {
 	email,
 	email_library,
@@ -40,43 +18,75 @@ import {
 	generateEmail,
 	generateEmailLibrary,
 	generateEmailRoom,
-} from "./schema/email/email.ts";
+} from "./schema/email/index.ts";
+
 import {
-	generateMember,
-	generateProfessional,
-	generateResearcher,
-	generateStudent,
+	document_collection,
+	manuscript,
+	map,
+	picture,
+	paint,
+	media,
+	music,
+	reference,
+	magazine,
+	book,
+	generateDocument,
+	generateDocumentCollection,
+	generateManuscript,
+	generateMap,
+	generatePicture,
+	generatePaint,
+	generateMedia,
+	generateMusic,
+	generateReference,
+	generateMagazine,
+	generateBook,
+	document,
+} from "./schema/document/index.ts";
+
+import { generateLibrary } from "./schema/library/index.ts";
+
+import {
 	member,
-	professional,
 	researcher,
+	professional,
 	student,
-} from "./schema/member/member.ts";
+	generateMember,
+	generateResearcher,
+	generateProfessional,
+	generateStudent,
+} from "./schema/member/index.ts";
+
 import {
-	generatePhone,
-	generatePhoneLibrary,
-	generatePhoneRoom,
 	phone,
 	phone_library,
 	phone_room,
-} from "./schema/phone/phone.ts";
+	generatePhone,
+	generatePhoneLibrary,
+	generatePhoneRoom,
+} from "./schema/phone/index.ts";
+
+import { generateRoom } from "./schema/room/index.ts";
+
 import {
-	fine,
-	generateFine,
-	generateLoan,
-	generateLoanLibrary,
-	generateLoanProfessional,
-	generateLoanResearcher,
-	generateService,
-	generateServiceMember,
-	generateServiceRoom,
-	loan,
-	loan_library,
-	loan_professional,
-	loan_researcher,
 	service,
-	service_member,
 	service_room,
-} from "./schema/service/service.ts";
+	service_member,
+	loan,
+	loan_researcher,
+	loan_professional,
+	loan_library,
+	fine,
+	generateService,
+	generateServiceRoom,
+	generateServiceMember,
+	generateLoan,
+	generateLoanResearcher,
+	generateLoanProfessional,
+	generateLoanLibrary,
+	generateFine,
+} from "./schema/service/index.ts";
 
 export type Table = {
 	table: PgTable;

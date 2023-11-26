@@ -31,11 +31,3 @@ export async function populate<T>({ table, generateFn, amount }: Table) {
 	const timeTook = performance.now() - startTime;
 	console.log(`⏱️ : ${timeTook}ms`);
 }
-
-// Promise.all(tables.map(async (table) => await populate({ ...table })))
-// 	.then(() => {
-// 		console.log("👍 done");
-// 	})
-// 	.catch((e) => console.error(e));
-
-// Array.fromAsync({ length: 10 });
