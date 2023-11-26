@@ -1,0 +1,19 @@
+import {
+	fine,
+	loan,
+	loan_library,
+	loan_professional,
+	loan_researcher,
+	service,
+	service_member,
+	service_room,
+} from "./service";
+
+export type Service = typeof service.$inferInsert;
+export type ServiceRoom = typeof service_room.$inferInsert;
+export type ServiceMember = typeof service_member.$inferInsert;
+export type Loan = typeof loan.$inferInsert;
+export type LoanResearcher = typeof loan_researcher.$inferInsert;
+export type LoanProfessional = typeof loan_professional.$inferInsert;
+export type LoanLibrary = typeof loan_library.$inferInsert;
+export type Fine = typeof fine.$inferInsert;

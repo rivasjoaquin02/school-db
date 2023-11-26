@@ -6,8 +6,19 @@ create database library_db;
 create type access_method_type as enum ('member card', 'provisional pass');
 create type format_type as enum ('physical', 'digital');
 create type document_type as enum (
-    'manuscript', 'ethnology', 'file', 'map', 'picture',
-    'paint', 'media', 'music', 'reference', 'magazine', 'book');
+    'art',
+    'manuscript',
+    'ethnology',
+    'file',
+    'map',
+    'picture',
+    'poster',
+    'media',
+    'music',
+    'reference',
+    'magazine',
+    'book');
+
 create type service_type as enum (
     'loan', 'heritage preservation', 'cultural event',
     'consultation in a room', 'bibliographic references');
@@ -53,21 +64,22 @@ create table collection
 -- creating phone's
 create table phone
 (
-    id_phone          int                not null primary key,
-    phone_number      varchar(20) unique not null,
-    description_phone text,
-    constraint phone_format_check check (phone_number like '(___) ___-____')
+    phone_number      varchar(20) not null primary key,
+    description_phone text
+--     constraint phone_format_check check (phone_number like '(__) ____-____')
 );
 create table phone_library
 (
-    id_phone   int not null primary key,
-    id_library int not null,
+    phone_number varchar(20) not null primary key,
+    id_library   int         not null,
+    constraint fk_phone foreign key (phone_number) references phone (phone_number),
     constraint fk_library foreign key (id_library) references library (id_library)
 );
 create table phone_room
 (
-    id_phone int         not null primary key,
-    id_room  varchar(20) not null,
+    phone_number varchar(20) not null primary key,
+    id_room      varchar(20) not null,
+    constraint fk_phone foreign key (phone_number) references phone (phone_number),
     constraint fk_room foreign key (id_room) references room (id_room)
 );
 
@@ -75,26 +87,29 @@ create table phone_room
 -- creating email's
 create table email
 (
-    email             varchar(20) not null primary key,
+    email             varchar(100) not null primary key,
     description_email text,
     constraint email_check check (email like '%_@__%.__%')
 );
 create table email_library
 (
-    email      varchar(20) not null primary key,
-    id_library int         not null,
+    email      varchar(100) not null primary key,
+    id_library int          not null,
+    constraint fk_email foreign key (email) references email (email),
     constraint fk_library foreign key (id_library) references library (id_library)
 );
 create table email_room
 (
-    email   varchar(20) primary key,
+    email   varchar(100) not null primary key,
     id_room varchar(20),
+    constraint fk_email foreign key (email) references email (email),
     constraint fk_room foreign key (id_room) references room (id_room)
 );
 create table email_collection
 (
-    email         varchar(20) primary key,
+    email         varchar(100) not null primary key,
     id_collection varchar(10),
+    constraint fk_email foreign key (email) references email (email),
     constraint fk_collection foreign key (id_collection) references collection (id_collection)
 );
 
@@ -130,7 +145,7 @@ create table student
 -- creating document's
 create table document
 (
-    id_document       integer      not null primary key,
+    id_document       serial       not null primary key,
     title             varchar(255) not null,
     created_at        date,
     editorial         varchar(255),
