@@ -1,0 +1,18 @@
+{
+  "name": "test",
+  "module": "index.ts",
+  "devDependencies": {
+    "bun-types": "latest",
+    "drizzle-kit": "^0.20.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "drizzle-orm": "^0.29.0",
+    "postgres": "^3.4.3",
+    "pure-rand": "^6.0.4"
+  }
+}
