@@ -1,22 +1,24 @@
 {
-	"name": "populate-database-tool",
-	"module": "index.ts",
-	"devDependencies": {
-		"bun-types": "latest",
-		"drizzle-kit": "0.20.4",
-		"eslint": "^8.54.0"
-	},
-	"scripts": {
-		"populate": "bun run index.ts"
-	},
-	"peerDependencies": {
-		"typescript": "5.0.0"
-	},
-	"type": "module",
-	"dependencies": {
-		"@faker-js/faker": "8.3.1",
-		"drizzle-orm": "0.29.0",
-		"postgres": "3.4.3",
-		"pure-rand": "6.0.4"
-	}
+  "name": "populate-database-tool",
+  "module": "src/index.ts",
+  "devDependencies": {
+    "bun-types": "latest",
+    "eslint": "^8.54.0"
+  },
+  "scripts": {
+    "populate": "bun run index.ts"
+  },
+  "peerDependencies": {
+    "typescript": "5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@faker-js/faker": "8.3.1",
+    "dotenv": "16.3.1",
+    "drizzle-kit": "0.20.6",
+    "drizzle-orm": "0.29.0",
+    "postgres": "3.4.3",
+    "pure-rand": "6.0.4",
+    "tslog": "4.9.2"
+  }
 }
