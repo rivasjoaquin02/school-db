@@ -4,7 +4,6 @@ import { getOrderOfTables } from "./utils/topo-sort.ts";
 import { tables } from "./tables.ts";
 
 export type LogFn = Logger<ILogObj>;
-
 const log: LogFn = new Logger();
 
 const totalStartTime = performance.now();
@@ -12,7 +11,6 @@ const totalStartTime = performance.now();
 const tablesNames = getOrderOfTables();
 for (let i = 0; i < tablesNames.length; i++) {
 	const tableName = tablesNames[i];
-
 	if (!tables[tableName]) continue;
 
 	const { table, generateFn, amount } = tables[tableName];
@@ -25,7 +23,6 @@ for (let i = 0; i < tablesNames.length; i++) {
 }
 
 const timeTook = performance.now() - totalStartTime;
-
 log.info(`The total time was: ⏰${timeTook.toFixed(4)}ms`);
 
 // await db

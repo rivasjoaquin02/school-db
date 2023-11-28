@@ -1,19 +1,22 @@
 import { Faker } from "@faker-js/faker";
-import { Collection, collection_type, getIdRoom } from ".";
+import { Collection, collection_type, getIdRoom, getTotalRoom } from ".";
 import { pickRandom } from "../../utils/pick-random";
 
 export const generateIdCollection = async (faker: Faker): Promise<string> => {
-	// random 3 uppercase letters -> ABC
 	const randomId = faker.string.alpha({ length: 3, casing: "upper" });
-
-	// random 4 digits -> 0070
 	const randomDigits = faker.number.int({ min: 1111, max: 9999 });
-
 	return `${randomId}-${randomDigits}`;
 };
 
 export const generateCollection = async (faker: Faker): Promise<Collection> => {
-	const { id_room } = pickRandom(await getIdRoom.execute());
+	const [{ count: totalRoom }] = await getTotalRoom.execute();
+
+	const { id_room } = pickRandom(
+		await getIdRoom.execute({
+			limit: 100,
+			offset: faker.number.int(Number(totalRoom)),
+		})
+	);
 
 	return {
 		id_collection: await generateIdCollection(faker),

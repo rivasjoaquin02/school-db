@@ -1,4 +1,4 @@
-import { LogFn } from "..";
+import { LogFn } from "../app.ts";
 import { db } from "../db.ts";
 import { type Table } from "../tables.ts";
 

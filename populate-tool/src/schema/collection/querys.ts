@@ -8,3 +8,8 @@ export const getIdRoom = db
 	.limit(sql.placeholder("limit"))
 	.offset(sql.placeholder("offset"))
 	.prepare("id_room");
+
+export const getTotalRoom = db
+	.select({ count: sql`COUNT(*)` })
+	.from(room)
+	.prepare("total_rooms");

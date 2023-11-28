@@ -75,9 +75,12 @@ import { db } from "./db.ts";
 // console.log("fin");
 
 import { populate } from "./utils/populate.ts";
-await populate({ ...tables["author"], amount: 1_00_000 });
+import { generateCollection } from "./schema/collection/index.ts";
+await populate({ ...tables["collection"], amount: 1_00_000 });
 
 console.log("d");
 
 // const [{ count: totalAuthors }] = await getTotalAuthors.execute();
 // console.log(Number(totalAuthors));
+
+console.log(await generateCollection(faker));
