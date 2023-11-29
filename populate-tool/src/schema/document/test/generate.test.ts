@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { expect, test } from "bun:test";
-import { generateDocument } from "./generate";
+import { generateDocument } from "../generate";
 
 // test("document test", async () => {
 // 	faker.seed(0);

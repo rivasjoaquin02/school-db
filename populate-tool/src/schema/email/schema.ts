@@ -12,7 +12,7 @@ export const email_library = pgTable("email_library", {
 	email: varchar("email", { length: 20 })
 		.notNull()
 		.primaryKey()
-		.references(() => email.email), //'%_@__%.__%'
+		.references(() => email.email),
 	id_library: integer("id_library")
 		.notNull()
 		.references(() => library.id_library),

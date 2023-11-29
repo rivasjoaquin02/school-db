@@ -19,6 +19,6 @@
 		],
 	},
 	"include": [
-		"src/schema/library/library.ts"
+		"src/schema/library/schema.ts"
 	]
 }

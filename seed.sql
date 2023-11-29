@@ -1,7 +1,6 @@
 drop database if exists library_db;
 create database library_db;
 
-
 -- types
 create type access_method_type as enum ('member card', 'provisional pass');
 create type format_type as enum ('physical', 'digital');
@@ -58,7 +57,6 @@ create table collection
     type_collection        collection_type     not null default ('general'),
     constraint fk_room foreign key (id_room) references room (id_room)
 );
-
 
 -- creating phone's
 create table phone
@@ -158,7 +156,7 @@ create table document
     type_document     document_type
 --     constraint document_number_check check (number_document like 'doc-%-%')
 );
-create table collection_document
+create table document_collection
 (
     id_collection varchar(10) not null,
     id_document   int         not null,
@@ -331,6 +329,6 @@ create table fine
     id_service  int          not null,
     id_document int          not null,
     penalty     penalty_type not null,
-    fee         int,
+    fee         float,
     constraint fk_service foreign key (id_service, id_document) references loan (id_service, id_document)
 );

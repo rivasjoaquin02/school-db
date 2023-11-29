@@ -1,4 +1,4 @@
 import { collection } from ".";
 
-
-export type Collection = typeof collection.$inferInsert;
+export type CollectionInsert = typeof collection.$inferInsert;
+export type CollectionSelect = typeof collection.$inferSelect;

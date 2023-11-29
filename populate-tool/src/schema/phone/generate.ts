@@ -1,7 +1,30 @@
 import { Faker } from "@faker-js/faker";
-import { Phone, PhoneLibrary, PhoneRoom, getPhoneNumber } from ".";
 import { pickRandom } from "../../utils/pick-random";
-import { generateIdRoom } from "../room";
+import {
+	PhoneInsert,
+	PhoneLibraryInsert,
+	PhoneRoomInsert,
+	PhoneSelect,
+	getPhoneNumbers,
+	getTotalPhone,
+} from ".";
+import { getRandomIdRoom } from "../room/generate";
+import { getRandomIdLibrary } from "../library";
+
+export const getRandomPhoneNumber = async (
+	faker: Faker
+): Promise<PhoneSelect["phone_number"]> => {
+	const [{ count }] = await getTotalPhone.execute();
+
+	const phoneNumbers = await getPhoneNumbers.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { phone_number } = pickRandom(phoneNumbers);
+
+	return phone_number;
+};
 
 const generatePhoneNumber = async (faker: Faker): Promise<string> => {
 	const phone_number = `(${faker.number.int(999)}) ${faker.number.int({
@@ -11,27 +34,21 @@ const generatePhoneNumber = async (faker: Faker): Promise<string> => {
 	return phone_number;
 };
 
-export const generatePhone = async (faker: Faker): Promise<Phone> => ({
+export const generatePhone = async (faker: Faker): Promise<PhoneInsert> => ({
 	phone_number: await generatePhoneNumber(faker),
 	description_phone: faker.lorem.sentence(5),
 });
 
 export const generatePhoneLibrary = async (
 	faker: Faker
-): Promise<PhoneLibrary> => {
-	const { phone_number } = pickRandom(await getPhoneNumber.execute());
+): Promise<PhoneLibraryInsert> => ({
+	phone_number: await getRandomPhoneNumber(faker),
+	id_library: await getRandomIdLibrary(faker),
+});
 
-	return {
-		phone_number,
-		id_library: faker.number.int(10000),
-	};
-};
-
-export const generatePhoneRoom = async (faker: Faker): Promise<PhoneRoom> => {
-	const { phone_number } = pickRandom(await getPhoneNumber.execute());
-
-	return {
-		phone_number,
-		id_room: await generateIdRoom(faker),
-	};
-};
+export const generatePhoneRoom = async (
+	faker: Faker
+): Promise<PhoneRoomInsert> => ({
+	phone_number: await getRandomPhoneNumber(faker),
+	id_room: await getRandomIdRoom(faker),
+});

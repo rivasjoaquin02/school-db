@@ -1,7 +1,6 @@
-import { Faker, faker } from "@faker-js/faker";
-import { PgTable } from "drizzle-orm/pg-core";
-import { library } from "./schema/library/library.ts";
-import { room } from "./schema/room/room.ts";
+import { faker } from "@faker-js/faker";
+import { library } from "./schema/library/schema.ts";
+import { room } from "./schema/room/schema.ts";
 
 import {
 	author,
@@ -90,15 +89,9 @@ import {
 } from "./schema/service/index.ts";
 import { generateEmailCollection } from "./schema/email/generate.ts";
 
-export type Table = {
-	table: PgTable;
-	generateFn: () => Promise<any>;
-	amount: number;
-};
+export type Tables = typeof tables;
 
-export type Tables = Record<string, Table>;
-
-export const tables: Tables = {
+export const tables = {
 	library: {
 		table: library,
 		generateFn: () => generateLibrary(faker),
@@ -121,7 +114,7 @@ export const tables: Tables = {
 	},
 	document_collection: {
 		table: document_collection,
-		generateFn: () => generateDocumentCollection(),
+		generateFn: () => generateDocumentCollection(faker),
 		amount: 50_000,
 	},
 	manuscript: {
@@ -166,7 +159,7 @@ export const tables: Tables = {
 	},
 	book: {
 		table: book,
-		generateFn: async () => await generateBook(faker),
+		generateFn: () => generateBook(faker),
 		amount: 50_000,
 	},
 	author: {
@@ -186,17 +179,17 @@ export const tables: Tables = {
 	},
 	email_library: {
 		table: email_library,
-		generateFn: () => generateEmailLibrary(),
+		generateFn: () => generateEmailLibrary(faker),
 		amount: 500_000,
 	},
 	email_room: {
 		table: email_room,
-		generateFn: () => generateEmailRoom(),
+		generateFn: () => generateEmailRoom(faker),
 		amount: 500_000,
 	},
 	email_collection: {
 		table: email_collection,
-		generateFn: () => generateEmailCollection(),
+		generateFn: () => generateEmailCollection(faker),
 		amount: 500_000,
 	},
 	member: {
@@ -206,7 +199,7 @@ export const tables: Tables = {
 	},
 	researcher: {
 		table: researcher,
-		generateFn: () => generateResearcher(),
+		generateFn: () => generateResearcher(faker),
 		amount: 500_000,
 	},
 	professional: {
@@ -241,12 +234,12 @@ export const tables: Tables = {
 	},
 	service_room: {
 		table: service_room,
-		generateFn: () => generateServiceRoom(),
+		generateFn: () => generateServiceRoom(faker),
 		amount: 500_000,
 	},
 	service_member: {
 		table: service_member,
-		generateFn: () => generateServiceMember(),
+		generateFn: () => generateServiceMember(faker),
 		amount: 500_000,
 	},
 	loan: {
@@ -256,17 +249,17 @@ export const tables: Tables = {
 	},
 	loan_researcher: {
 		table: loan_researcher,
-		generateFn: () => generateLoanResearcher(),
+		generateFn: () => generateLoanResearcher(faker),
 		amount: 500_000,
 	},
 	loan_professional: {
 		table: loan_professional,
-		generateFn: () => generateLoanProfessional(),
+		generateFn: () => generateLoanProfessional(faker),
 		amount: 500_000,
 	},
 	loan_library: {
 		table: loan_library,
-		generateFn: () => generateLoanLibrary(),
+		generateFn: () => generateLoanLibrary(faker),
 		amount: 500_000,
 	},
 	fine: {
@@ -274,4 +267,4 @@ export const tables: Tables = {
 		generateFn: () => generateFine(faker),
 		amount: 500_000,
 	},
-};
+} as const;

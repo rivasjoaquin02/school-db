@@ -1,26 +1,38 @@
 import { Faker } from "@faker-js/faker";
-import { Collection, collection_type, getIdRoom, getTotalRoom } from ".";
+import { CollectionInsert, CollectionSelect, collection_type } from ".";
 import { pickRandom } from "../../utils/pick-random";
+import { getRandomIdRoom } from "../room/generate";
+import { getIdsCollection, getTotalCollections } from "./querys";
 
-export const generateIdCollection = async (faker: Faker): Promise<string> => {
+export const getRandomIdCollection = async (
+	faker: Faker
+): Promise<CollectionSelect["id_collection"]> => {
+	const [{ count }] = await getTotalCollections.execute();
+
+	const idsCollection = await getIdsCollection.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { id_collection } = pickRandom(idsCollection);
+
+	return id_collection;
+};
+
+export const generateIdCollection = async (
+	faker: Faker
+): Promise<CollectionSelect["id_collection"]> => {
 	const randomId = faker.string.alpha({ length: 3, casing: "upper" });
 	const randomDigits = faker.number.int({ min: 1111, max: 9999 });
 	return `${randomId}-${randomDigits}`;
 };
 
-export const generateCollection = async (faker: Faker): Promise<Collection> => {
-	const [{ count: totalRoom }] = await getTotalRoom.execute();
-
-	const { id_room } = pickRandom(
-		await getIdRoom.execute({
-			limit: 100,
-			offset: faker.number.int(Number(totalRoom)),
-		})
-	);
-
+export const generateCollection = async (
+	faker: Faker
+): Promise<CollectionInsert> => {
 	return {
 		id_collection: await generateIdCollection(faker),
-		id_room,
+		id_room: await getRandomIdRoom(faker),
 		name_collection: `Colección de ${faker.company.name()}`,
 		description_collection: faker.lorem.paragraph(),
 		type_collection: pickRandom(collection_type.enumValues),

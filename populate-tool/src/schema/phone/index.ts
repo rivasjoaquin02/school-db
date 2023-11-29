@@ -1,8 +1,15 @@
-export { phone, phone_library, phone_room } from "./phone.ts";
+export { phone, phone_library, phone_room } from "./schema.ts";
 export {
 	generatePhone,
 	generatePhoneLibrary,
 	generatePhoneRoom,
 } from "./generate.ts";
-export { type Phone, type PhoneLibrary, type PhoneRoom } from "./types.ts";
-export { getPhoneNumber } from "./querys.ts";
+export {
+	type PhoneInsert,
+	type PhoneLibraryInsert,
+	type PhoneRoomInsert,
+	type PhoneSelect,
+	type PhoneLibrarySelect,
+	type PhoneRoomSelect,
+} from "./types.ts";
+export { getPhoneNumbers, getTotalPhone } from "./querys.ts";

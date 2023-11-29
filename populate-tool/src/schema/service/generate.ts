@@ -1,109 +1,159 @@
 import { Faker } from "@faker-js/faker";
-import {
-	Service,
-	service_type,
-	ServiceRoom,
-	getIdService,
-	ServiceMember,
-	Loan,
-	status_type,
-	loan_type,
-	LoanResearcher,
-	getIdLoan,
-	getIdResearcher,
-	LoanProfessional,
-	getIdProfessional,
-	LoanLibrary,
-	Fine,
-	penalty_type,
-} from ".";
 import { pickRandom } from "../../utils/pick-random";
-import { getIdRoom } from "../collection";
-import { getIdDocument } from "../document";
-import { getIdLibrary } from "../library";
-import { getIdMember } from "../member";
+import { DocumentSelect } from "../document";
+import { getRandomIdLibrary } from "../library";
+import { ProfessionalSelect, ResearcherSelect } from "../member";
+import {
+	FineInsert,
+	LoanInsert,
+	LoanLibraryInsert,
+	LoanProfessionalInsert,
+	LoanResearcherInsert,
+	ServiceInsert,
+	ServiceMemberInsert,
+	ServiceRoomInsert,
+	ServiceSelect,
+	getTotalServices,
+	getIdsLoan,
+	getTotalLoan,
+	getIdsResearcher,
+	getIdsProfessional,
+} from ".";
+import { service_type, status_type, loan_type, penalty_type } from "./schema";
+import { getRandomIdRoom } from "../room/generate";
+import { getRandomIdMember } from "../member/generate";
+import { getRandomIdDocument } from "../document/generate";
 
-export const generateService = async (faker: Faker): Promise<Service> => {
-	return {
-		description_service: faker.lorem.paragraph(),
-		type_service: pickRandom(service_type.enumValues),
-	};
+export const getRandomIdService = async (
+	faker: Faker
+): Promise<ServiceSelect["id_service"]> => {
+	const [{ count }] = await getTotalServices.execute();
+
+	const idsService = await getIdsLoan.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { id_service } = pickRandom(idsService);
+
+	return id_service;
+};
+export const getRandomIdLoan = async (
+	faker: Faker
+): Promise<{
+	id_service: ServiceSelect["id_service"];
+	id_document: DocumentSelect["id_document"];
+}> => {
+	const [{ count }] = await getTotalLoan.execute();
+
+	const idsLoan = await getIdsLoan.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { id_service, id_document } = pickRandom(idsLoan);
+
+	return { id_service, id_document };
+};
+export const getRandomIdResearcher = async (
+	faker: Faker
+): Promise<ResearcherSelect["id_member"]> => {
+	const [{ count }] = await getTotalLoan.execute();
+
+	const idsResearcher = await getIdsResearcher.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { id_member } = pickRandom(idsResearcher);
+
+	return id_member;
+};
+export const getRandomIdProfessional = async (
+	faker: Faker
+): Promise<ProfessionalSelect["id_member"]> => {
+	const [{ count }] = await getTotalLoan.execute();
+
+	const idsMember = await getIdsProfessional.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { id_member } = pickRandom(idsMember);
+
+	return id_member;
 };
 
-export const generateServiceRoom = async (): Promise<ServiceRoom> => {
-	const { id_service } = pickRandom(await getIdService.execute());
-	const { id_room } = pickRandom(await getIdRoom.execute());
+export const generateService = async (
+	faker: Faker
+): Promise<ServiceInsert> => ({
+	description_service: faker.lorem.paragraph(),
+	type_service: pickRandom(service_type.enumValues),
+});
 
-	return {
-		id_service,
-		id_room,
-	};
-};
+export const generateServiceRoom = async (
+	faker: Faker
+): Promise<ServiceRoomInsert> => ({
+	id_service: await getRandomIdService(faker),
+	id_room: await getRandomIdRoom(faker),
+});
 
-export const generateServiceMember = async (): Promise<ServiceMember> => {
-	const { id_service } = pickRandom(await getIdService.execute());
-	const { id_member } = pickRandom(await getIdMember.execute());
+export const generateServiceMember = async (
+	faker: Faker
+): Promise<ServiceMemberInsert> => ({
+	id_service: await getRandomIdService(faker),
+	id_member: await getRandomIdMember(faker),
+});
 
-	return {
-		id_service,
-		id_member,
-	};
-};
+export const generateLoan = async (faker: Faker): Promise<LoanInsert> => ({
+	id_service: await getRandomIdService(faker),
+	id_document: await getRandomIdDocument(faker),
+	term: faker.number.int(30),
+	start_date: faker.date.past().toString(),
+	end_date: faker.date.future().toString(),
+	status: pickRandom(status_type.enumValues),
+	type_loan: pickRandom(loan_type.enumValues),
+});
 
-export const generateLoan = async (faker: Faker): Promise<Loan> => {
-	const { id_service } = pickRandom(await getIdService.execute());
-	const { id_document } = pickRandom(await getIdDocument.execute());
+export const generateLoanResearcher = async (
+	faker: Faker
+): Promise<LoanResearcherInsert> => {
+	const { id_service, id_document } = await getRandomIdLoan(faker);
 
 	return {
 		id_service,
 		id_document,
-		term: faker.number.int(30),
-		start_date: faker.date.past().toString(),
-		end_date: faker.date.future().toString(),
-		status: pickRandom(status_type.enumValues),
-		type_loan: pickRandom(loan_type.enumValues),
+		id_member: await getRandomIdResearcher(faker),
 	};
 };
 
-export const generateLoanResearcher = async (): Promise<LoanResearcher> => {
-	const { id_service, id_document } = pickRandom(await getIdLoan.execute());
-	const { id_member } = pickRandom(await getIdResearcher.execute());
+export const generateLoanProfessional = async (
+	faker: Faker
+): Promise<LoanProfessionalInsert> => {
+	const { id_service, id_document } = await getRandomIdLoan(faker);
 
 	return {
 		id_service,
 		id_document,
-		id_member,
+		id_member: await getRandomIdProfessional(faker),
 	};
 };
 
-export const generateLoanProfessional = async (): Promise<LoanProfessional> => {
-	const { id_service, id_document } = pickRandom(await getIdLoan.execute());
-	const { id_member } = pickRandom(await getIdProfessional.execute());
+export const generateLoanLibrary = async (
+	faker: Faker
+): Promise<LoanLibraryInsert> => {
+	const { id_service, id_document } = await getRandomIdLoan(faker);
 
 	return {
 		id_service,
 		id_document,
-		id_member,
+		id_library: await getRandomIdLibrary(faker),
+		id_library2: await getRandomIdLibrary(faker),
 	};
 };
 
-export const generateLoanLibrary = async (): Promise<LoanLibrary> => {
-	const { id_service, id_document } = pickRandom(await getIdLoan.execute());
-	const { id_library } = pickRandom(await getIdLibrary.execute());
-	const { id_library: id_library2 } = pickRandom(
-		await getIdLibrary.execute()
-	);
-
-	return {
-		id_service,
-		id_document,
-		id_library,
-		id_library2,
-	};
-};
-
-export const generateFine = async (faker: Faker): Promise<Fine> => {
-	const { id_service, id_document } = pickRandom(await getIdLoan.execute());
+export const generateFine = async (faker: Faker): Promise<FineInsert> => {
+	const { id_service, id_document } = await getRandomIdLoan(faker);
 
 	return {
 		id_service,

@@ -4,12 +4,16 @@ export {
 	professional,
 	researcher,
 	student,
-} from "./member.ts";
+} from "./schema.ts";
 export {
-	type Member,
-	type Professional,
-	type Researcher,
-	type Student,
+	type MemberInsert,
+	type ProfessionalInsert,
+	type ResearcherInsert,
+	type StudentInsert,
+	type MemberSelect,
+	type ProfessionalSelect,
+	type ResearcherSelect,
+	type StudentSelect,
 } from "./types.ts";
 export {
 	generateMember,
@@ -17,4 +21,4 @@ export {
 	generateResearcher,
 	generateStudent,
 } from "./generate.ts";
-export { getIdMember } from "./querys.ts";
+export { getIdsMember as getIdMember, getTotalMember } from "./querys.ts";

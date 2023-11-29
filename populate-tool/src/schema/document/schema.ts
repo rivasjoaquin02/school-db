@@ -8,7 +8,7 @@ import {
 	serial,
 	pgEnum,
 } from "drizzle-orm/pg-core";
-import { collection } from "../collection/collection.ts";
+import { collection } from "../collection/schema.ts";
 
 export const format_type = pgEnum("format", ["physical", "digital"]);
 export const document_type = pgEnum("type_document", [

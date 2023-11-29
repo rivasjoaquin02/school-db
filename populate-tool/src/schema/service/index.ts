@@ -11,17 +11,25 @@ export {
 	service_room,
 	service_type,
 	status_type,
-} from "./service.ts";
+} from "./schema.ts";
 
 export {
-	type Fine,
-	type Loan,
-	type LoanLibrary,
-	type LoanProfessional,
-	type LoanResearcher,
-	type Service,
-	type ServiceMember,
-	type ServiceRoom,
+	type FineInsert,
+	type LoanInsert,
+	type LoanLibraryInsert,
+	type LoanProfessionalInsert,
+	type LoanResearcherInsert,
+	type ServiceInsert,
+	type ServiceMemberInsert,
+	type ServiceRoomInsert,
+	type FineSelect,
+	type LoanSelect,
+	type LoanLibrarySelect,
+	type LoanProfessionalSelect,
+	type LoanResearcherSelect,
+	type ServiceSelect,
+	type ServiceMemberSelect,
+	type ServiceRoomSelect,
 } from "./types.ts";
 
 export {
@@ -35,8 +43,10 @@ export {
 	generateServiceRoom,
 } from "./generate.ts";
 export {
-	getIdResearcher,
-	getIdService,
-	getIdLoan,
-	getIdProfessional,
+	getIdsResearcher,
+	getIdsService,
+	getIdsLoan,
+	getIdsProfessional,
+	getTotalServices,
+	getTotalLoan,
 } from "./querys.ts";

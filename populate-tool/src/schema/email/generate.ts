@@ -1,45 +1,57 @@
 import { Faker } from "@faker-js/faker";
-import { Email, EmailCollection, EmailLibrary, EmailRoom, getEmail } from ".";
 import { pickRandom } from "../../utils/pick-random";
-import { getIdRoom } from "../collection";
-import { getIdCollection } from "../document";
-import { getIdLibrary } from "../library";
+import { getRandomIdCollection } from "../collection/generate";
+import { getRandomIdRoom } from "../room/generate";
+import {
+	EmailCollectionInsert,
+	EmailInsert,
+	EmailLibraryInsert,
+	EmailRoomInsert,
+	EmailSelect,
+	getEmails,
+	getTotalEmails,
+} from ".";
+import { getRandomIdLibrary } from "../library";
 
-export const generateEmail = async (faker: Faker): Promise<Email> => {
-	return {
-		email: faker.internet
-			.email({ allowSpecialCharacters: false })
-			.toLocaleLowerCase(),
-		description_email: faker.lorem.sentence(5),
-	};
+export const getRandomEmail = async (
+	faker: Faker
+): Promise<EmailSelect["email"]> => {
+	const [{ count }] = await getTotalEmails.execute();
+
+	const emails = await getEmails.execute({
+		limit: 100,
+		offset: faker.number.int(Number(count)),
+	});
+
+	const { email } = pickRandom(emails);
+
+	return email;
 };
 
-export const generateEmailLibrary = async (): Promise<EmailLibrary> => {
-	const { email } = pickRandom(await getEmail.execute());
-	const { id_library } = pickRandom(await getIdLibrary.execute());
+export const generateEmail = async (faker: Faker): Promise<EmailInsert> => ({
+	email: faker.internet
+		.email({ allowSpecialCharacters: false })
+		.toLocaleLowerCase(),
+	description_email: faker.lorem.sentence(5),
+});
 
-	return {
-		email,
-		id_library,
-	};
-};
+export const generateEmailLibrary = async (
+	faker: Faker
+): Promise<EmailLibraryInsert> => ({
+	email: await getRandomEmail(faker),
+	id_library: await getRandomIdLibrary(faker),
+});
 
-export const generateEmailRoom = async (): Promise<EmailRoom> => {
-	const { email } = pickRandom(await getEmail.execute());
-	const { id_room } = pickRandom(await getIdRoom.execute());
+export const generateEmailRoom = async (
+	faker: Faker
+): Promise<EmailRoomInsert> => ({
+	email: await getRandomEmail(faker),
+	id_room: await getRandomIdRoom(faker),
+});
 
-	return {
-		email,
-		id_room,
-	};
-};
-
-export const generateEmailCollection = async (): Promise<EmailCollection> => {
-	const { email } = pickRandom(await getEmail.execute());
-	const { id_collection } = pickRandom(await getIdCollection.execute());
-
-	return {
-		email,
-		id_collection,
-	};
-};
+export const generateEmailCollection = async (
+	faker: Faker
+): Promise<EmailCollectionInsert> => ({
+	email: await getRandomEmail(faker),
+	id_collection: await getRandomIdCollection(faker),
+});

@@ -14,20 +14,31 @@ export {
 	picture,
 	reference,
 	technique_type,
-} from "./document.ts";
+} from "./schema.ts";
 
 export {
-	type Book,
-	type Document,
-	type DocumentCollection,
-	type Magazine,
-	type Manuscript,
-	type Map,
-	type Media,
-	type Music,
-	type Paint,
-	type Picture,
-	type Reference,
+	type DocumentInsert,
+	type DocumentCollectionInsert,
+	type ManuscriptInsert,
+	type MapInsert,
+	type PictureInsert,
+	type PaintInsert,
+	type MediaInsert,
+	type MusicInsert,
+	type ReferenceInsert,
+	type MagazineInsert,
+	type BookInsert,
+	type DocumentSelect,
+	type DocumentCollectionSelect,
+	type ManuscriptSelect,
+	type MapSelect,
+	type PictureSelect,
+	type PaintSelect,
+	type MediaSelect,
+	type MusicSelect,
+	type ReferenceSelect,
+	type MagazineSelect,
+	type BookSelect,
 } from "./types.ts";
 
 export {
@@ -44,4 +55,7 @@ export {
 	generateReference,
 } from "./generate.ts";
 
-export { getIdCollection, getIdDocument, getTotalDocuments } from "./querys.ts";
+export {
+	getIdsDocument as getIdDocument,
+	getTotalDocuments,
+} from "./querys.ts";

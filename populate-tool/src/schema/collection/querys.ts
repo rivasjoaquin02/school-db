@@ -1,15 +1,15 @@
 import { sql } from "drizzle-orm";
 import { db } from "../../db";
-import { room } from "../room";
+import { collection } from ".";
 
-export const getIdRoom = db
-	.select({ id_room: room.id_room })
-	.from(room)
+export const getTotalCollections = db
+	.select({ count: sql`COUNT(*)` })
+	.from(collection)
+	.prepare("total_collections");
+
+export const getIdsCollection = db
+	.select({ id_collection: collection.id_collection })
+	.from(collection)
 	.limit(sql.placeholder("limit"))
 	.offset(sql.placeholder("offset"))
-	.prepare("id_room");
-
-export const getTotalRoom = db
-	.select({ count: sql`COUNT(*)` })
-	.from(room)
-	.prepare("total_rooms");
+	.prepare("id_collection");

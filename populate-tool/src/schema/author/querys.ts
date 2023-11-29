@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm";
 import { db } from "../../db.ts";
-import { author } from "./author.ts";
+import { author } from "./schema.ts";
 
 export const getIdAuthor = db
 	.select({ id_author: author.id_author })

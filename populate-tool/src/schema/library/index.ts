@@ -1,4 +1,4 @@
-export { library } from "./library.ts";
-export { type Library } from "./types.ts";
-export { generateLibrary } from "./generate.ts";
-export { getIdLibrary } from "./querys.ts";
+export { library } from "./schema.ts";
+export { type LibraryInsert, type LibrarySelect } from "./types.ts";
+export { getRandomIdLibrary, generateLibrary } from "./generate.ts";
+export { getIdsLibrary, getTotalLibrary } from "./querys.ts";
