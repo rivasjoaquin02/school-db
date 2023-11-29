@@ -18,7 +18,6 @@ create type document_type as enum (
     'reference',
     'magazine',
     'book');
-
 create type service_type as enum (
     'loan', 'heritage preservation', 'cultural event',
     'consultation in a room', 'bibliographic references');
@@ -257,7 +256,6 @@ create table author_document
     constraint fk_document foreign key (id_document) references document (id_document),
     primary key (id_author, id_document)
 );
-
 
 -- creating services
 create table service
