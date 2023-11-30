@@ -10,7 +10,7 @@ export async function populate<T>({
 	amount,
 	log,
 }: Populate) {
-	const chunkSize = 10;
+	const chunkSize = 1000;
 	const amountChunks = Math.floor(
 		Math.max(amount, chunkSize) / Math.min(amount, chunkSize)
 	);
@@ -28,6 +28,5 @@ export async function populate<T>({
 			.values(chunk)
 			.onConflictDoNothing()
 			.catch((err: Error) => log?.error(`table -> ${err.message}`));
-		// console.log(chunk.length);
 	}
 }

@@ -3,6 +3,7 @@ import { populate } from "./utils/populate.ts";
 import { getOrderOfTables } from "./utils/topo-sort.ts";
 import { tables } from "./tables.ts";
 
+
 export type LogFn = Logger<ILogObj>;
 const log: LogFn = new Logger();
 

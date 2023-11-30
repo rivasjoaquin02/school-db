@@ -110,7 +110,6 @@ create table email_collection
     constraint fk_collection foreign key (id_collection) references collection (id_collection)
 );
 
-
 -- creating member's
 create table member
 (
@@ -137,7 +136,6 @@ create table student
     school    varchar(100),
     constraint fk_member foreign key (id_member) references member (id_member)
 );
-
 
 -- creating document's
 create table document

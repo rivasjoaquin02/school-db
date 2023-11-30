@@ -13,21 +13,12 @@
 		<link rel="stylesheet" href="dist/reveal.css" />
 		<link rel="stylesheet" href="dist/theme/night.css" />
 
-		<!-- map -->
-		<link
-			href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css"
-			rel="stylesheet"
-		/>
-
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" />
 
 		<style>
-			.gradient-background {
-				background: linear-gradient(to right, red, yellow);
-			}
-			.gradient-text {
-				background: -webkit-linear-gradient(left, red, yellow);
+			.text-gradient {
+				background: linear-gradient(to right, #d1bd0d, #d33d0f);
 				-webkit-background-clip: text;
 				background-clip: text;
 				-webkit-text-fill-color: transparent;
@@ -35,31 +26,54 @@
 			}
 			img {
 				border-radius: 15px;
+				border: 4px solid rgba(255, 255, 255, 0.1);
 				box-shadow: 1rem;
 			}
 			.sub {
 				font-size: 1.6rem;
 				color: rgba(255, 255, 255, 0.6);
 			}
+			.glass {
+				background-color: rgb(255, 255, 255, 0.3);
+				backdrop-filter: blur(10px);
+			}
+			code {
+				border-radius: 15px;
+				border: 4px solid rgba(255, 255, 255, 0.1);
+				box-shadow: 1rem;
+			}
+			code::-webkit-scrollbar {
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<!-- INTRODUCTION -->
+				<!-- PRESENTATION -->
 				<section>
 					<section>
-						<img src="./dist/img/bnjm-2.jpg" />
-						<h2>
-							<span class="gradient-text">SBD1:</span>
-							Entrevista a la
+						<img src="./dist/img/bnjm-2.jpg" width="900" />
+						<h1 style="font-size: 4rem">
+							Diseñando una
+							<span class="text-gradient">DB</span> para la
 							<span>📖 Biblioteca Nacional Jose Marti</span>
-						</h2>
-						<p style="color: rgba(255, 255, 255, 0.6)">
+						</h1>
+						<p
+							style="
+								font-size: 1.9rem;
+								color: rgba(255, 255, 255, 0.6);
+								border-radius: 100px;
+								width: fit-content;
+								margin-inline: auto;
+								padding: 10px;
+								padding-left: 20px;
+							"
+							class="glass"
+						>
 							por Joaquin Rivas Sanchez 😎
 						</p>
 					</section>
-
 					<section>
 						<img src="./dist/img/bnjm-1.jpg" alt="" />
 						<img src="./dist/img/bnjm-3.jpg" alt="" />
@@ -68,91 +82,268 @@
 					<section>
 						<img src="./dist/img/library.jpg" />
 					</section>
+				</section>
 
-					<!-- <section
-						data-mapbox='{"duration":4000, "zoom":13, "bearing":0, "center":[16.2957322, 50.1173050]}'
-					>
-						<span
-							class="fragment current-visible"
-							data-mapbox-transform-to='{"duration":4000, "zoom":10, "bearing":0, "center":[36.8227, -1.2847]}'
-						></span>
-					</section> -->
+				<!-- INTRODUCTION -->
+				<section>
+					<section style="font-size: 1.9rem" data-auto-animate>
+						<p>
+							<span class="text-gradient"
+								>La Biblioteca Nacional</span
+							>
+							es una de las bases de datos mas grandes e
+							importantes del país
+						</p>
+						<p style="opacity: 0.6">
+							Esta investigación se centra en
+							<span class="text-gradient">mejorar</span> los
+							sistemas de bases de datos de esta, ya que esto es
+							<u>
+								crucial para la preservación y acceso eficiente
+								a su vasto acervo</u
+							>.
+						</p>
+						<p style="opacity: 0.6">
+							A través de una entrevista detallada, identificamos
+							desafíos en la gestión de datos, como
+							<b> sistemas desactualizados y malas practicas</b>.
+						</p>
+						<p style="opacity: 0.6">
+							<span class="text-gradient">Nuestra meta</span>
+							es
+							<u
+								>proponer soluciones que fortalezcan la
+								eficiencia y eficacia de estos sistemas</u
+							>, contribuyendo así a la misión fundamental de esta
+							institución cultural.
+						</p>
+					</section>
+					<section style="font-size: 1.9rem" data-auto-animate>
+						<p style="opacity: 0.6">
+							<span class="text-gradient"
+								>La Biblioteca Nacional</span
+							>
+							es una de las bases de datos mas grandes e
+							importantes del país
+						</p>
+						<p>
+							Esta investigación se centra en
+							<span class="text-gradient">mejorar</span> los
+							sistemas de bases de datos de esta, ya que esto es
+							<u>
+								crucial para la preservación y acceso eficiente
+								a su vasto acervo</u
+							>.
+						</p>
+						<p style="opacity: 0.6">
+							A través de una entrevista detallada, identificamos
+							desafíos en la gestión de datos, como
+							<b> sistemas desactualizados y malas practicas</b>.
+						</p>
+						<p style="opacity: 0.6">
+							<span class="text-gradient">Nuestra meta</span>
+							es
+							<u
+								>proponer soluciones que fortalezcan la
+								eficiencia y eficacia de estos sistemas</u
+							>, contribuyendo así a la misión fundamental de esta
+							institución cultural.
+						</p>
+					</section>
+					<section style="font-size: 1.9rem" data-auto-animate>
+						<p style="opacity: 0.6">
+							<span class="text-gradient"
+								>La Biblioteca Nacional</span
+							>
+							es una de las bases de datos mas grandes e
+							importantes del país
+						</p>
+						<p style="opacity: 0.6">
+							Esta investigación se centra en
+							<span class="text-gradient">mejorar</span> los
+							sistemas de bases de datos de esta, ya que esto es
+							<u>
+								crucial para la preservación y acceso eficiente
+								a su vasto acervo</u
+							>.
+						</p>
+						<p>
+							A través de una entrevista detallada, identificamos
+							desafíos en la gestión de datos, como
+							<b> sistemas desactualizados y malas practicas</b>.
+						</p>
+						<p style="opacity: 0.6">
+							<span class="text-gradient">Nuestra meta</span>
+							es
+							<u
+								>proponer soluciones que fortalezcan la
+								eficiencia y eficacia de estos sistemas</u
+							>, contribuyendo así a la misión fundamental de esta
+							institución cultural.
+						</p>
+					</section>
+					<section style="font-size: 1.9rem" data-auto-animate>
+						<p style="opacity: 0.6">
+							<span class="text-gradient"
+								>La Biblioteca Nacional</span
+							>
+							es una de las bases de datos mas grandes e
+							importantes del país
+						</p>
+						<p style="opacity: 0.6">
+							Esta investigación se centra en
+							<span class="text-gradient">mejorar</span> los
+							sistemas de bases de datos de esta, ya que esto es
+							<u>
+								crucial para la preservación y acceso eficiente
+								a su vasto acervo</u
+							>.
+						</p>
+						<p style="opacity: 0.6">
+							A través de una entrevista detallada, identificamos
+							desafíos en la gestión de datos, como
+							<b> sistemas desactualizados y malas practicas</b>.
+						</p>
+						<p>
+							<span class="text-gradient">Nuestra meta</span>
+							es
+							<u
+								>proponer soluciones que fortalezcan la
+								eficiencia y eficacia de estos sistemas</u
+							>, contribuyendo así a la misión fundamental de esta
+							institución cultural.
+						</p>
+					</section>
 				</section>
 
 				<!-- PROBLEMATIC -->
 				<section>
-					<h3>Problematica</h3>
 					<section data-auto-animate>
 						<p>
-							Para <span class="gradient-text">mejorar</span> la
-							gestión de la información interna y
-							<span class="gradient-text">facilitar</span> el
-							acceso de los usuarios a los documentos, se propone
-							<span class="gradient-text"
-								>informatizar el sistema de préstamos</span
-							>
-							mediante una aplicación web que permita
+							Se realizo una
+							<span class="text-gradient">entrevista</span> a
+							<span>Maribel Fleites</span> encargada de gestionar
+							el Dpto de Automatización
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<p>
+							Ella me explico el <b>sistema interno</b> que usa la
+							Biblioteca que usan par gestionar su información
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<p style="font-size: 2.4rem; opacity: 0.7">
+							Ella me explico el <b>sistema interno</b> que usa la
+							Biblioteca que usan par gestionar su información
+						</p>
+						<p style="font-size: 2.9rem">
+							En <u>esencia y resumiendo</u> su sistema se basa en
+							lo siguiente
 						</p>
 					</section>
 
 					<section data-auto-animate>
 						<ul>
-							<li>📚 consultar el catálogo</li>
-						</ul>
-					</section>
-
-					<section data-auto-animate>
-						<ul>
-							<li>📚 consultar el catálogo</li>
-							<li>🤝 reservar y renovar los préstamos</li>
-						</ul>
-					</section>
-					<section data-auto-animate>
-						<ul>
-							<li>📚 consultar el catálogo</li>
-							<li>🤝 reservar y renovar los préstamos</li>
 							<li>
-								🔔 recibir notificaciones sobre el estado de los
-								mismos
+								📚 Usan un software creado por
+								<b>bibliotecarios</b>
 							</li>
 						</ul>
 					</section>
 
 					<section data-auto-animate>
+						<ul>
+							<li>
+								📚 Usan un software creado por
+								<b>bibliotecarios</b>
+							</li>
+							<li>
+								🪨 Usan el lenguaje <b>PHP</b> y el sistema de
+								BD <b>ABC</b>
+							</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<img src="./dist/img/software.jpg" width="800" />
+					</section>
+
+					<section data-auto-animate>
 						<p>
-							Así se agilizaría el proceso de atención al público
-							y se optimizaría el uso de los recursos disponibles.
+							La entrevistada recalco la <b>necesidad</b> de un
+							software mas moderno que tenga la
+							<u>capacidad de recibir actualizaciones</u>
+							periódicas a traves de internet
 						</p>
+					</section>
+				</section>
+
+				<!-- KEY CONCEPTS -->
+				<section>
+					<section>
+						<h3>
+							<span class="text-gradient">Conceptos Clave</span> a
+							entender de una Biblioteca
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<ol style="list-style: none">
+							<li>Que es una <b>Sala</b>? 🤔</li>
+						</ol>
+					</section>
+					<section data-auto-animate>
+						<ol style="list-style: none">
+							<li style="opacity: 0.7">
+								Que es una <b>Sala</b>? 🤔
+							</li>
+							<li>Que es una <b>Colección</b>? 📖</li>
+						</ol>
+					</section>
+					<section data-auto-animate>
+						<ol style="list-style: none">
+							<li style="opacity: 0.7">
+								Que es una <b>Sala</b>? 🤔
+							</li>
+							<li style="opacity: 0.7">
+								Que es una <b>Colección</b>? 📖
+							</li>
+							<li>Que <b>Documentos</b> guardan? 📑</li>
+						</ol>
+					</section>
+					<section data-auto-animate>
+						<ol style="list-style: none">
+							<li style="opacity: 0.7">
+								Que es una <b>Sala</b>? 🤔
+							</li>
+							<li style="opacity: 0.7">
+								Que es una <b>Colección</b>? 📖
+							</li>
+							<li style="opacity: 0.7">
+								Que <b>Documentos</b> guardan? 📑
+							</li>
+							<li>
+								Como funciona el proceso de <b>prestamos</b>?
+							</li>
+						</ol>
 					</section>
 				</section>
 
 				<!-- INTERVIEW -->
 				<section>
-					<section>
-						<h3>Preguntas Realizadas</h3>
+					<h3>Preguntas Realizadas</h3>
 
-						<ul>
-							<li>Existen salas en la biblioteca?</li>
-							<li>Que existe dentro de cada Sala?</li>
-							<li>Que documentos existen la biblioteca?</li>
-							<li>Que informacion se les pide a los usuarios</li>
-							<li>Que problematica presenta la biblioteca</li>
-							<li>Como funciona el proceso de prestamos</li>
-							<li>
-								Quienes son los clientes validos para prestar
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Entrevista</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. In porro explicabo maiores repudiandae
-							provident omnis voluptate sint nesciunt odit. Rerum
-							illo tempora minus possimus corrupti reprehenderit
-							soluta dolor, sequi magnam.
-						</p>
-					</section>
+					<ul>
+						<li>Existen salas en la biblioteca?</li>
+						<li>Que existe dentro de cada Sala?</li>
+						<li>Que documentos existen la biblioteca?</li>
+						<li>Que informacion se les pide a los usuarios</li>
+						<li>Que problematica presenta la biblioteca</li>
+						<li>Como funciona el proceso de prestamos</li>
+						<li>Quienes son los clientes validos para prestar</li>
+					</ul>
 				</section>
 
 				<!-- ENTITIES -->
@@ -162,7 +353,7 @@
 					</section>
 					<!-- Colección -->
 					<section data-auto-animate>
-						<h3 class="gradient-text">Colección</h3>
+						<h3 class="text-gradient">Colección</h3>
 						<p>De cada una se conoce:</p>
 						<ul>
 							<li>codigo que la identifica</li>
@@ -174,7 +365,7 @@
 						</ul>
 					</section>
 					<section data-auto-animate>
-						<h3 class="gradient-text">Colección</h3>
+						<h3 class="text-gradient">Colección</h3>
 						<ul style="font-size: 1.6rem">
 							<li>codigo que la identifica</li>
 							<p class="sub">(ej: MED)</p>
@@ -198,7 +389,7 @@
 
 					<!-- Sala -->
 					<section data-auto-animate>
-						<h3 class="gradient-text">Sala</h3>
+						<h3 class="text-gradient">Sala</h3>
 						<p>De cada una se conoce:</p>
 						<ul>
 							<li>codigo que la identifica</li>
@@ -212,7 +403,7 @@
 						</ul>
 					</section>
 					<section data-auto-animate>
-						<h3 class="gradient-text">Sala</h3>
+						<h3 class="text-gradient">Sala</h3>
 						<ul style="font-size: 1.6rem">
 							<li>codigo que la identifica</li>
 							<p class="sub">(ej: S01)</p>
@@ -249,7 +440,7 @@
 						<h3>Prestamo</h3>
 						<p>
 							En la Biblioteca, los miembros
-							<span class="gradient-text"
+							<span class="text-gradient"
 								>Investigador, Profesional</span
 							>
 							pueden llevar a casa hasta tres documentos por 15
@@ -259,7 +450,7 @@
 						</p>
 						<p>
 							También ofrecen un servicio de
-							<span class="gradient-text">
+							<span class="text-gradient">
 								préstamo interbibliotecario
 							</span>
 							para obtener documentos de otras bibliotecas 🌐🔁.
@@ -300,13 +491,13 @@
 					<!-- Member -->
 					<section data-auto-animate>
 						<h3>
-							<span class="gradient-text"> Miembro </span>
+							<span class="text-gradient"> Miembro </span>
 							🤡
 						</h3>
 					</section>
 					<section data-auto-animate>
 						<h3>
-							<span class="gradient-text"> Miembro </span>
+							<span class="text-gradient"> Miembro </span>
 							🧑‍🦱
 						</h3>
 						<ul style="font-size: 1.6rem">
@@ -318,7 +509,7 @@
 					</section>
 					<section data-auto-animate>
 						<h3>
-							<span class="gradient-text"> Miembro </span>
+							<span class="text-gradient"> Miembro </span>
 							🧑‍🦱
 						</h3>
 						<ul style="font-size: 1.6rem">
@@ -335,13 +526,13 @@
 					<!-- Document -->
 					<section data-auto-animate>
 						<h3>
-							<span class="gradient-text">Documentos</span> 📖
+							<span class="text-gradient">Documentos</span> 📖
 						</h3>
 					</section>
 
 					<section data-auto-animate>
 						<h3>
-							<span class="gradient-text">Documentos</span> 📖
+							<span class="text-gradient">Documentos</span> 📖
 						</h3>
 						<ul style="font-size: 1.6rem">
 							<li>titulo</li>
@@ -358,7 +549,7 @@
 					</section>
 					<section data-auto-animate>
 						<h3>
-							<span class="gradient-text">Documentos</span> 📖
+							<span class="text-gradient">Documentos</span> 📖
 						</h3>
 						<ul style="font-size: 1.6rem">
 							<li>titulo</li>
@@ -383,7 +574,7 @@
 							<tr>
 								<th>
 									Tipo de
-									<span class="gradient-text">Documento</span>
+									<span class="text-gradient">Documento</span>
 								</th>
 								<th></th>
 							</tr>
@@ -433,620 +624,314 @@
 							</tr>
 						</table>
 					</section>
+				</section>
 
+				<!-- MR -->
+				<section>
 					<section>
 						<h3>
-							<span class="gradient-text">Modelo Relacional</span>
+							<span class="text-gradient">Modelo Relacional</span>
 						</h3>
 					</section>
 					<section data-auto-animate>
-						<ul>
+						<ol>
 							<li>
-								library (<u>lib_id</u>, lib_name, lib_location,
-								postal_code, country)
+								library (id_library, name_library,
+								location_library, description_library, website)
 							</li>
-
 							<li>
-								room (<u>room_id</u>, lib_id, room_name,
-								room_location, room_desc, access_method,
+								room (id_room, id_library, name_room,
+								location_room, description_room, access_method,
 								phone_extension)
 							</li>
-
 							<li>
-								collection (<u>col_id</u>, room_id, col_name,
-								col_desc)
+								collection (id_collection, id_room,
+								name_collection, description_collection,
+								type_collection)
 							</li>
-
 							<li>
-								document_collection (<u>doc_id</u>,
-								<u>col_id</u>)
+								phone (id_phone, phone_number,
+								description_phone)
 							</li>
-
+							<li>phone_library (id_phone, id_library)</li>
+							<li>phone_room (id_phone, id_room)</li>
+							<li>email (email, description_email)</li>
+							<li>email_library (email, id_library)</li>
+							<li>email_room (email, id_room)</li>
+							<li>email_collection (email, id_collection)</li>
 							<li>
-								document (<u>doc_id</u>, title, date_created,
-								editorial, publication_place, language, format,
-								subject, summary, is_patrimony, doc_type)
+								document (id_document, number_document, title,
+								created_at, editorial, publication_place,
+								language, format, subject, summary,
+								is_patrimony, note)
 							</li>
-
-							<li>art (<u>doc_id</u>)</li>
-							<li>manuscript (<u>doc_id</u>)</li>
-							<li>ethnology (<u>doc_id</u>)</li>
-							<li>file (<u>doc_id</u>)</li>
-
 							<li>
-								map (<u>doc_id</u>, dimension_height,
+								collection_document (id_collection, id_document)
+							</li>
+							<li>manuscript (id_document, period)</li>
+							<li>
+								map (id_document, dimension_height,
 								dimension_width)
 							</li>
 							<li>
-								picture (<u>doc_id</u>, dimension_height,
+								picture (id_document, dimension_height,
 								dimension_width)
 							</li>
 							<li>
-								poster (<u>doc_id</u>, technique,
-								dimension_height, dimension_width)
-							</li>
-
-							<li>
-								media (<u>doc_id</u>, genre, director,
-								productor, duration)
+								paint (id_document, technique, dimension_height,
+								dimension_width)
 							</li>
 							<li>
-								music (<u>doc_id</u>, genre, interpreter,
-								composer, duration)
-							</li>
-
-							<li>reference (<u>doc_id</u>, serial)</li>
-							<li>magazine (<u>doc_id</u>, editor)</li>
-							<li>book (<u>doc_id</u>, genre, issn)</li>
-
-							<li>phone (<u>phone</u>, phone_desc)</li>
-							<li>phone_library (<u>phone</u>, lib_id)</li>
-							<li>phone_room (<u>phone</u>, lib_id)</li>
-							<li>phone_phone (<u>phone</u>, lib_id)</li>
-
-							<li>email (<u>email</u>, email_desc)</li>
-							<li>email_library (<u>email</u>, lib_id)</li>
-							<li>email_room (<u>email</u>, room_id)</li>
-							<li>email_collection (<u>email</u>, col_id)</li>
-
-							<li>author (<u>author_id</u>, ci, name, age)</li>
-
-							<li>
-								document_author (<u>doc_id</u>,
-								<u>author_id</u>)
-							</li>
-
-							<li>
-								service (<u>service_id</u>, service_desc,
-								service_type)
+								media (id_document, genre, director, producer,
+								duration)
 							</li>
 							<li>
-								room_service (<u>room_id</u>, <u>service_id</u>)
+								music (id_document, genre, performer, composer,
+								duration)
+							</li>
+							<li>reference (id_document, serial)</li>
+							<li>magazine (id_document, editor, issn)</li>
+							<li>
+								book (id_document, genre, issn, isbn, dewey)
 							</li>
 							<li>
-								loan (<u>service_id</u>, term, start_date,
-								end_date, state, loan_type)
+								author (id_author, name_author, country_author,
+								description_author)
 							</li>
-							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>author_document (id_author, id_document)</li>
 							<li>
-								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+								member (id_member, name, age, country, category)
+							</li>
+							<li>researcher (id_member)</li>
+							<li>professional (id_member, organization)</li>
+							<li>student (id_member, school)</li>
+							<li>
+								service (id_service, description_service,
+								type_service)
+							</li>
+							<li>service_room (id_service, id_room)</li>
+							<li>service_member (id_service, id_member)</li>
+							<li>
+								loan (id_service, id_document, term, start_date,
+								end_date, status, type_loan)
 							</li>
 							<li>
-								loan_library (<u>service_id</u>, <u>doc_id</u>,
-								<u>lib_id</u>, <u>lib_id2</u>)
+								loan_researcher (id_service, id_document,
+								id_member)
 							</li>
 							<li>
-								loan_member (<u>service_id</u>, <u>doc_id</u>,
-								<u>member_id</u>)
+								loan_professional (id_service, id_document,
+								id_member)
 							</li>
 							<li>
-								member (<u>member_id</u>, ci, name, age,
-								category)
+								loan_library (id_service, id_document,
+								id_library, id_library2)
 							</li>
-							<li>researcher (<u>member_id</u>)</li>
-							<li>professional (<u>member_id</u>)</li>
-							<li>student (<u>member_id</u>)</li>
-							<li>foreign (<u>member_id</u>)</li>
-						</ul>
+							<li>
+								fine (id_fine, id_service, id_document, penalty,
+								fee)
+							</li>
+						</ol>
 					</section>
-
 					<section data-auto-animate>
-						<ul style="font-size: 2rem">
+						<ol style="font-size: 2rem">
 							<li>
-								library (<u>lib_id</u>, lib_name, lib_location,
-								postal_code, country)
+								library (id_library, name_library,
+								location_library, description_library, website)
 							</li>
-
 							<li>
-								room (<u>room_id</u>, lib_id, room_name,
-								room_location, room_desc, access_method,
+								room (id_room, id_library, name_room,
+								location_room, description_room, access_method,
 								phone_extension)
 							</li>
-
 							<li>
-								collection (<u>col_id</u>, room_id, col_name,
-								col_desc)
+								collection (id_collection, id_room,
+								name_collection, description_collection,
+								type_collection)
 							</li>
-
 							<li>
-								document_collection (<u>doc_id</u>,
-								<u>col_id</u>)
+								phone (id_phone, phone_number,
+								description_phone)
 							</li>
-
+							<li>phone_library (id_phone, id_library)</li>
+							<li>phone_room (id_phone, id_room)</li>
+							<li>email (email, description_email)</li>
+							<li>email_library (email, id_library)</li>
+							<li>email_room (email, id_room)</li>
+							<li>email_collection (email, id_collection)</li>
 							<li>
-								document (<u>doc_id</u>, title, date_created,
-								editorial, publication_place, language, format,
-								subject, summary, is_patrimony, doc_type)
+								document (id_document, number_document, title,
+								created_at, editorial, publication_place,
+								language, format, subject, summary,
+								is_patrimony, note)
 							</li>
-
-							<li>art (<u>doc_id</u>)</li>
-							<li>manuscript (<u>doc_id</u>)</li>
-							<li>ethnology (<u>doc_id</u>)</li>
-							<li>file (<u>doc_id</u>)</li>
-
 							<li>
-								map (<u>doc_id</u>, dimension_height,
+								collection_document (id_collection, id_document)
+							</li>
+							<li>manuscript (id_document, period)</li>
+							<li>
+								map (id_document, dimension_height,
 								dimension_width)
 							</li>
 							<li>
-								picture (<u>doc_id</u>, dimension_height,
+								picture (id_document, dimension_height,
 								dimension_width)
 							</li>
 							<li>
-								poster (<u>doc_id</u>, technique,
-								dimension_height, dimension_width)
-							</li>
-
-							<li>
-								media (<u>doc_id</u>, genre, director,
-								productor, duration)
+								paint (id_document, technique, dimension_height,
+								dimension_width)
 							</li>
 							<li>
-								music (<u>doc_id</u>, genre, interpreter,
-								composer, duration)
-							</li>
-
-							<li>reference (<u>doc_id</u>, serial)</li>
-							<li>magazine (<u>doc_id</u>, editor)</li>
-							<li>book (<u>doc_id</u>, genre, issn)</li>
-
-							<li>phone (<u>phone</u>, phone_desc)</li>
-							<li>phone_library (<u>phone</u>, lib_id)</li>
-							<li>phone_room (<u>phone</u>, lib_id)</li>
-							<li>phone_phone (<u>phone</u>, lib_id)</li>
-
-							<li>email (<u>email</u>, email_desc)</li>
-							<li>email_library (<u>email</u>, lib_id)</li>
-							<li>email_room (<u>email</u>, room_id)</li>
-							<li>email_collection (<u>email</u>, col_id)</li>
-
-							<li>author (<u>author_id</u>, ci, name, age)</li>
-
-							<li>
-								document_author (<u>doc_id</u>,
-								<u>author_id</u>)
-							</li>
-
-							<li>
-								service (<u>service_id</u>, service_desc,
-								service_type)
+								media (id_document, genre, director, producer,
+								duration)
 							</li>
 							<li>
-								room_service (<u>room_id</u>, <u>service_id</u>)
+								music (id_document, genre, performer, composer,
+								duration)
+							</li>
+							<li>reference (id_document, serial)</li>
+							<li>magazine (id_document, editor, issn)</li>
+							<li>
+								book (id_document, genre, issn, isbn, dewey)
 							</li>
 							<li>
-								loan (<u>service_id</u>, term, start_date,
-								end_date, state, loan_type)
+								author (id_author, name_author, country_author,
+								description_author)
 							</li>
-							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>author_document (id_author, id_document)</li>
 							<li>
-								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+								member (id_member, name, age, country, category)
+							</li>
+							<li>researcher (id_member)</li>
+							<li>professional (id_member, organization)</li>
+							<li>student (id_member, school)</li>
+							<li>
+								service (id_service, description_service,
+								type_service)
+							</li>
+							<li>service_room (id_service, id_room)</li>
+							<li>service_member (id_service, id_member)</li>
+							<li>
+								loan (id_service, id_document, term, start_date,
+								end_date, status, type_loan)
 							</li>
 							<li>
-								loan_library (<u>service_id</u>, <u>doc_id</u>,
-								<u>lib_id</u>, <u>lib_id2</u>)
+								loan_researcher (id_service, id_document,
+								id_member)
 							</li>
 							<li>
-								loan_member (<u>service_id</u>, <u>doc_id</u>,
-								<u>member_id</u>)
+								loan_professional (id_service, id_document,
+								id_member)
 							</li>
 							<li>
-								member (<u>member_id</u>, ci, name, age,
-								category)
+								loan_library (id_service, id_document,
+								id_library, id_library2)
 							</li>
-							<li>researcher (<u>member_id</u>)</li>
-							<li>professional (<u>member_id</u>)</li>
-							<li>student (<u>member_id</u>)</li>
-							<li>foreign (<u>member_id</u>)</li>
-						</ul>
+							<li>
+								fine (id_fine, id_service, id_document, penalty,
+								fee)
+							</li>
+						</ol>
 					</section>
-
-					<section data-auto-animate>
-						<ul style="font-size: 1.5rem">
-							<li>
-								library (<u>lib_id</u>, lib_name, lib_location,
-								postal_code, country)
-							</li>
-
-							<li>
-								room (<u>room_id</u>, lib_id, room_name,
-								room_location, room_desc, access_method,
-								phone_extension)
-							</li>
-
-							<li>
-								collection (<u>col_id</u>, room_id, col_name,
-								col_desc)
-							</li>
-
-							<li>
-								document_collection (<u>doc_id</u>,
-								<u>col_id</u>)
-							</li>
-
-							<li>
-								document (<u>doc_id</u>, title, date_created,
-								editorial, publication_place, language, format,
-								subject, summary, is_patrimony, doc_type)
-							</li>
-
-							<li>art (<u>doc_id</u>)</li>
-							<li>manuscript (<u>doc_id</u>)</li>
-							<li>ethnology (<u>doc_id</u>)</li>
-							<li>file (<u>doc_id</u>)</li>
-
-							<li>
-								map (<u>doc_id</u>, dimension_height,
-								dimension_width)
-							</li>
-							<li>
-								picture (<u>doc_id</u>, dimension_height,
-								dimension_width)
-							</li>
-							<li>
-								poster (<u>doc_id</u>, technique,
-								dimension_height, dimension_width)
-							</li>
-
-							<li>
-								media (<u>doc_id</u>, genre, director,
-								productor, duration)
-							</li>
-							<li>
-								music (<u>doc_id</u>, genre, interpreter,
-								composer, duration)
-							</li>
-
-							<li>reference (<u>doc_id</u>, serial)</li>
-							<li>magazine (<u>doc_id</u>, editor)</li>
-							<li>book (<u>doc_id</u>, genre, issn)</li>
-
-							<li>phone (<u>phone</u>, phone_desc)</li>
-							<li>phone_library (<u>phone</u>, lib_id)</li>
-							<li>phone_room (<u>phone</u>, lib_id)</li>
-							<li>phone_phone (<u>phone</u>, lib_id)</li>
-
-							<li>email (<u>email</u>, email_desc)</li>
-							<li>email_library (<u>email</u>, lib_id)</li>
-							<li>email_room (<u>email</u>, room_id)</li>
-							<li>email_collection (<u>email</u>, col_id)</li>
-
-							<li>author (<u>author_id</u>, ci, name, age)</li>
-
-							<li>
-								document_author (<u>doc_id</u>,
-								<u>author_id</u>)
-							</li>
-
-							<li>
-								service (<u>service_id</u>, service_desc,
-								service_type)
-							</li>
-							<li>
-								room_service (<u>room_id</u>, <u>service_id</u>)
-							</li>
-							<li>
-								loan (<u>service_id</u>, term, start_date,
-								end_date, state, loan_type)
-							</li>
-							<li>fine (<u>fine_id</u>, penalty)</li>
-							<li>
-								loan_fine (<u>service_id</u>, <u>fine_id</u>)
-							</li>
-							<li>
-								loan_library (<u>service_id</u>, <u>doc_id</u>,
-								<u>lib_id</u>, <u>lib_id2</u>)
-							</li>
-							<li>
-								loan_member (<u>service_id</u>, <u>doc_id</u>,
-								<u>member_id</u>)
-							</li>
-							<li>
-								member (<u>member_id</u>, ci, name, age,
-								category)
-							</li>
-							<li>researcher (<u>member_id</u>)</li>
-							<li>professional (<u>member_id</u>)</li>
-							<li>student (<u>member_id</u>)</li>
-							<li>foreign (<u>member_id</u>)</li>
-						</ul>
-					</section>
-
 					<section data-auto-animate>
 						<ol style="font-size: 0.8rem">
 							<li>
-								library (<u>lib_id</u>, lib_name, lib_location,
-								postal_code, country)
+								library (id_library, name_library,
+								location_library, description_library, website)
 							</li>
-
 							<li>
-								room (<u>room_id</u>, lib_id, room_name,
-								room_location, room_desc, access_method,
+								room (id_room, id_library, name_room,
+								location_room, description_room, access_method,
 								phone_extension)
 							</li>
-
 							<li>
-								collection (<u>col_id</u>, room_id, col_name,
-								col_desc)
+								collection (id_collection, id_room,
+								name_collection, description_collection,
+								type_collection)
 							</li>
-
 							<li>
-								document_collection (<u>doc_id</u>,
-								<u>col_id</u>)
+								phone (id_phone, phone_number,
+								description_phone)
 							</li>
-
+							<li>phone_library (id_phone, id_library)</li>
+							<li>phone_room (id_phone, id_room)</li>
+							<li>email (email, description_email)</li>
+							<li>email_library (email, id_library)</li>
+							<li>email_room (email, id_room)</li>
+							<li>email_collection (email, id_collection)</li>
 							<li>
-								document (<u>doc_id</u>, title, date_created,
-								editorial, publication_place, language, format,
-								subject, summary, is_patrimony, doc_type)
+								document (id_document, number_document, title,
+								created_at, editorial, publication_place,
+								language, format, subject, summary,
+								is_patrimony, note)
 							</li>
-
-							<li>art (<u>doc_id</u>)</li>
-							<li>manuscript (<u>doc_id</u>)</li>
-							<li>ethnology (<u>doc_id</u>)</li>
-							<li>file (<u>doc_id</u>)</li>
-
 							<li>
-								map (<u>doc_id</u>, dimension_height,
+								collection_document (id_collection, id_document)
+							</li>
+							<li>manuscript (id_document, period)</li>
+							<li>
+								map (id_document, dimension_height,
 								dimension_width)
 							</li>
 							<li>
-								picture (<u>doc_id</u>, dimension_height,
+								picture (id_document, dimension_height,
 								dimension_width)
 							</li>
 							<li>
-								poster (<u>doc_id</u>, technique,
-								dimension_height, dimension_width)
-							</li>
-
-							<li>
-								media (<u>doc_id</u>, genre, director,
-								productor, duration)
+								paint (id_document, technique, dimension_height,
+								dimension_width)
 							</li>
 							<li>
-								music (<u>doc_id</u>, genre, interpreter,
-								composer, duration)
-							</li>
-
-							<li>reference (<u>doc_id</u>, serial)</li>
-							<li>magazine (<u>doc_id</u>, editor)</li>
-							<li>book (<u>doc_id</u>, genre, issn)</li>
-
-							<li>phone (<u>phone</u>, phone_desc)</li>
-							<li>phone_library (<u>phone</u>, lib_id)</li>
-							<li>phone_room (<u>phone</u>, lib_id)</li>
-							<li>phone_phone (<u>phone</u>, lib_id)</li>
-
-							<li>email (<u>email</u>, email_desc)</li>
-							<li>email_library (<u>email</u>, lib_id)</li>
-							<li>email_room (<u>email</u>, room_id)</li>
-							<li>email_collection (<u>email</u>, col_id)</li>
-
-							<li>author (<u>author_id</u>, ci, name, age)</li>
-
-							<li>
-								document_author (<u>doc_id</u>,
-								<u>author_id</u>)
-							</li>
-
-							<li>
-								service (<u>service_id</u>, service_desc,
-								service_type)
+								media (id_document, genre, director, producer,
+								duration)
 							</li>
 							<li>
-								room_service (<u>room_id</u>, <u>service_id</u>)
+								music (id_document, genre, performer, composer,
+								duration)
+							</li>
+							<li>reference (id_document, serial)</li>
+							<li>magazine (id_document, editor, issn)</li>
+							<li>
+								book (id_document, genre, issn, isbn, dewey)
 							</li>
 							<li>
-								loan (<u>service_id</u>, term, start_date,
-								end_date, state, loan_type)
+								author (id_author, name_author, country_author,
+								description_author)
 							</li>
-							<li>fine (<u>fine_id</u>, penalty)</li>
+							<li>author_document (id_author, id_document)</li>
 							<li>
-								loan_fine (<u>service_id</u>, <u>fine_id</u>)
+								member (id_member, name, age, country, category)
+							</li>
+							<li>researcher (id_member)</li>
+							<li>professional (id_member, organization)</li>
+							<li>student (id_member, school)</li>
+							<li>
+								service (id_service, description_service,
+								type_service)
+							</li>
+							<li>service_room (id_service, id_room)</li>
+							<li>service_member (id_service, id_member)</li>
+							<li>
+								loan (id_service, id_document, term, start_date,
+								end_date, status, type_loan)
 							</li>
 							<li>
-								loan_library (<u>service_id</u>, <u>doc_id</u>,
-								<u>lib_id</u>, <u>lib_id2</u>)
+								loan_researcher (id_service, id_document,
+								id_member)
 							</li>
 							<li>
-								loan_member (<u>service_id</u>, <u>doc_id</u>,
-								<u>member_id</u>)
+								loan_professional (id_service, id_document,
+								id_member)
 							</li>
 							<li>
-								member (<u>member_id</u>, ci, name, age,
-								category)
+								loan_library (id_service, id_document,
+								id_library, id_library2)
 							</li>
-							<li>researcher (<u>member_id</u>)</li>
-							<li>professional (<u>member_id</u>)</li>
-							<li>student (<u>member_id</u>)</li>
-							<li>foreign (<u>member_id</u>)</li>
+							<li>
+								fine (id_fine, id_service, id_document, penalty,
+								fee)
+							</li>
 						</ol>
-					</section>
-
-					<!-- Normalization -->
-					<section>
-						<h3>
-							<span class="gradient-text">Normalizacion</span>👍
-						</h3>
-					</section>
-
-					<section data-auto-animate>
-						<ol style="font-size: 0.8rem">
-							<li>
-								library (<u>lib_id</u>, lib_name, lib_location,
-								postal_code, country)
-							</li>
-
-							<li>
-								room (<u>room_id</u>, lib_id, room_name,
-								room_location, room_desc, access_method,
-								phone_extension)
-							</li>
-
-							<li>
-								collection (<u>col_id</u>, room_id, col_name,
-								col_desc)
-							</li>
-
-							<li>
-								document_collection (<u>doc_id</u>,
-								<u>col_id</u>)
-							</li>
-
-							<li>
-								document (<u>doc_id</u>, title, date_created,
-								editorial, publication_place, language, format,
-								subject, summary, is_patrimony, doc_type)
-							</li>
-
-							<li>art (<u>doc_id</u>)</li>
-							<li>manuscript (<u>doc_id</u>)</li>
-							<li>ethnology (<u>doc_id</u>)</li>
-							<li>file (<u>doc_id</u>)</li>
-
-							<li>
-								map (<u>doc_id</u>, dimension_height,
-								dimension_width)
-							</li>
-							<li>
-								picture (<u>doc_id</u>, dimension_height,
-								dimension_width)
-							</li>
-							<li>
-								poster (<u>doc_id</u>, technique,
-								dimension_height, dimension_width)
-							</li>
-
-							<li>
-								media (<u>doc_id</u>, genre, director,
-								productor, duration)
-							</li>
-							<li>
-								music (<u>doc_id</u>, genre, interpreter,
-								composer, duration)
-							</li>
-
-							<li>reference (<u>doc_id</u>, serial)</li>
-							<li>magazine (<u>doc_id</u>, editor)</li>
-							<li>book (<u>doc_id</u>, genre, issn)</li>
-
-							<li>phone (<u>phone</u>, phone_desc)</li>
-							<li>phone_library (<u>phone</u>, lib_id)</li>
-							<li>phone_room (<u>phone</u>, lib_id)</li>
-							<li>phone_phone (<u>phone</u>, lib_id)</li>
-
-							<li>email (<u>email</u>, email_desc)</li>
-							<li>email_library (<u>email</u>, lib_id)</li>
-							<li>email_room (<u>email</u>, room_id)</li>
-							<li>email_collection (<u>email</u>, col_id)</li>
-
-							<li>author (<u>author_id</u>, ci, name, age)</li>
-
-							<li>
-								document_author (<u>doc_id</u>,
-								<u>author_id</u>)
-							</li>
-
-							<li>
-								service (<u>service_id</u>, service_desc,
-								service_type)
-							</li>
-							<li>
-								room_service (<u>room_id</u>, <u>service_id</u>)
-							</li>
-							<li>
-								loan (<u>service_id</u>, term, start_date,
-								end_date, state, loan_type)
-							</li>
-							<li>fine (<u>fine_id</u>, penalty)</li>
-							<li>
-								loan_fine (<u>service_id</u>, <u>fine_id</u>)
-							</li>
-							<li>
-								loan_library (<u>service_id</u>, <u>doc_id</u>,
-								<u>lib_id</u>, <u>lib_id2</u>)
-							</li>
-							<li>
-								loan_member (<u>service_id</u>, <u>doc_id</u>,
-								<u>member_id</u>)
-							</li>
-							<li>
-								member (<u>member_id</u>, ci, name, age,
-								category)
-							</li>
-							<li>researcher (<u>member_id</u>)</li>
-							<li>professional (<u>member_id</u>)</li>
-							<li>student (<u>member_id</u>)</li>
-							<li>foreign (<u>member_id</u>)</li>
-						</ol>
-					</section>
-
-					<section data-auto-animate>
-						<ul style="font-size: 1.5rem">
-							<li>
-								media (<u>doc_id</u>, genre, director,
-								productor, duration)
-							</li>
-							<p class="sub" style="font-size: 1rem">
-								// director, productor puede ser una referencia
-								a la tabla person
-							</p>
-
-							<li>
-								music (<u>doc_id</u>, genre, interpreter,
-								composer, duration)
-							</li>
-							<p class="sub" style="font-size: 1rem">
-								// interpreter, composer puede ser una
-								referencia a la tabla person
-							</p>
-
-							<li>magazine (<u>doc_id</u>, editor)</li>
-							<p class="sub" style="font-size: 1rem">
-								// editor puede ser una referencia a la tabla
-								person
-							</p>
-
-							<li>author (<u>author_id</u>, person_id)</li>
-
-							<li>
-								<span style="color: rgba(230, 129, 129, 0.8)"
-									>person</span
-								>
-								(<u>person_id</u>, name, age)
-							</li>
-
-							<li>
-								member (<u>member_id</u>, person_id, category)
-							</li>
-
-							<li>
-								<span style="color: rgba(230, 129, 129, 0.8)"
-									>person</span
-								>
-								(<u>person_id</u>, name, age)
-							</li>
-						</ul>
 					</section>
 				</section>
 
@@ -1054,14 +939,392 @@
 				<section>
 					<section>
 						<h3>
-							<span class="gradient-text"
-								>Diagrama Entidad Relacion</span
-							>
+							<span class="text-gradient">
+								Diagrama Entidad Relación
+							</span>
 						</h3>
 					</section>
 					<section>
-						<img src="/dist/img/der.svg" width="800" />
+						<img src="/dist/img/erd.svg" width="800" />
 					</section>
+				</section>
+
+				<!-- CODE -->
+				<section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">DDL</span> (create
+							table)
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">DDL</span> (create
+							table)
+						</h3>
+						<img src="./dist/img/code.png" width="700" />
+					</section>
+				</section>
+
+				<!-- POPULATION -->
+				<section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient"
+								>Método de Población</span
+							>
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient"
+								>Método de Población</span
+							>
+						</h3>
+						<p style="opacity: 0.7; font-size: 1.9rem">
+							Se opto por escoger lo siguiente
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">
+								Método de Población
+							</span>
+						</h3>
+						<ul>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="/dist/img/drizzle.jpeg" width="60" />
+								Drizzle
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(type safety + introspection)
+								</p>
+							</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient"
+								>Método de Población</span
+							>
+						</h3>
+						<ul>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="/dist/img/drizzle.jpeg" width="60" />
+								Drizzle
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(type safety + introspection)
+								</p>
+							</li>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="./dist/img/bun.svg" width="60" />
+								Bun
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(blazingly fast ⚡)
+								</p>
+							</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient"
+								>Método de Población</span
+							>
+						</h3>
+						<ul>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="/dist/img/drizzle.jpeg" width="60" />
+								Drizzle
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(type safety + introspection)
+								</p>
+							</li>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="./dist/img/bun.svg" width="60" />
+								Bun
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(blazingly fast ⚡)
+								</p>
+							</li>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img
+									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFX0lEQVR4nO2cW4hcRRCGjxe865rd6ZrdGMxDEryBUSMigoioD4IXRIJBDCKC4DUku6f/2YCMiC8iis8KEQ0YTMAY8YIoLLgzVWdxgyIR0ZA8iIJ5UCJr1KjJkZ5NlqzuzrnMTHqkq6HeZk71/F9XVZ++TESQVE28aRCp+OJ1ACoAKIDUtwgaAfAvhKYghGlaA6AAUt8iaATAvxCaghCmaQ2AAkh9i6ARAP9CaApCmKY1AAog9S2CRgD8C6EpCGGa1gAogNS3CBoB8C+EpiCEaVoDoABS3yJoBMC/EJqCEKZpDYACSH2LoBEA/0JoCkKYpjUACiD1LYJGAPwLoSkIYZrWACiA1LcIGgHwL4SmIIRpWgOgAFLfImgEwL8QmoIQpmkNgAJI+9EM5ICBfEmWp50Zy18R5AcCH+37CDCWH6Qa31rUKrVkzWJWtXxdkWcZNB8v1G/LR8jKhyZO1g9u5ouiRdpIffocY5s3EOT5WSB9CKDdDzhZrVJL1hQY7Tsrsawq6mPlkx+caWJ5jMAH+wrAyKbpSuS5VdC8OofwvxHkgU59jWDyYgJ/1jcAhuLG+ZHnRmNyZVvxLR+qxMmN3fJn6hPnGcsTfQFgeX3irMhzq9qpKzJG/73d9jlQm1xClr9RAFEUDVu5bPHRL29GPfR7LLWFHQFDceOSRfr3txlrrOilbwN+MXgAlVhWLTL6380nY3qKm25WrDxFVjZRLHcN1pMLsr5DkFED+cMrAAPebyzvy2sEGc0cVVZeKvJMY/m7BftXSx7J8lUdbRJBmv/5ruVfCLJhoe8MjzaXGysf/y+XIgz4uWwAvLU7vpLVmb7Au9o/Q56Z+3A9PdVYfoKszJTpT3AAaFyq7fy4NOPqRPvnuOWI5O7ZOsOTnfQnOABLa1NDbf2MNVbk6rOV35112p/gAJixqeF2fpZt5LOLTCMVAIqJMDTevDQLNoFfUAA9ioCKldujjObeYwx4m0ZAT2ZB/GyUs7nlCrKyV1NQ1EUAlvdFa7eflhdCVJ84vWplHUF2aw1AdwqfEzQq0Shu3kKWP9IijE7TkBzIeh/IXurmNwj8p86CUDoVvRN1Y73JyvZOIAT3HkDzIbzsFtA6BUFWbjPgPQoApSBsrY5+cW6nENzUlcBbNAJQIhrcLpZNro+60Azk0dYJC01BUhAEH3X53NR4ZacQCLxZAaB0XThMll9ze8rlEbQ2Zt7SIoxOirRbcub3yp6cGIobSw341yw/Qc+CKHeNkEYVfGfRGZOx8qoCQFdh7CbwPXkBVGK+SQGgFxErO/McPmsdXczYW9AUhNJpc1eeKCDI5woAbUdz7iMk/zZ3/rTTDf5wI8DKjIHU3GyFrHxf7jl8fw4AbTd2AgTA7oXrdSf88WdXYr6mzLESU+O12f2WtxUA5kCLu+ixkFDVuHlH6yWsQATlOYafdWwliAgw7rpRnKzPmsdX4+RmY/nHzOdZPlytyX1ZfW71G/JT8AAIvCXK2ZZt5EGy8jRZ+XoB4Q8ReIfbkOnGHYVgIoAsHxmKp66NCrbh8U/N8btpbm3IzeuLfN/9LgWAuZy9N/t0c/faEkwPkJWfFQBOjAbe4Q7TngwABvxKnugMIwVhnq9tl9f3nNFT8a08lPc+cXAAaHZW9MmJ7wHdbFXLD5OVv/L2JUgA1DI+6C5zdyslDWyYuDBv2lEAmAfiW3frpWyBnhVeaq2zRiUGQl9EAFl+310damfGctLbPsiMuz/mYJixxlVuCrrQEcbZJeZktdt8d5/vZDGvfwCgn82lKt5/7I86Sv8lgQKAb5AaAWk/mqYgKIDUtwgaAfAvhKYghGlaA+AXwD+5Dc8KcxP3dwAAAABJRU5ErkJggg=="
+									width="60"
+								/>
+								Typescript
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(porque si)
+								</p>
+							</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient"
+								>Método de Población</span
+							>
+						</h3>
+						<ul>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="/dist/img/drizzle.jpeg" width="60" />
+								Drizzle
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(type safety + introspection)
+								</p>
+							</li>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="./dist/img/bun.svg" width="60" />
+								Bun
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(blazingly fast ⚡)
+								</p>
+							</li>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img
+									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFX0lEQVR4nO2cW4hcRRCGjxe865rd6ZrdGMxDEryBUSMigoioD4IXRIJBDCKC4DUku6f/2YCMiC8iis8KEQ0YTMAY8YIoLLgzVWdxgyIR0ZA8iIJ5UCJr1KjJkZ5NlqzuzrnMTHqkq6HeZk71/F9XVZ++TESQVE28aRCp+OJ1ACoAKIDUtwgaAfAvhKYghGlaA6AAUt8iaATAvxCaghCmaQ2AAkh9i6ARAP9CaApCmKY1AAog9S2CRgD8C6EpCGGa1gAogNS3CBoB8C+EpiCEaVoDoABS3yJoBMC/EJqCEKZpDYACSH2LoBEA/0JoCkKYpjUACiD1LYJGAPwLoSkIYZrWACiA1LcIGgHwL4SmIIRpWgOgAFLfImgEwL8QmoIQpmkNgAJI+9EM5ICBfEmWp50Zy18R5AcCH+37CDCWH6Qa31rUKrVkzWJWtXxdkWcZNB8v1G/LR8jKhyZO1g9u5ouiRdpIffocY5s3EOT5WSB9CKDdDzhZrVJL1hQY7Tsrsawq6mPlkx+caWJ5jMAH+wrAyKbpSuS5VdC8OofwvxHkgU59jWDyYgJ/1jcAhuLG+ZHnRmNyZVvxLR+qxMmN3fJn6hPnGcsTfQFgeX3irMhzq9qpKzJG/73d9jlQm1xClr9RAFEUDVu5bPHRL29GPfR7LLWFHQFDceOSRfr3txlrrOilbwN+MXgAlVhWLTL6380nY3qKm25WrDxFVjZRLHcN1pMLsr5DkFED+cMrAAPebyzvy2sEGc0cVVZeKvJMY/m7BftXSx7J8lUdbRJBmv/5ruVfCLJhoe8MjzaXGysf/y+XIgz4uWwAvLU7vpLVmb7Au9o/Q56Z+3A9PdVYfoKszJTpT3AAaFyq7fy4NOPqRPvnuOWI5O7ZOsOTnfQnOABLa1NDbf2MNVbk6rOV35112p/gAJixqeF2fpZt5LOLTCMVAIqJMDTevDQLNoFfUAA9ioCKldujjObeYwx4m0ZAT2ZB/GyUs7nlCrKyV1NQ1EUAlvdFa7eflhdCVJ84vWplHUF2aw1AdwqfEzQq0Shu3kKWP9IijE7TkBzIeh/IXurmNwj8p86CUDoVvRN1Y73JyvZOIAT3HkDzIbzsFtA6BUFWbjPgPQoApSBsrY5+cW6nENzUlcBbNAJQIhrcLpZNro+60Azk0dYJC01BUhAEH3X53NR4ZacQCLxZAaB0XThMll9ze8rlEbQ2Zt7SIoxOirRbcub3yp6cGIobSw341yw/Qc+CKHeNkEYVfGfRGZOx8qoCQFdh7CbwPXkBVGK+SQGgFxErO/McPmsdXczYW9AUhNJpc1eeKCDI5woAbUdz7iMk/zZ3/rTTDf5wI8DKjIHU3GyFrHxf7jl8fw4AbTd2AgTA7oXrdSf88WdXYr6mzLESU+O12f2WtxUA5kCLu+ixkFDVuHlH6yWsQATlOYafdWwliAgw7rpRnKzPmsdX4+RmY/nHzOdZPlytyX1ZfW71G/JT8AAIvCXK2ZZt5EGy8jRZ+XoB4Q8ReIfbkOnGHYVgIoAsHxmKp66NCrbh8U/N8btpbm3IzeuLfN/9LgWAuZy9N/t0c/faEkwPkJWfFQBOjAbe4Q7TngwABvxKnugMIwVhnq9tl9f3nNFT8a08lPc+cXAAaHZW9MmJ7wHdbFXLD5OVv/L2JUgA1DI+6C5zdyslDWyYuDBv2lEAmAfiW3frpWyBnhVeaq2zRiUGQl9EAFl+310damfGctLbPsiMuz/mYJixxlVuCrrQEcbZJeZktdt8d5/vZDGvfwCgn82lKt5/7I86Sv8lgQKAb5AaAWk/mqYgKIDUtwgaAfAvhKYghGlaA+AXwD+5Dc8KcxP3dwAAAABJRU5ErkJggg=="
+									width="60"
+								/>
+								Typescript
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(porque si)
+								</p>
+							</li>
+							<li
+								style="
+									display: flex;
+									align-items: center;
+									gap: 20px;
+								"
+							>
+								<img src="./dist/img/faker.svg" width="60" />
+								Faker.js
+								<p style="font-size: 1.8rem; opacity: 0.6">
+									(mejor que Mockaroo)
+								</p>
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- POPULATION ... -->
+				<section>
+					<section>
+						<h3 class="text-gradient">La Idea</h3>
+					</section>
+					<section>
+						<img src="/dist/img/populate.png" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/populate1.png" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/erd.svg" width="850" />
+					</section>
+					<section>
+						<img src="/dist/img/dependency_tree.svg" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/populate2.png" width="1000" />
+					</section>
+				</section>
+
+				<!-- QUERYS -->
+				<section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Consultas</span> de
+							Negocio
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Consultas</span> de
+							Negocio
+						</h3>
+						<section data-auto-animate data-markdown>
+							<textarea data-template>
+								```sql
+								-- ¿cuál es la lista de documentos disponibles en una colección específica?
+
+								select *
+								from document
+										 join collection_document on document.id_document = collection_document.id_document
+										 join collection on collection_document.id_collection = collection.id_collection
+								where collection.name_collection = 'colección de historia de cuba'
+								order by name_collection
+								limit 10;
+								```
+							</textarea
+							>
+						</section>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Consultas</span> de
+							Negocio
+						</h3>
+						<section data-auto-animate data-markdown>
+							<textarea data-template>
+								```sql
+								
+								```
+							</textarea
+							>
+						</section>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Consultas</span> de
+							Negocio
+						</h3>
+						<section data-auto-animate data-markdown>
+							<textarea data-template>
+								```sql
+								
+								```
+							</textarea
+							>
+						</section>
+					</section>
+				</section>
+
+				<!-- VIEWS -->
+				<section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Vistas</span> Realizadas
+						</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Vistas</span> Realizadas
+						</h3>
+						<section data-auto-animate data-markdown>
+							<textarea data-template>
+								```sql
+								
+								```
+							</textarea
+							>
+						</section>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Vistas</span> Realizadas
+						</h3>
+						<section data-auto-animate data-markdown>
+							<textarea data-template>
+								```sql
+								
+								```
+							</textarea
+							>
+						</section>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Vistas</span> Realizadas
+						</h3>
+						<section data-auto-animate data-markdown>
+							<textarea data-template>
+								```sql
+								
+								```
+							</textarea
+							>
+						</section>
+					</section>
+				</section>
+
+				<!-- CONCLUSIONS -->
+				<section>
+					<section data-auto-animate>
+						<h3 class="text-gradient">Conclusiones</h3>
+					</section>
+					<section data-auto-animate>
+						<h3 class="text-gradient">Conclusiones</h3>
+						<ul>
+							<li>
+								Se ha proporcionado un mejor diseño de la BD que
+								evita la <b>redundancia</b> y garantiza la
+								<b>eficiencia</b>
+							</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h3 class="text-gradient">Conclusiones</h3>
+						<ul>
+							<li>
+								Se ha proporcionado un mejor diseño de la BD que
+								evita la <b>redundancia</b> y garantiza la
+								<b>eficiencia</b>
+							</li>
+							<li>
+								Se presento una solución y forma de
+								<b>poblar</b> las tablas de manera realista y
+								eficiente
+								<p style="font-size: 1.8rem; opacity: .7;">(para hacer pruebas de rendimiento y mas)</p>
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Gracias 👍</h1>
 				</section>
 			</div>
 		</div>
@@ -1069,24 +1332,24 @@
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/search/search.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-				dependencies: [
-					{
-						src: "plugin/mapbox-gl/mapbox-gl.js",
-					},
-					{
-						src: "https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js",
-					},
-				],
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-				mapbox: { accessToken: "YOUR ACCESS TOKEN" },
+				plugins: [
+					RevealMarkdown,
+					RevealHighlight,
+					RevealNotes,
+					RevealZoom,
+					RevealHighlight,
+					RevealSearch,
+				],
 			});
 		</script>
 	</body>

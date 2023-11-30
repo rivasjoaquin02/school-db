@@ -112,6 +112,7 @@ g.addEdge(tables.indexOf("document"), tables.indexOf("book"));
 g.addEdge(tables.indexOf("document"), tables.indexOf("loan"));
 
 g.addEdge(tables.indexOf("author"), tables.indexOf("author_document"));
+g.addEdge(tables.indexOf("document"), tables.indexOf("author_document"));
 
 g.addEdge(tables.indexOf("member"), tables.indexOf("student"));
 g.addEdge(tables.indexOf("member"), tables.indexOf("researcher"));

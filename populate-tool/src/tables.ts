@@ -82,13 +82,13 @@ import { room, generateRoom } from "./schema/room/index.ts";
 import { generateEmailCollection } from "./schema/email/generate.ts";
 import { PgTable } from "drizzle-orm/pg-core";
 
+const TOTAL_AMOUNT = 2_00_000;
+
 export type Table = {
 	table: PgTable;
 	generateFn: () => any;
 	amount: number;
 };
-
-const TOTAL_AMOUNT = 1_000_000;
 
 export const tables: Record<string, Table> = {
 	library: {
@@ -179,17 +179,17 @@ export const tables: Record<string, Table> = {
 	email_library: {
 		table: email_library,
 		generateFn: () => generateEmailLibrary(faker),
-		amount: TOTAL_AMOUNT,
+		amount: TOTAL_AMOUNT / 3,
 	},
 	email_room: {
 		table: email_room,
 		generateFn: () => generateEmailRoom(faker),
-		amount: TOTAL_AMOUNT,
+		amount: TOTAL_AMOUNT / 3,
 	},
 	email_collection: {
 		table: email_collection,
 		generateFn: () => generateEmailCollection(faker),
-		amount: TOTAL_AMOUNT,
+		amount: TOTAL_AMOUNT / 3,
 	},
 	member: {
 		table: member,

@@ -49,5 +49,12 @@ export const generateStudent = async (
 	faker: Faker
 ): Promise<StudentInsert> => ({
 	id_member: await getRandomIdMember(faker),
-	school: faker.company.name(),
+	school: `${pickRandom([
+		"Preuniversitario",
+		"HighSchool",
+		"Universidad",
+		"University",
+		"Escuela Catolica",
+		"Catolic School",
+	])} ${faker.company.name()}`,
 });
