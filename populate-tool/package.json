@@ -6,7 +6,7 @@
     "eslint": "^8.54.0"
   },
   "scripts": {
-    "populate": "bun run index.ts"
+    "populate": "bun run src/app.ts"
   },
   "peerDependencies": {
     "typescript": "5.0.0"
@@ -17,6 +17,7 @@
     "dotenv": "16.3.1",
     "drizzle-kit": "0.20.6",
     "drizzle-orm": "0.29.0",
+    "eslint-plugin-drizzle": "^0.2.1",
     "postgres": "3.4.3",
     "pure-rand": "6.0.4",
     "tslog": "4.9.2"

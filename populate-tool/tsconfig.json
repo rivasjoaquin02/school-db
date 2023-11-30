@@ -16,9 +16,6 @@
 		"allowJs": true,
 		"types": [
 			"bun-types" // add Bun global
-		],
-	},
-	"include": [
-		"src/schema/library/schema.ts"
-	]
+		]
+	}
 }

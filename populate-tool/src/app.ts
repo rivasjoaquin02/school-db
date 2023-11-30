@@ -8,9 +8,7 @@ const log: LogFn = new Logger();
 
 const totalStartTime = performance.now();
 
-const tablesNames = getOrderOfTables();
-for (let i = 0; i < tablesNames.length; i++) {
-	const tableName = tablesNames[i];
+for (const tableName of getOrderOfTables()) {
 	if (!tables[tableName]) continue;
 
 	const { table, generateFn, amount } = tables[tableName];

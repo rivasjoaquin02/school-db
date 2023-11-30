@@ -21,4 +21,9 @@ export {
 	generateResearcher,
 	generateStudent,
 } from "./generate.ts";
-export { getIdsMember as getIdMember, getTotalMember } from "./querys.ts";
+export {
+	getIdsMember,
+	getTotalMember,
+	getTotalResearcher,
+	getTotalProfessional,
+} from "./querys.ts";

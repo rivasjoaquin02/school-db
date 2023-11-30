@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { member } from ".";
+import { member, professional, researcher } from ".";
 import { db } from "../../db";
 
 export const getIdsMember = db
@@ -14,3 +14,12 @@ export const getTotalMember = db
 	.from(member)
 	.prepare("total_member");
 
+export const getTotalResearcher = db
+	.select({ count: sql`COUNT(*)` })
+	.from(researcher)
+	.prepare("total_services");
+
+export const getTotalProfessional = db
+	.select({ count: sql`COUNT(*)` })
+	.from(professional)
+	.prepare("total_services");

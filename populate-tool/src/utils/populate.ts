@@ -27,7 +27,7 @@ export async function populate<T>({
 			.insert(table)
 			.values(chunk)
 			.onConflictDoNothing()
-			.catch((err: Error) => log?.error(err.message));
+			.catch((err: Error) => log?.error(`table -> ${err.message}`));
 		// console.log(chunk.length);
 	}
 }

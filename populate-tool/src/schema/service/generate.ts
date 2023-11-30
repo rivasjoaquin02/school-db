@@ -2,7 +2,12 @@ import { Faker } from "@faker-js/faker";
 import { pickRandom } from "../../utils/pick-random";
 import { DocumentSelect } from "../document";
 import { getRandomIdLibrary } from "../library";
-import { ProfessionalSelect, ResearcherSelect } from "../member";
+import {
+	ProfessionalSelect,
+	ResearcherSelect,
+	getTotalProfessional,
+	getTotalResearcher,
+} from "../member";
 import {
 	FineInsert,
 	LoanInsert,
@@ -18,6 +23,7 @@ import {
 	getTotalLoan,
 	getIdsResearcher,
 	getIdsProfessional,
+	getIdsService,
 } from ".";
 import { service_type, status_type, loan_type, penalty_type } from "./schema";
 import { getRandomIdRoom } from "../room/generate";
@@ -29,7 +35,7 @@ export const getRandomIdService = async (
 ): Promise<ServiceSelect["id_service"]> => {
 	const [{ count }] = await getTotalServices.execute();
 
-	const idsService = await getIdsLoan.execute({
+	const idsService = await getIdsService.execute({
 		limit: 100,
 		offset: faker.number.int(Number(count)),
 	});
@@ -47,8 +53,8 @@ export const getRandomIdLoan = async (
 	const [{ count }] = await getTotalLoan.execute();
 
 	const idsLoan = await getIdsLoan.execute({
-		limit: 100,
-		offset: faker.number.int(Number(count)),
+		limit: 10,
+		offset: Math.abs(faker.number.int(Number(count)) - 10),
 	});
 
 	const { id_service, id_document } = pickRandom(idsLoan);
@@ -58,7 +64,7 @@ export const getRandomIdLoan = async (
 export const getRandomIdResearcher = async (
 	faker: Faker
 ): Promise<ResearcherSelect["id_member"]> => {
-	const [{ count }] = await getTotalLoan.execute();
+	const [{ count }] = await getTotalResearcher.execute();
 
 	const idsResearcher = await getIdsResearcher.execute({
 		limit: 100,
@@ -72,7 +78,7 @@ export const getRandomIdResearcher = async (
 export const getRandomIdProfessional = async (
 	faker: Faker
 ): Promise<ProfessionalSelect["id_member"]> => {
-	const [{ count }] = await getTotalLoan.execute();
+	const [{ count }] = await getTotalProfessional.execute();
 
 	const idsMember = await getIdsProfessional.execute({
 		limit: 100,

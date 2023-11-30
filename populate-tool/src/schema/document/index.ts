@@ -56,6 +56,6 @@ export {
 } from "./generate.ts";
 
 export {
-	getIdsDocument as getIdDocument,
+	getIdsDocument,
 	getTotalDocuments,
 } from "./querys.ts";

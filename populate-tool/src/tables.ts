@@ -1,6 +1,5 @@
 import { faker } from "@faker-js/faker";
 import { library } from "./schema/library/schema.ts";
-import { room } from "./schema/room/schema.ts";
 
 import {
 	author,
@@ -9,7 +8,6 @@ import {
 	generateAuthorDocument,
 } from "./schema/author/index.ts";
 import { collection, generateCollection } from "./schema/collection/index.ts";
-
 import {
 	email,
 	email_collection,
@@ -19,7 +17,6 @@ import {
 	generateEmailLibrary,
 	generateEmailRoom,
 } from "./schema/email/index.ts";
-
 import {
 	document_collection,
 	manuscript,
@@ -44,9 +41,7 @@ import {
 	generateBook,
 	document,
 } from "./schema/document/index.ts";
-
 import { generateLibrary } from "./schema/library/index.ts";
-
 import {
 	member,
 	researcher,
@@ -57,7 +52,6 @@ import {
 	generateProfessional,
 	generateStudent,
 } from "./schema/member/index.ts";
-
 import {
 	phone,
 	phone_library,
@@ -66,9 +60,6 @@ import {
 	generatePhoneLibrary,
 	generatePhoneRoom,
 } from "./schema/phone/index.ts";
-
-import { generateRoom } from "./schema/room/index.ts";
-
 import {
 	service,
 	service_room,
@@ -87,184 +78,192 @@ import {
 	generateLoanLibrary,
 	generateFine,
 } from "./schema/service/index.ts";
+import { room, generateRoom } from "./schema/room/index.ts";
 import { generateEmailCollection } from "./schema/email/generate.ts";
+import { PgTable } from "drizzle-orm/pg-core";
 
-export type Tables = typeof tables;
+export type Table = {
+	table: PgTable;
+	generateFn: () => any;
+	amount: number;
+};
 
-export const tables = {
+const TOTAL_AMOUNT = 1_000_000;
+
+export const tables: Record<string, Table> = {
 	library: {
 		table: library,
 		generateFn: () => generateLibrary(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	room: {
 		table: room,
 		generateFn: () => generateRoom(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	collection: {
 		table: collection,
 		generateFn: () => generateCollection(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	document: {
 		table: document,
 		generateFn: () => generateDocument(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	document_collection: {
 		table: document_collection,
 		generateFn: () => generateDocumentCollection(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	manuscript: {
 		table: manuscript,
 		generateFn: () => generateManuscript(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	map: {
 		table: map,
 		generateFn: () => generateMap(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	picture: {
 		table: picture,
 		generateFn: () => generatePicture(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	paint: {
 		table: paint,
 		generateFn: () => generatePaint(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	media: {
 		table: media,
 		generateFn: () => generateMedia(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	music: {
 		table: music,
 		generateFn: () => generateMusic(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	reference: {
 		table: reference,
 		generateFn: () => generateReference(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	magazine: {
 		table: magazine,
 		generateFn: () => generateMagazine(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	book: {
 		table: book,
 		generateFn: () => generateBook(faker),
-		amount: 50_000,
+		amount: TOTAL_AMOUNT / 10,
 	},
 	author: {
 		table: author,
 		generateFn: () => generateAuthor(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	author_document: {
 		table: author_document,
 		generateFn: () => generateAuthorDocument(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	email: {
 		table: email,
 		generateFn: () => generateEmail(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	email_library: {
 		table: email_library,
 		generateFn: () => generateEmailLibrary(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	email_room: {
 		table: email_room,
 		generateFn: () => generateEmailRoom(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	email_collection: {
 		table: email_collection,
 		generateFn: () => generateEmailCollection(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	member: {
 		table: member,
 		generateFn: () => generateMember(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	researcher: {
 		table: researcher,
 		generateFn: () => generateResearcher(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	professional: {
 		table: professional,
 		generateFn: () => generateProfessional(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	student: {
 		table: student,
 		generateFn: () => generateStudent(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	phone: {
 		table: phone,
 		generateFn: () => generatePhone(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	phone_library: {
 		table: phone_library,
 		generateFn: () => generatePhoneLibrary(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	phone_room: {
 		table: phone_room,
 		generateFn: () => generatePhoneRoom(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	service: {
 		table: service,
 		generateFn: () => generateService(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	service_room: {
 		table: service_room,
 		generateFn: () => generateServiceRoom(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	service_member: {
 		table: service_member,
 		generateFn: () => generateServiceMember(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	loan: {
 		table: loan,
 		generateFn: () => generateLoan(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	loan_researcher: {
 		table: loan_researcher,
 		generateFn: () => generateLoanResearcher(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	loan_professional: {
 		table: loan_professional,
 		generateFn: () => generateLoanProfessional(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	loan_library: {
 		table: loan_library,
 		generateFn: () => generateLoanLibrary(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
 	fine: {
 		table: fine,
 		generateFn: () => generateFine(faker),
-		amount: 500_000,
+		amount: TOTAL_AMOUNT,
 	},
-} as const;
+};

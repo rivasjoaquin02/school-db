@@ -124,7 +124,7 @@ export const loan_library = pgTable("loan_library", {
 		.notNull()
 		.primaryKey()
 		.references(() => library.id_library),
-	id_library2: integer("id_library")
+	id_library2: integer("id_library2")
 		.notNull()
 		.primaryKey()
 		.references(() => library.id_library),

@@ -10,8 +10,8 @@ export const getTotalServices = db
 
 export const getTotalLoan = db
 	.select({ count: sql`COUNT(*)` })
-	.from(service)
-	.prepare("total_services");
+	.from(loan)
+	.prepare("total_loan");
 
 export const getIdsResearcher = db
 	.select({ id_member: researcher.id_member })

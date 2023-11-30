@@ -237,7 +237,6 @@ create table book
     constraint fk_document foreign key (id_document) references document (id_document)
 );
 
-
 -- creating author
 create table author
 (
@@ -332,3 +331,4 @@ create table fine
     fee         float,
     constraint fk_service foreign key (id_service, id_document) references loan (id_service, id_document)
 );
+
