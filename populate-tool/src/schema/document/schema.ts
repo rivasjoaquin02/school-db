@@ -18,7 +18,7 @@ export const document_type = pgEnum("type_document", [
 	"file",
 	"map",
 	"picture",
-	"poster",
+	"paint",
 	"media",
 	"music",
 	"reference",

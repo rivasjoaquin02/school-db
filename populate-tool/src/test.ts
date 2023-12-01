@@ -1,6 +1,36 @@
-import { tables } from "./tables";
+import { match } from "ts-pattern";
+import { Table, tables } from "./tables";
 import { populate } from "./utils/populate";
-import { getOrderOfTables } from "./utils/topo-sort";
+import { faker } from "@faker-js/faker";
+import { log } from "sys";
+import { db } from "./db";
+import {
+	book,
+	generateBook,
+	magazine,
+	generateMagazine,
+	reference,
+	generateReference,
+	music,
+	generateMusic,
+	media,
+	generateMedia,
+	paint,
+	generatePaint,
+	picture,
+	generatePicture,
+	map,
+	generateMap,
+	manuscript,
+	generateManuscript,
+	DocumentSelect,
+} from "./schema/document";
+import {
+	MemberSelect,
+	generateProfessional,
+	generateResearcher,
+	generateStudent,
+} from "./schema/member";
 
 // FAST
 // await populate({...tables.service, amount: 100});
@@ -48,5 +78,62 @@ import { getOrderOfTables } from "./utils/topo-sort";
 // await populate(tables.service_room);
 console.log("👍 done");
 
+// console.log(getOrderOfTables());
 
-console.log(getOrderOfTables());
+function getStatusMessage(status: string): string {
+	return match(status)
+		.with("success", () => "Operation succeeded!")
+		.with("error", () => "An error occurred.")
+		.otherwise(() => "Unknown status.");
+}
+
+console.log(getStatusMessage("success"));
+
+const documentTypeToFunction = {
+	book: generateBook,
+	magazine: generateMagazine,
+	reference: generateReference,
+	music: generateMusic,
+	media: generateMedia,
+	paint: generatePaint,
+	picture: generatePicture,
+	map: generateMap,
+	manuscript: generateManuscript,
+};
+
+const memberCategoryToFunction = {
+	professional: generateProfessional,
+	researcher: generateResearcher,
+	student: generateStudent,
+};
+
+export async function matchSpecializations(
+	tableName: string,
+	value: Table
+): Promise<void> {
+	if (tableName === "document") {
+		const { id_document, type_document } = value as any as DocumentSelect;
+		const generateFn = documentTypeToFunction[type_document];
+		if (generateFn) {
+			await db
+				.insert(tables[tableName].table)
+				.values(await generateFn({ faker, id_document }))
+				.onConflictDoNothing()
+				.catch((err: Error) =>
+					console.log(`${tableName} -> ${err.message}`)
+				);
+		}
+	} else if (tableName === "member") {
+		const { id_member, category } = value as any as MemberSelect;
+		const generateFn = memberCategoryToFunction[category];
+		if (generateFn) {
+			await db
+				.insert(tables[tableName].table)
+				.values(await generateFn({ faker, id_member }))
+				.onConflictDoNothing()
+				.catch((err: Error) =>
+					console.log(`${tableName} -> ${err.message}`)
+				);
+		}
+	}
+}

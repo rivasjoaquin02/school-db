@@ -80,7 +80,7 @@
 						<img src="./dist/img/bnjm-4.jpg" alt="" />
 					</section>
 					<section>
-						<img src="./dist/img/library.jpg" />
+						<img src="./dist/img/library.jpg" width="800" />
 					</section>
 				</section>
 
@@ -1169,6 +1169,21 @@
 						<img src="/dist/img/populate.png" width="1000" />
 					</section>
 					<section>
+						<img src="/dist/img/populate0.png" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/populate0.2.png" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/populate.png" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/populate0.3.png" width="1000" />
+					</section>
+					<section>
+						<img src="/dist/img/populate.png" width="1000" />
+					</section>
+					<section>
 						<img src="/dist/img/populate1.png" width="1000" />
 					</section>
 					<section>
@@ -1201,7 +1216,8 @@
 						<section data-auto-animate data-markdown>
 							<textarea data-template>
 								```sql
-								-- ¿cuál es la lista de documentos disponibles en una colección específica?
+								-- ¿cuál es la lista de documentos disponibles 
+								-- en una colección específica?
 
 								select *
 								from document
@@ -1214,30 +1230,15 @@
 							</textarea
 							>
 						</section>
-					</section>
-					<section data-auto-animate>
-						<h3>
-							<span class="text-gradient">Consultas</span> de
-							Negocio
-						</h3>
 						<section data-auto-animate data-markdown>
 							<textarea data-template>
 								```sql
-								
-								```
-							</textarea
-							>
-						</section>
-					</section>
-					<section data-auto-animate>
-						<h3>
-							<span class="text-gradient">Consultas</span> de
-							Negocio
-						</h3>
-						<section data-auto-animate data-markdown>
-							<textarea data-template>
-								```sql
-								
+								-- cantidad de miembros estudiantes, investigadores, 
+								-- profesionales y extranjeros
+
+								select category, count(*)
+								from member
+								group by category;
 								```
 							</textarea
 							>
@@ -1256,10 +1257,16 @@
 						<h3>
 							<span class="text-gradient">Vistas</span> Realizadas
 						</h3>
-						<section data-auto-animate data-markdown>
+						<section data-markdown>
 							<textarea data-template>
 								```sql
-								
+								create view documents_from_collection_x as (
+									select document.*
+									from document
+											join collection_document on document.id_document = collection_document.id_document
+											join collection on collection_document.id_collection = collection.id_collection
+									where collection.name_collection = 'Colección de Historia de Cuba'
+								);
 								```
 							</textarea
 							>
@@ -1269,10 +1276,15 @@
 						<h3>
 							<span class="text-gradient">Vistas</span> Realizadas
 						</h3>
-						<section data-auto-animate data-markdown>
+						<section data-markdown>
 							<textarea data-template>
 								```sql
-								
+								create view amount_document_patrimony_per_type as (
+									select type_document, count(*)
+									from document
+									where is_patrimony = true
+									group by type_document
+								);
 								```
 							</textarea
 							>
@@ -1282,10 +1294,35 @@
 						<h3>
 							<span class="text-gradient">Vistas</span> Realizadas
 						</h3>
-						<section data-auto-animate data-markdown>
+						<section data-markdown>
 							<textarea data-template>
 								```sql
-								
+								create view students_age_average as (
+								select avg(age) as age_average
+								from member
+										join student on member.id_member = student.id_member
+								);
+								```
+							</textarea
+							>
+						</section>
+					</section>
+					<section data-auto-animate>
+						<h3>
+							<span class="text-gradient">Vistas</span> Realizadas
+						</h3>
+						<section data-markdown>
+							<textarea data-template>
+								```sql
+								-- el total de documentos en cada colección
+								-- ordenados por el nombre de la colección
+								create view total_per_collection as (
+									select c.name_collection, count(*) as amount_documents from collection c
+										join document_collection dc on dc.id_collection = c.id_collection
+										join document d on d.id_document = dc.id_document
+									group by c.name_collection
+									order by c.name_collection
+								)
 								```
 							</textarea
 							>
