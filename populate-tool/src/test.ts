@@ -106,6 +106,7 @@ import {
 	getIdsLoan,
 } from "./utils/get-ids";
 import { getRandomId } from "./utils/get-random";
+import { tables } from "./tables";
 
 // FAST
 // await populate({...tables.service, amount: 100});
@@ -166,4 +167,4 @@ console.log("👍 done");
 
 // console.log(await getTotalAuthors.execute());
 
-console.log(library['id_library'].name);
+console.log(tables['library']);

@@ -100,7 +100,7 @@ export const generatePerdida = async (
 export const generateAutor = async (faker: Faker): Promise<AutorInsert> => ({
 	nombre: faker.person.fullName(),
 	paisAutor: faker.location.country(),
-	sexo: faker.person.gender(),
+	sexo: pickRandom(["F", "M"]),
 });
 
 export const generateAutorLibro = async (): Promise<AutorLibroInsert> => ({

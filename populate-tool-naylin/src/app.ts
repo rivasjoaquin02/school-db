@@ -4,7 +4,7 @@ import { getOrderOfTables } from "./utils/topo-sort.ts";
 import { tables } from "./tables.ts";
 
 export type LogFn = Logger<ILogObj>;
-const log: LogFn = new Logger();
+ const log: LogFn = new Logger();
 
 const totalStartTime = performance.now();
 

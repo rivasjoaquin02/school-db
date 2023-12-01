@@ -12,6 +12,6 @@ export async function populate({ table, generateFn, amount, log }: Populate) {
 			.insert(table)
 			.values(value)
 			.onConflictDoNothing()
-			.catch((err: Error) => log?.error(`table -> ${err.message}`));
+			.catch((err: Error) => console.log(`table -> ${err.message}`));
 	}
 }

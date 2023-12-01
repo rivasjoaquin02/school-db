@@ -1,7 +1,7 @@
 import { LogFn } from "../app";
 import { db } from "../db/db";
 import { Table } from "../tables";
-import { matchSpecializations } from "../test";
+import { matchSpecializations } from "./match-specialization";
 
 type Populate = Table & { log?: LogFn; tableName: string };
 export async function populate({

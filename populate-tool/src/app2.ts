@@ -1,6 +1,6 @@
 import { Logger, ILogObj } from "tslog";
 import { tables } from "./tables.ts";
-// import { populate } from "./utils/populatev2.ts";
+import { populate } from "./utils/populatev2.ts";
 
 export type LogFn = Logger<ILogObj>;
 const log: LogFn = new Logger();
@@ -44,13 +44,11 @@ const order = [
 // 	})
 // 	.onConflictDoNothing();
 
-for (const tableName in order) {
-	// const { table, generateFn, amount } = tables[tableName] as any as Table;
-
-	console.log( tables[tableName] );
+for (const tableName of order) {
+	const { table, generateFn, amount } = tables[tableName] as any as Table;
 
 	const startTime = performance.now();
-	// await populate({ tableName, table, generateFn, amount, log });
+	await populate({ tableName, table, generateFn, amount, log });
 	const timeTook = performance.now() - startTime;
 	log.info(`${tableName}: ⏱️ ${timeTook.toFixed(4)}ms`);
 }
