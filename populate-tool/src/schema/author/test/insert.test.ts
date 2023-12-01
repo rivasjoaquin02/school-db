@@ -1,4 +1,4 @@
-import { db } from "../../../db";
+import { db } from "../../../db/db";
 import { tables } from "../../../tables";
 import { author, author_document } from "../schema";
 

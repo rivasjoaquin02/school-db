@@ -1,5 +1,5 @@
 import { test } from "bun:test";
-import { db } from "../../../db";
+import { db } from "../../../db/db.ts";
 import { email, email_collection, email_library, email_room } from "../schema";
 import { tables } from "../../../tables.ts";
 

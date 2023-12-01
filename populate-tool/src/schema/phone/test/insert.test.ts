@@ -1,5 +1,5 @@
 import { test } from "bun:test";
-import { db } from "../../../db";
+import { db } from "../../../db/db.ts";
 import { tables } from "../../../tables.ts";
 import { phone, phone_library, phone_room } from "../schema.ts";
 

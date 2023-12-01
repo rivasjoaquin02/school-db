@@ -1,6 +1,6 @@
 import { Logger, ILogObj } from "tslog";
 import { tables } from "./tables.ts";
-import { populate } from "./utils/populatev2.ts";
+// import { populate } from "./utils/populatev2.ts";
 
 export type LogFn = Logger<ILogObj>;
 const log: LogFn = new Logger();
@@ -33,20 +33,6 @@ const order = [
 	"service_room",
 ];
 
-for (const tableName of order) {
-	if (!tables[tableName]) continue;
-	const { table, generateFn, amount } = tables[tableName];
-
-	const startTime = performance.now();
-	await populate({ tableName, table, generateFn, amount, log });
-	const timeTook = performance.now() - startTime;
-
-	log.info(`${tableName}: ⏱️ ${timeTook.toFixed(4)}ms`);
-}
-
-const timeTook = performance.now() - totalStartTime;
-log.info(`The total time was: ⏰${timeTook.toFixed(4)}ms`);
-
 // await db
 // 	.insert(library)
 // 	.values({
@@ -57,3 +43,17 @@ log.info(`The total time was: ⏰${timeTook.toFixed(4)}ms`);
 // 		website: "http://www.bnjm.cu/",
 // 	})
 // 	.onConflictDoNothing();
+
+for (const tableName in order) {
+	// const { table, generateFn, amount } = tables[tableName] as any as Table;
+
+	console.log( tables[tableName] );
+
+	const startTime = performance.now();
+	// await populate({ tableName, table, generateFn, amount, log });
+	const timeTook = performance.now() - startTime;
+	log.info(`${tableName}: ⏱️ ${timeTook.toFixed(4)}ms`);
+}
+
+const timeTook = performance.now() - totalStartTime;
+log.info(`The total time was: ⏰${timeTook.toFixed(4)}ms`);

@@ -14,7 +14,7 @@ for (const tableName of getOrderOfTables()) {
 	const { table, generateFn, amount } = tables[tableName];
 
 	const startTime = performance.now();
-	await populate({ table, generateFn, amount, log });
+	// await populate({ table, generateFn, amount, log });
 	const timeTook = performance.now() - startTime;
 
 	log.info(`${tableName}: ⏱️ ${timeTook.toFixed(4)}ms`);

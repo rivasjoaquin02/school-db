@@ -1,9 +1,8 @@
 import { match } from "ts-pattern";
-import { Table, tables } from "./tables";
 import { populate } from "./utils/populate";
 import { faker } from "@faker-js/faker";
 import { log } from "sys";
-import { db } from "./db";
+import { db } from "./db/db";
 import {
 	book,
 	generateBook,
@@ -24,13 +23,89 @@ import {
 	manuscript,
 	generateManuscript,
 	DocumentSelect,
+	document_collection,
+	generateDocument,
+	generateDocumentCollection,
+	document,
 } from "./schema/document";
 import {
 	MemberSelect,
+	generateMember,
 	generateProfessional,
 	generateResearcher,
 	generateStudent,
+	member,
+	professional,
+	researcher,
+	student,
 } from "./schema/member";
+import {
+	author,
+	generateAuthor,
+	author_document,
+	generateAuthorDocument,
+} from "./schema/author";
+import { collection, generateCollection } from "./schema/collection";
+import {
+	email,
+	generateEmail,
+	email_library,
+	generateEmailLibrary,
+	email_room,
+	generateEmailRoom,
+	email_collection,
+} from "./schema/email";
+import { generateEmailCollection } from "./schema/email/generate";
+import { library, generateLibrary } from "./schema/library";
+import {
+	phone,
+	generatePhone,
+	phone_library,
+	generatePhoneLibrary,
+	phone_room,
+	generatePhoneRoom,
+} from "./schema/phone";
+import { room, generateRoom } from "./schema/room";
+import {
+	service,
+	generateService,
+	service_room,
+	generateServiceRoom,
+	service_member,
+	generateServiceMember,
+	loan,
+	generateLoan,
+	loan_researcher,
+	generateLoanMember,
+	loan_professional,
+	loan_library,
+	generateLoanLibrary,
+	fine,
+	generateFine,
+} from "./schema/service";
+import {
+	getTotalLibrary,
+	getIdsLibrary,
+	getTotalRoom,
+	getIdsRoom,
+	getTotalDocuments,
+	getIdsDocument,
+	getTotalCollections,
+	getIdsCollection,
+	getTotalAuthors,
+	getIdsAuthor,
+	getTotalEmails,
+	getEmails,
+	getTotalMember,
+	getIdsMember,
+	getTotalPhone,
+	getPhoneNumbers,
+	getTotalServices,
+	getIdsService,
+	getTotalLoan,
+	getIdsLoan,
+} from "./utils/get-ids";
+import { getRandomId } from "./utils/get-random";
 
 // FAST
 // await populate({...tables.service, amount: 100});
@@ -80,60 +155,15 @@ console.log("👍 done");
 
 // console.log(getOrderOfTables());
 
-function getStatusMessage(status: string): string {
-	return match(status)
-		.with("success", () => "Operation succeeded!")
-		.with("error", () => "An error occurred.")
-		.otherwise(() => "Unknown status.");
-}
+// function getStatusMessage(status: string): string {
+// 	return match(status)
+// 		.with("success", () => "Operation succeeded!")
+// 		.with("error", () => "An error occurred.")
+// 		.otherwise(() => "Unknown status.");
+// }
 
-console.log(getStatusMessage("success"));
 
-const documentTypeToFunction = {
-	book: generateBook,
-	magazine: generateMagazine,
-	reference: generateReference,
-	music: generateMusic,
-	media: generateMedia,
-	paint: generatePaint,
-	picture: generatePicture,
-	map: generateMap,
-	manuscript: generateManuscript,
-};
 
-const memberCategoryToFunction = {
-	professional: generateProfessional,
-	researcher: generateResearcher,
-	student: generateStudent,
-};
+// console.log(await getTotalAuthors.execute());
 
-export async function matchSpecializations(
-	tableName: string,
-	value: Table
-): Promise<void> {
-	if (tableName === "document") {
-		const { id_document, type_document } = value as any as DocumentSelect;
-		const generateFn = documentTypeToFunction[type_document];
-		if (generateFn) {
-			await db
-				.insert(tables[tableName].table)
-				.values(await generateFn({ faker, id_document }))
-				.onConflictDoNothing()
-				.catch((err: Error) =>
-					console.log(`${tableName} -> ${err.message}`)
-				);
-		}
-	} else if (tableName === "member") {
-		const { id_member, category } = value as any as MemberSelect;
-		const generateFn = memberCategoryToFunction[category];
-		if (generateFn) {
-			await db
-				.insert(tables[tableName].table)
-				.values(await generateFn({ faker, id_member }))
-				.onConflictDoNothing()
-				.catch((err: Error) =>
-					console.log(`${tableName} -> ${err.message}`)
-				);
-		}
-	}
-}
+console.log(library['id_library'].name);

@@ -79,24 +79,30 @@ import {
 } from "./schema/service/index.ts";
 import { room, generateRoom } from "./schema/room/index.ts";
 import { generateEmailCollection } from "./schema/email/generate.ts";
+import { getRandomId } from "./utils/get-random.ts";
 import {
-	getRandomIdLibrary,
-	getRandomIdRoom,
-	getRandomIdDocument,
-	getRandomIdCollection,
-	getRandomIdAuthor,
-	getRandomEmail,
-	getRandomIdMember,
-	getRandomPhoneNumber,
-	getRandomIdService,
-	getRandomIdLoan,
-	getRandomIdResearcher,
-	getRandomIdProfessional,
-} from "./utils/get-random.ts";
-
-const TOTAL_AMOUNT = 200_000;
-
-import { PgTable } from "drizzle-orm/pg-core/table";
+	getEmails,
+	getIdsAuthor,
+	getIdsCollection,
+	getIdsDocument,
+	getIdsLibrary,
+	getIdsLoan,
+	getIdsMember,
+	getIdsRoom,
+	getIdsService,
+	getPhoneNumbers,
+	getTotalAuthors,
+	getTotalCollections,
+	getTotalDocuments,
+	getTotalEmails,
+	getTotalLibrary,
+	getTotalLoan,
+	getTotalMember,
+	getTotalPhone,
+	getTotalRoom,
+	getTotalServices,
+} from "./utils/get-ids.ts";
+import { PgTable } from "drizzle-orm/pg-core";
 
 export type Table<T extends PgTable = PgTable> = {
 	tableName: string;
@@ -104,6 +110,8 @@ export type Table<T extends PgTable = PgTable> = {
 	generateFn: () => Promise<T["$inferInsert"]>;
 	amount: number;
 };
+
+const TOTAL_AMOUNT = 200_000;
 
 export type Tables = Record<string, Table>;
 export const tables = {
@@ -119,7 +127,7 @@ export const tables = {
 		generateFn: async () =>
 			generateRoom({
 				faker,
-				id_library: await getRandomIdLibrary(),
+				id_library: await getRandomId(getTotalLibrary, getIdsLibrary),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -129,7 +137,7 @@ export const tables = {
 		generateFn: async () =>
 			generateCollection({
 				faker,
-				id_room: await getRandomIdRoom(),
+				id_room: await getRandomId(getTotalRoom, getIdsRoom),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -139,13 +147,17 @@ export const tables = {
 		generateFn: () => generateDocument(faker),
 		amount: TOTAL_AMOUNT,
 	},
+
 	manuscript: {
 		tableName: "manuscript",
 		table: manuscript,
 		generateFn: async () =>
 			generateManuscript({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -155,7 +167,10 @@ export const tables = {
 		generateFn: async () =>
 			generateMap({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -165,7 +180,10 @@ export const tables = {
 		generateFn: async () =>
 			generatePicture({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -175,7 +193,10 @@ export const tables = {
 		generateFn: async () =>
 			generatePaint({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -185,7 +206,10 @@ export const tables = {
 		generateFn: async () =>
 			generateMedia({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -195,7 +219,10 @@ export const tables = {
 		generateFn: async () =>
 			generateMusic({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -205,7 +232,10 @@ export const tables = {
 		generateFn: async () =>
 			generateReference({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -215,7 +245,10 @@ export const tables = {
 		generateFn: async () =>
 			generateMagazine({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -225,7 +258,10 @@ export const tables = {
 		generateFn: async () =>
 			generateBook({
 				faker,
-				id_document: await getRandomIdDocument(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -234,8 +270,14 @@ export const tables = {
 		table: document_collection,
 		generateFn: async () =>
 			generateDocumentCollection({
-				id_document: await getRandomIdDocument(),
-				id_collection: await getRandomIdCollection(),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
+				id_collection: await getRandomId(
+					getTotalCollections,
+					getIdsCollection
+				),
 			}),
 		amount: TOTAL_AMOUNT / 10,
 	},
@@ -251,8 +293,11 @@ export const tables = {
 		table: author_document,
 		generateFn: async () =>
 			generateAuthorDocument({
-				id_author: await getRandomIdAuthor(),
-				id_document: await getRandomIdDocument(),
+				id_author: await getRandomId(getTotalAuthors, getIdsAuthor),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -267,8 +312,8 @@ export const tables = {
 		table: email_library,
 		generateFn: async () =>
 			generateEmailLibrary({
-				email: await getRandomEmail(),
-				id_library: await getRandomIdLibrary(),
+				email: await getRandomId(getTotalEmails, getEmails),
+				id_library: await getRandomId(getTotalLibrary, getIdsLibrary),
 			}),
 		amount: TOTAL_AMOUNT / 3,
 	},
@@ -277,8 +322,8 @@ export const tables = {
 		table: email_room,
 		generateFn: async () =>
 			generateEmailRoom({
-				email: await getRandomEmail(),
-				id_room: await getRandomIdRoom(),
+				email: await getRandomId(getTotalEmails, getEmails),
+				id_room: await getRandomId(getTotalRoom, getIdsCollection),
 			}),
 		amount: TOTAL_AMOUNT / 3,
 	},
@@ -287,8 +332,11 @@ export const tables = {
 		table: email_collection,
 		generateFn: async () =>
 			generateEmailCollection({
-				email: await getRandomEmail(),
-				id_collection: await getRandomIdCollection(),
+				email: await getRandomId(getTotalEmails, getEmails),
+				id_collection: await getRandomId(
+					getTotalCollections,
+					getIdsCollection
+				),
 			}),
 		amount: TOTAL_AMOUNT / 3,
 	},
@@ -303,7 +351,7 @@ export const tables = {
 		table: researcher,
 		generateFn: async () =>
 			generateResearcher({
-				id_member: await getRandomIdMember(),
+				id_member: await getRandomId(getTotalMember, getIdsMember),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -313,7 +361,7 @@ export const tables = {
 		generateFn: async () =>
 			generateProfessional({
 				faker,
-				id_member: await getRandomIdMember(),
+				id_member: await getRandomId(getTotalMember, getIdsMember),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -323,7 +371,7 @@ export const tables = {
 		generateFn: async () =>
 			generateStudent({
 				faker,
-				id_member: await getRandomIdMember(),
+				id_member: await getRandomId(getTotalMember, getIdsMember),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -338,8 +386,8 @@ export const tables = {
 		table: phone_library,
 		generateFn: async () =>
 			generatePhoneLibrary({
-				id_library: await getRandomIdLibrary(),
-				phone_number: await getRandomPhoneNumber(),
+				id_library: await getRandomId(getTotalLibrary, getIdsLibrary),
+				phone_number: await getRandomId(getTotalPhone, getPhoneNumbers),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -348,8 +396,8 @@ export const tables = {
 		table: phone_room,
 		generateFn: async () =>
 			generatePhoneRoom({
-				phone_number: await getRandomPhoneNumber(),
-				id_room: await getRandomIdRoom(),
+				phone_number: await getRandomId(getTotalPhone, getPhoneNumbers),
+				id_room: await getRandomId(getTotalRoom, getIdsRoom),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -364,8 +412,8 @@ export const tables = {
 		table: service_room,
 		generateFn: async () =>
 			generateServiceRoom({
-				id_service: await getRandomIdService(),
-				id_room: await getRandomIdRoom(),
+				id_service: await getRandomId(getTotalServices, getIdsService),
+				id_room: await getRandomId(getTotalRoom, getIdsRoom),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -374,8 +422,8 @@ export const tables = {
 		table: service_member,
 		generateFn: async () =>
 			generateServiceMember({
-				id_service: await getRandomIdService(),
-				id_member: await getRandomIdMember(),
+				id_service: await getRandomId(getTotalServices, getIdsService),
+				id_member: await getRandomId(getTotalMember, getIdsMember),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -385,8 +433,11 @@ export const tables = {
 		generateFn: async () =>
 			generateLoan({
 				faker,
-				id_service: await getRandomIdService(),
-				id_document: await getRandomIdDocument(),
+				id_service: await getRandomId(getTotalServices, getIdsService),
+				id_document: await getRandomId(
+					getTotalDocuments,
+					getIdsDocument
+				),
 			}),
 		amount: TOTAL_AMOUNT,
 	},
@@ -394,11 +445,14 @@ export const tables = {
 		tableName: "loan_researcher",
 		table: loan_researcher,
 		generateFn: async () => {
-			const { id_service, id_document } = await getRandomIdLoan();
+			const { id_service, id_document } = await getRandomId(
+				getTotalLoan,
+				getIdsLoan
+			);
 			return generateLoanMember({
 				id_service,
 				id_document,
-				id_member: await getRandomIdResearcher(),
+				id_member: await getRandomId(getTotalMember, getIdsMember),
 			});
 		},
 		amount: TOTAL_AMOUNT,
@@ -407,11 +461,14 @@ export const tables = {
 		tableName: "loan_professional",
 		table: loan_professional,
 		generateFn: async () => {
-			const { id_service, id_document } = await getRandomIdLoan();
+			const { id_service, id_document } = await getRandomId(
+				getTotalLoan,
+				getIdsLoan
+			);
 			return generateLoanMember({
 				id_service,
 				id_document,
-				id_member: await getRandomIdProfessional(),
+				id_member: await getRandomId(getTotalMember, getIdsMember),
 			});
 		},
 		amount: TOTAL_AMOUNT,
@@ -420,13 +477,16 @@ export const tables = {
 		tableName: "loan_library",
 		table: loan_library,
 		generateFn: async () => {
-			const { id_service, id_document } = await getRandomIdLoan();
+			const { id_service, id_document } = await getRandomId(
+				getTotalLoan,
+				getIdsLoan
+			);
 
 			return generateLoanLibrary({
 				id_service,
 				id_document,
-				id_library: await getRandomIdLibrary(),
-				id_library2: await getRandomIdLibrary(),
+				id_library: await getRandomId(getTotalLibrary, getIdsLibrary),
+				id_library2: await getRandomId(getTotalLibrary, getIdsLibrary),
 			});
 		},
 		amount: TOTAL_AMOUNT,
@@ -435,7 +495,10 @@ export const tables = {
 		tableName: "fine",
 		table: fine,
 		generateFn: async () => {
-			const { id_service, id_document } = await getRandomIdLoan();
+			const { id_service, id_document } = await getRandomId(
+				getTotalLoan,
+				getIdsLoan
+			);
 			return generateFine({ faker, id_service, id_document });
 		},
 		amount: TOTAL_AMOUNT,

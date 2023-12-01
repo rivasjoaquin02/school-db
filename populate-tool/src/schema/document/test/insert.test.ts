@@ -1,5 +1,5 @@
 import { test } from "bun:test";
-import { db } from "../../../db";
+import { db } from "../../../db/db";
 import { tables } from "../../../tables";
 import {
 	book,

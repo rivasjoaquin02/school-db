@@ -1,5 +1,5 @@
 import { LogFn } from "../app.ts";
-import { db } from "../db.ts";
+import { db } from "../db/db.ts";
 import { type Table } from "../tables.ts";
 
 type Populate = Table & { log?: LogFn };
