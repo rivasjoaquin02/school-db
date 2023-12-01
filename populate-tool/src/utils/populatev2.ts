@@ -18,7 +18,6 @@ export async function populate({
 			.insert(table)
 			.values(value)
 			.onConflictDoNothing()
-			// .then(() => matchSpecializations(tableName, value))
 			.catch((err: Error) =>
 				log?.error(`${tableName} -> ${err.message}`)
 			);
