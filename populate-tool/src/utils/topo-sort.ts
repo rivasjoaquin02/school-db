@@ -59,7 +59,7 @@ const tables = [
 	"author_document",
 	"member",
 	"student",
-	"research",
+	"researcher",
 	"professional",
 	"phone",
 	"phone_library",

@@ -36,17 +36,8 @@ export {
 	generateFine,
 	generateLoan,
 	generateLoanLibrary,
-	generateLoanProfessional,
-	generateLoanResearcher,
+	generateLoanMember,
 	generateService,
 	generateServiceMember,
 	generateServiceRoom,
 } from "./generate.ts";
-export {
-	getIdsResearcher,
-	getIdsService,
-	getIdsLoan,
-	getIdsProfessional,
-	getTotalServices,
-	getTotalLoan,
-} from "./querys.ts";

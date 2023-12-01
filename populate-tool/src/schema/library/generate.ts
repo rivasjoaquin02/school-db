@@ -1,26 +1,5 @@
 import { Faker } from "@faker-js/faker";
-import {
-	LibraryInsert,
-	LibrarySelect,
-	getIdsLibrary,
-	getTotalLibrary,
-} from ".";
-import { pickRandom } from "../../utils/pick-random";
-
-export const getRandomIdLibrary = async (
-	faker: Faker
-): Promise<LibrarySelect["id_library"]> => {
-	const [{ count }] = await getTotalLibrary.execute();
-
-	const idsLibrary = await getIdsLibrary.execute({
-		limit: 100,
-		offset: faker.number.int(Number(count)),
-	});
-
-	const { id_library } = pickRandom(idsLibrary);
-
-	return id_library;
-};
+import { LibraryInsert } from ".";
 
 export const generateLibrary = async (
 	faker: Faker

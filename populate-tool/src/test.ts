@@ -2,10 +2,8 @@ import { tables } from "./tables";
 import { populate } from "./utils/populate";
 import { getOrderOfTables } from "./utils/topo-sort";
 
-// console.log(getOrderOfTables());
-
-
 // FAST
+// await populate({...tables.service, amount: 100});
 // await populate(tables.service);
 // await populate(tables.member);
 // await populate(tables.author);
@@ -37,16 +35,18 @@ import { getOrderOfTables } from "./utils/topo-sort";
 // await populate(tables.loan_professional); //solo lleno 87
 // await populate(tables.loan_researcher); //no lleno nada
 
-
 // await populate(tables.media);
 // await populate(tables.paint);
 // await populate(tables.picture);
 // await populate(tables.map);
 // await populate(tables.manuscript);
 
-await populate(tables.email_collection);
+// await populate(tables.email_collection);
 // await populate(tables.document_collection);
 // await populate(tables.email_room);
 // await populate(tables.phone_room);
 // await populate(tables.service_room);
 console.log("👍 done");
+
+
+console.log(getOrderOfTables());

@@ -54,8 +54,3 @@ export {
 	generatePicture,
 	generateReference,
 } from "./generate.ts";
-
-export {
-	getIdsDocument,
-	getTotalDocuments,
-} from "./querys.ts";

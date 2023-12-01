@@ -1,6 +1,5 @@
 import { Faker } from "@faker-js/faker";
 import { pickRandom } from "../../utils/pick-random";
-import { getIdsMember, getTotalMember } from "./querys";
 import { category_type } from "./schema";
 import {
 	MemberInsert,
@@ -10,21 +9,6 @@ import {
 	MemberSelect,
 } from "./types";
 
-export const getRandomIdMember = async (
-	faker: Faker
-): Promise<MemberSelect["id_member"]> => {
-	const [{ count }] = await getTotalMember.execute();
-
-	const idsMember = await getIdsMember.execute({
-		limit: 100,
-		offset: faker.number.int(Number(count)),
-	});
-
-	const { id_member } = pickRandom(idsMember);
-
-	return id_member;
-};
-
 export const generateMember = async (faker: Faker): Promise<MemberInsert> => ({
 	name: faker.person.fullName(),
 	age: faker.number.int({ min: 18, max: 100 }),
@@ -32,29 +16,37 @@ export const generateMember = async (faker: Faker): Promise<MemberInsert> => ({
 	category: pickRandom(category_type.enumValues),
 });
 
-export const generateResearcher = async (
-	faker: Faker
-): Promise<ResearcherInsert> => ({
-	id_member: await getRandomIdMember(faker),
+type GenerateResearcher = {
+	id_member: MemberSelect["id_member"];
+};
+
+export const generateResearcher = async ({
+	id_member,
+}: GenerateResearcher): Promise<ResearcherInsert> => ({
+	id_member,
 });
 
-export const generateProfessional = async (
-	faker: Faker
-): Promise<ProfessionalInsert> => ({
-	id_member: await getRandomIdMember(faker),
+type GenerateMemberSpecialization = {
+	faker: Faker;
+	id_member: MemberSelect["id_member"];
+};
+
+export const generateProfessional = async ({
+	faker,
+	id_member,
+}: GenerateMemberSpecialization): Promise<ProfessionalInsert> => ({
+	id_member,
 	organization: faker.company.name(),
 });
 
-export const generateStudent = async (
-	faker: Faker
-): Promise<StudentInsert> => ({
-	id_member: await getRandomIdMember(faker),
+export const generateStudent = async ({
+	faker,
+	id_member,
+}: GenerateMemberSpecialization): Promise<StudentInsert> => ({
+	id_member,
 	school: `${pickRandom([
-		"Preuniversitario",
 		"HighSchool",
-		"Universidad",
 		"University",
-		"Escuela Catolica",
-		"Catolic School",
+		"Catholic School",
 	])} ${faker.company.name()}`,
 });

@@ -1,5 +1,5 @@
-drop database if exists almacen;
-create database almacen;
+-- drop database if exists almacen;
+-- create database almacen;
 
 -- ddl
 
@@ -10,7 +10,8 @@ create table libro
     ano_publicacion date,
     editorial       varchar(255),
     precio          decimal,
-    categoria       varchar(255)
+    categoria       varchar(255),
+    idioma          varchar(255)
 );
 create table persona
 (

@@ -1,6 +1,5 @@
 export { author, author_document } from "./schema.ts";
 export { generateAuthor, generateAuthorDocument } from "./generate.ts";
-export { getIdAuthor, getTotalAuthors } from "./querys.ts";
 export {
 	type AuthorDocumentInsert,
 	type AuthorInsert,

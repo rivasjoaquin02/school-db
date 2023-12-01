@@ -12,4 +12,3 @@ export {
 	type PhoneLibrarySelect,
 	type PhoneRoomSelect,
 } from "./types.ts";
-export { getPhoneNumbers, getTotalPhone } from "./querys.ts";

@@ -1,28 +1,7 @@
 import { Faker } from "@faker-js/faker";
-import {
-	AuthorDocumentInsert,
-	AuthorInsert,
-	AuthorSelect,
-	getIdAuthor,
-	getTotalAuthors,
-} from ".";
+import { AuthorDocumentInsert, AuthorInsert, AuthorSelect } from ".";
 import { pickRandom } from "../../utils/pick-random";
-import { getRandomIdDocument } from "../document/generate";
-
-export const getRandomIdAuthor = async (
-	faker: Faker
-): Promise<AuthorSelect["id_author"]> => {
-	const [{ count }] = await getTotalAuthors.execute();
-
-	const idsAuthor = await getIdAuthor.execute({
-		limit: 100,
-		offset: faker.number.int(Number(count)),
-	});
-
-	const { id_author } = pickRandom(idsAuthor);
-
-	return id_author;
-};
+import { DocumentSelect } from "../document";
 
 export const generateAuthor = async (faker: Faker): Promise<AuthorInsert> => ({
 	name_author: faker.person.fullName(),
@@ -30,9 +9,15 @@ export const generateAuthor = async (faker: Faker): Promise<AuthorInsert> => ({
 	description_author: faker.lorem.paragraph(),
 });
 
-export const generateAuthorDocument = async (
-	faker: Faker
-): Promise<AuthorDocumentInsert> => ({
-	id_author: await getRandomIdAuthor(faker),
-	id_document: await getRandomIdDocument(faker),
+type GenerateAuthorDocument = {
+	id_author: AuthorSelect["id_author"];
+	id_document: DocumentSelect["id_document"];
+};
+
+export const generateAuthorDocument = async ({
+	id_author,
+	id_document,
+}: GenerateAuthorDocument): Promise<AuthorDocumentInsert> => ({
+	id_author,
+	id_document,
 });

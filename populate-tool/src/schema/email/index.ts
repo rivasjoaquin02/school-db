@@ -19,4 +19,3 @@ export {
 	generateEmailLibrary,
 	generateEmailRoom,
 } from "./generate.ts";
-export { getEmails, getTotalEmails } from "./querys.ts";
