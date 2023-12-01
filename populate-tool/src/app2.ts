@@ -1,5 +1,5 @@
 import { Logger, ILogObj } from "tslog";
-import { tables } from "./tables.ts";
+import { Table, tables } from "./tables.ts";
 import { populate } from "./utils/populatev2.ts";
 
 export type LogFn = Logger<ILogObj>;
