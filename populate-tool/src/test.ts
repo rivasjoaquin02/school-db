@@ -1,5 +1,5 @@
 import { match } from "ts-pattern";
-import { populate } from "./utils/populate";
+import { populate } from "./utils/populatev2";
 import { faker } from "@faker-js/faker";
 import { log } from "sys";
 import { db } from "./db/db";
@@ -107,6 +107,7 @@ import {
 } from "./utils/get-ids";
 import { getRandomId } from "./utils/get-random";
 import { tables } from "./tables";
+import { matchSpecializations } from "./utils/match-specialization";
 
 // FAST
 // await populate({...tables.service, amount: 100});
@@ -152,7 +153,6 @@ import { tables } from "./tables";
 // await populate(tables.email_room);
 // await populate(tables.phone_room);
 // await populate(tables.service_room);
-console.log("👍 done");
 
 // console.log(getOrderOfTables());
 
@@ -163,8 +163,14 @@ console.log("👍 done");
 // 		.otherwise(() => "Unknown status.");
 // }
 
-
-
 // console.log(await getTotalAuthors.execute());
 
-console.log(tables['library']);
+// await populate(tables.member)
+
+console.log(await tables.member.generateFn());
+
+await matchSpecializations("member")
+await db
+	.insert(tables.member.table)
+	.values(await tables.member.generateFn());
+console.log("👍 done");

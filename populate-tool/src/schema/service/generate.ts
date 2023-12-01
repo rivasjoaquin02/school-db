@@ -121,5 +121,5 @@ export const generateFine = async ({
 	id_service,
 	id_document,
 	penalty: pickRandom(penalty_type.enumValues),
-	fee: faker.number.float(1000),
+	fee: faker.number.float({ max: 1000, precision: 3 }),
 });

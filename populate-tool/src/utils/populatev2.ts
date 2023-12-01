@@ -14,14 +14,15 @@ export async function populate({
 	for (let i = 0; i < amount; i++) {
 		const value: any = await generateFn();
 
-		await db
+		const inserted = await db
 			.insert(table)
 			.values(value)
 			.onConflictDoNothing()
+			.returning()
 			.catch((err: Error) =>
 				log?.error(`${tableName} -> ${err.message}`)
 			);
 
-		await matchSpecializations(tableName, value);
+		await matchSpecializations(tableName, inserted[0]);
 	}
 }

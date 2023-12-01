@@ -1,6 +1,8 @@
 import { Logger, ILogObj } from "tslog";
 import { Table, tables } from "./tables.ts";
 import { populate } from "./utils/populatev2.ts";
+import { db } from "./db/db.ts";
+import { library } from "./schema/library/schema.ts";
 
 export type LogFn = Logger<ILogObj>;
 const log: LogFn = new Logger();

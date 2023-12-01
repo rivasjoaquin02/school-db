@@ -12,11 +12,13 @@ import {
 	generateMap,
 	generateManuscript,
 	DocumentSelect,
+	DocumentInsert,
 } from "../schema/document";
 import {
 	generateProfessional,
 	generateResearcher,
 	generateStudent,
+	MemberInsert,
 	MemberSelect,
 } from "../schema/member";
 import { tables } from "../tables";
@@ -41,30 +43,33 @@ const memberCategoryToFunction = {
 
 export async function matchSpecializations(
 	tableName: string,
-	value: Table
+	value: MemberInsert | DocumentInsert
 ): Promise<void> {
 	if (tableName === "document") {
 		const { id_document, type_document } = value as any as DocumentSelect;
 		const generateFn = documentTypeToFunction[type_document];
-		if (generateFn) {
+		if (type_document && generateFn) {
 			await db
-				.insert(tables[tableName].table)
+				.insert(tables[type_document].table)
 				.values(await generateFn({ faker, id_document }))
 				.onConflictDoNothing()
 				.catch((err: Error) =>
-					console.log(`${tableName} -> ${err.message}`)
+					console.log(`${type_document} -> ${err.message}`)
 				);
 		}
 	} else if (tableName === "member") {
 		const { id_member, category } = value as any as MemberSelect;
+
+		// console.log(value);
+		
 		const generateFn = memberCategoryToFunction[category];
-		if (generateFn) {
+		if (category && generateFn) {
 			await db
-				.insert(tables[tableName].table)
+				.insert(tables[category].table)
 				.values(await generateFn({ faker, id_member }))
 				.onConflictDoNothing()
 				.catch((err: Error) =>
-					console.log(`${tableName} -> ${err.message}`)
+					console.log(`${category} -> ${err.message}`)
 				);
 		}
 	}

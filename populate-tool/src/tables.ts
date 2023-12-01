@@ -88,6 +88,8 @@ import {
 	getIdsLibrary,
 	getIdsLoan,
 	getIdsMember,
+	getIdsProfessional,
+	getIdsResearcher,
 	getIdsRoom,
 	getIdsService,
 	getPhoneNumbers,
@@ -99,6 +101,8 @@ import {
 	getTotalLoan,
 	getTotalMember,
 	getTotalPhone,
+	getTotalProfessional,
+	getTotalResearcher,
 	getTotalRoom,
 	getTotalServices,
 } from "./utils/get-ids.ts";
@@ -111,7 +115,7 @@ export type Table<T extends PgTable = PgTable> = {
 	amount: number;
 };
 
-const TOTAL_AMOUNT = 200_000;
+const TOTAL_AMOUNT = 170000;
 
 export type Tables = Record<string, Table>;
 export const tables = {
@@ -323,7 +327,7 @@ export const tables = {
 		generateFn: async () =>
 			generateEmailRoom({
 				email: await getRandomId(getTotalEmails, getEmails),
-				id_room: await getRandomId(getTotalRoom, getIdsCollection),
+				id_room: await getRandomId(getTotalRoom, getIdsRoom),
 			}),
 		amount: TOTAL_AMOUNT / 3,
 	},
@@ -452,7 +456,7 @@ export const tables = {
 			return generateLoanMember({
 				id_service,
 				id_document,
-				id_member: await getRandomId(getTotalMember, getIdsMember),
+				id_member: await getRandomId(getTotalResearcher, getIdsResearcher),
 			});
 		},
 		amount: TOTAL_AMOUNT,
@@ -468,7 +472,7 @@ export const tables = {
 			return generateLoanMember({
 				id_service,
 				id_document,
-				id_member: await getRandomId(getTotalMember, getIdsMember),
+				id_member: await getRandomId(getTotalProfessional, getIdsProfessional),
 			});
 		},
 		amount: TOTAL_AMOUNT,
