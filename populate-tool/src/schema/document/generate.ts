@@ -131,14 +131,6 @@ export const generateMagazine = async ({
 	})}`,
 });
 
-export const generateIsbn = async (faker: Faker): Promise<string> => {
-	const prefix = faker.number.int(1000);
-	const registrant = faker.number.int(1000);
-	const publication = faker.number.int(1000);
-	const control = faker.number.int(10);
-	return `${prefix}-${registrant}-${publication}-${control}`;
-};
-
 export const generateIssn = async (faker: Faker): Promise<string> => {
 	const prefix = faker.number.int({ min: 1000, max: 9999 });
 	const suffix = faker.number.int({
@@ -155,7 +147,7 @@ export const generateBook = async ({
 	id_document,
 	genre: faker.lorem.word(10),
 	issn: await generateIssn(faker),
-	isbn: await generateIsbn(faker),
+	isbn: faker.commerce.isbn(),
 	dewey: faker.number.float({
 		min: 100,
 		max: 999,
